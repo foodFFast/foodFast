@@ -1,0 +1,23 @@
+const mongoose=require("mongoose")
+
+
+const dbConnect=async()=>{
+
+    try{
+        await mongoose.connect(process.env.MONGODB_CNN,{
+            useNewUrlParser:true,
+            useUnifiedTopology:true,
+          
+        });
+        console.log("base de datos conectada")
+
+    }catch (error){
+        console.log(error);
+        throw new Error("Error a la hora de iniciar la base de datos");
+    }
+
+}
+
+module.exports={
+    dbConnect
+}
