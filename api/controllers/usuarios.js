@@ -1,11 +1,10 @@
-const {response,request}=require("express");
 const Usuario = require("../src/models/usuario");
 
 
 
  
 
-const postUsuario=async(req=request,res=response)=>{
+const postUsuario=async(req,res)=>{
   
     
     const {nombre,correo,password,rol}=req.body;
@@ -15,9 +14,7 @@ const postUsuario=async(req=request,res=response)=>{
        
     await usuario.save()
 
-    res.json({
-        usuario}
-        )
+    res.send("hola")
 }
 
 
