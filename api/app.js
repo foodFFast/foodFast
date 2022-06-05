@@ -1,7 +1,6 @@
-require("dotenv").config();
-const Server=require("./src/server")
+require("dotenv").config()
+const Server = require("./src/server")
 
-
-const server=new Server();
+const server = new Server()
 
 server.listen()
