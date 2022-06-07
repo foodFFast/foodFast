@@ -1,19 +1,18 @@
-const {Schema, model}=require("mongoose")
+import mongoose from 'mongoose'
 
-
-const CategorySchema=Schema({
+const categorySchema= new mongoose.Schema({
      
-  nombre:{
+  name:{
         type:String,
         required:[true,"El nombre es obligatorio"],
         unique:true
     },
-    usuario:{
+    /* usuario:{
         type:Schema.Types.ObjectId,
         ref:"Usuario",
         required:true
-    }
+    } */
 });
 
-
-module.exports=model("Categoria",CategorySchema)
+const Categories = mongoose.model("Categories",categorySchema)
+export default Categories;

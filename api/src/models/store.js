@@ -1,6 +1,6 @@
-const {Schema,model}=require("mongoose");
+import mongoose from 'mongoose'
 
-const StoreSchema=Schema({
+const storeSchema= new mongoose.Schema({
 
 
     name:{
@@ -37,5 +37,5 @@ const StoreSchema=Schema({
     
 })
 
-
-module.exports=model("Usuario",StoreSchema)
+const Store = mongoose.model("Store",storeSchema)
+export default Store;
