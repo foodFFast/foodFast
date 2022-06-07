@@ -3,6 +3,7 @@ import NavBar from "./components/navBar";
 import styles from "./App.module.scss"; 
 import SearchBar from "./components/searchBar";
 import LocationBar from "./components/ubicationBar";
+import CategoryCard from "./components/categoryCard";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
 
       <div className={styles.LandingPage}>
         <LandingPage/>
+        <CategoryCard />
       </div>
       
       <div className={styles.LandingPage}>
