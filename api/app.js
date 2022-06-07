@@ -1,18 +1,25 @@
 import 'dotenv/config'
 import './connectDB.js'
+import morgan from 'morgan'
+import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
-import router from './routes/router.js'
-import morgan from 'morgan'
+import categories from './src/routes/categoriesRoute.js'
 
 
 
 const app = express()
 app.use(cookieParser());
 app.use(express.json());
-app.use(morgan('dev'));
+app.use(cors());
+app.use(morgan("dev"));
 
-app.use('/', router);
+
+
+// http://localhost:3000/api/v1/categories
+app.use('/api/v1/categories', categories)
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log("server on port: " + PORT))
