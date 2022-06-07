@@ -13,7 +13,7 @@ export const categories = async(req,res)=>{
 export const postCategory = async(req,res)=>{
     try{
         const {name} = req.body;
-        
+
         let exists = await Categories.find({name: name});
         
         if(!exists.length){
@@ -29,5 +29,22 @@ export const postCategory = async(req,res)=>{
 
     }catch(e){
         console.log("Error en el postCategory. ", e.message);
+    }
+}
+
+//Elimina dado un id de categoría.
+export const deleteCategory = async(req,res)=>{
+    try{
+        const id = req.params.id;
+
+        let isDeleted = await Categories.findByIdAndDelete(id);
+        console.log("isDeleted es: ", isDeleted);
+        if(isDeleted !== null){
+            res.send("Categoría eliminada exitosamente.");
+        }else{
+            res.status(404).send("No se encontró la categoría a eliminar.");
+        }
+    }catch(e){
+        console.log("Error en deleteCategory. ", e.message);
     }
 }
