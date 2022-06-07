@@ -1,4 +1,5 @@
 import Categories from '../models/category.js'
+import Product from '../models/product.js'
 
 
 export const categories = async(req,res)=>{
@@ -7,8 +8,21 @@ export const categories = async(req,res)=>{
         return res.json(user)
     } catch (error) {
         console.log(error)
+        return res.json({error: "Error de servidor"})
     }
 }
+
+
+export const category = async(req,res)=>{
+    const name = req.query.name
+    try {
+        if(!name) return res.json({error: "query invalid"})
+        const categories = await Product.find({category : name}) 
+        if(categories.length === 0) return res.json({error: "not found category"})
+        return res.json(categories)    
+    } catch (error) {
+        console.log(error)
+        return res.json({error: "Error de servidor"})   
 
 export const postCategory = async(req,res)=>{
     try{
@@ -46,5 +60,6 @@ export const deleteCategory = async(req,res)=>{
         }
     }catch(e){
         console.log("Error en deleteCategory. ", e.message);
+
     }
 }
