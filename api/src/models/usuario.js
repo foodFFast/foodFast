@@ -1,29 +1,29 @@
 const {Schema,model}=require("mongoose");
 
-const UserSchema=Schema({
+const UsuarioSchema=Schema({
 
 
     name:{
         type:String,
-        required:[true,"El nombre es requerido"]
+        required:true,
     },
     email:{
         type:String,
-        required:[true,"El correo es obligatorio"],
+        required:true,
         unique:true
     },
     password:{
         type:String,
-        required:[true,"El password es requerido"]
+        required:true,
     },
     img:{
         type:String
     },
     rol:{
         type:String,
-        // required:true,
-        // default:"USER_ROLE"
-        // enum:["ADMIN_ROLE","USER_ROLE"]
+         required:true,
+         default:"USER_ROLE",
+         enum:["ADMIN_ROLE","USER_ROLE"]
     },
    address:{
        type:String,
@@ -33,4 +33,4 @@ const UserSchema=Schema({
 })
 
 
-module.exports=model("Usuario",UserSchema)
+module.exports=model("Usuario",UsuarioSchema)

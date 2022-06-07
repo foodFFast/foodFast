@@ -1,11 +1,11 @@
 const {Schema,model}=require("mongoose");
 
-const StoreSchema=Schema({
+const TiendaSchema=Schema({
 
 
     name:{
         type:String,
-        required:[true,"El nombre es requerido"]
+        required:true
     },
    description:{
        type:String,
@@ -38,4 +38,4 @@ const StoreSchema=Schema({
 })
 
 
-module.exports=model("Usuario",StoreSchema)
+module.exports=model("Tienda",TiendaSchema)

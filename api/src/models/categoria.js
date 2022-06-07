@@ -1,7 +1,7 @@
 const {Schema, model}=require("mongoose")
 
 
-const CategorySchema=Schema({
+const CategoriaSchema=Schema({
      
   nombre:{
         type:String,
@@ -16,4 +16,4 @@ const CategorySchema=Schema({
 });
 
 
-module.exports=model("Categoria",CategorySchema)
+module.exports=model("Categoria",CategoriaSchema)

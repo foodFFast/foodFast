@@ -1,15 +1,15 @@
 const {Schema,model}=require("mongoose");
 
-const OrderSchema=Schema({
+const OrdenSchema=Schema({
 
 
     name:{
         type:String,
-        required:[true,"El name es requerido"]
+        required:true,
     },
     email:{
         type:String,
-        required:[true,"El email es obligatorio"],
+        required:true,
         unique:true
     },
     status:{
@@ -39,4 +39,4 @@ const OrderSchema=Schema({
 })
 
 
-module.exports=model("Usuario",OrderSchema)
+module.exports=model("Orden",OrdenSchema)
