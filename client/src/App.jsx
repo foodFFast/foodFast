@@ -1,5 +1,4 @@
-import "./App.css"
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import {
     MainTest,
@@ -18,6 +17,7 @@ import {
     Order,
     Review
 } from "./components/index"
+import NavBar from "./components/navBar"
 
 const productsNestedRoutes = () => (
     <Route path="products">
@@ -44,10 +44,14 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <Link to="/">
+                {/* <Link to="/">
                     <h1>Food Fast</h1>
                 </Link>
-                <Link to="/auth">Auth</Link>
+                <Link to="/auth">Auth</Link> */}
+
+                <div style={{ zIndex: 10, position: "sticky", top: 0 }}>
+                    <NavBar />
+                </div>
 
                 <Routes>
                     <Route path="/">

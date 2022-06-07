@@ -1,9 +1,21 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
+import LandingPage from "../landingPage"
+import SearchBar from "../searchBar"
+import LocationBar from "../ubicationBar"
+import styles from "./Landing.module.scss"
+
 const Landing = () => {
     return (
         <div>
+            <div className={styles.SearchBar}>
+                <SearchBar />
+            </div>
+            <div className={styles.LocationBar}>
+                <LocationBar />
+            </div>
+            <LandingPage />
             <h1>Landing</h1>
             <Link to="tests">Redux Tests</Link> <br />
             <Link to="shops">Ver todos los locales</Link> <br />
