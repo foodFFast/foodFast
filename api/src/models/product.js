@@ -21,16 +21,14 @@ const productSchema =new mongoose.Schema({
        type:Boolean,
        required:true,
    },
-   categoria:{
-       type:Schema.Types.ObjectId,
-       ref:"Categoria",
-       required:true
+   category:{
+    type:String,  
+    required: true,
    },
    review:{
-    type:Number,
-    default:0,
-},
-    
+        type:Number,
+        default:0,  
+    },
 })
 
 
