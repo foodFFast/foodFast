@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import LandingPage from "./components/landingPage";
+import NavBar from "./components/navBar";
+import styles from "./App.module.scss"; 
+import SearchBar from "./components/searchBar";
+import LocationBar from "./components/ubicationBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.App}>
+      
+      <div className={styles.SearchBar}>
+        <SearchBar />
+      </div>
+
+      <div className={styles.LocationBar}>
+        <LocationBar />
+      </div>
+
+      <div className={styles.LandingPage}>
+        <LandingPage/>
+      </div>
+      
+      <div className={styles.LandingPage}>
+        <NavBar />
+      </div>
     </div>
   );
 }
