@@ -17,7 +17,7 @@ export const category = async(req,res)=>{
     try {
         if(!name) return res.json({error: "query invalid"})
         const categories = await Product.find({category : name}) 
-        if(!categories) return res.json({error: "not found category"})
+        if(categories.length === 0) return res.json({error: "not found category"})
         return res.json(categories)    
     } catch (error) {
         console.log(error)
