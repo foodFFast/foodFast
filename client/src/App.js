@@ -4,6 +4,7 @@ import styles from "./App.module.scss"
 import SearchBar from "./components/searchBar"
 import LocationBar from "./components/ubicationBar"
 import CategoryCard from "./components/categoryCard"
+import AxiosTest from "./components/Tests/AxiosTest"
 
 function App() {
     return (
@@ -24,6 +25,8 @@ function App() {
             <div className={styles.LandingPage}>
                 <NavBar />
             </div>
+
+            <AxiosTest />
         </div>
     )
 }
