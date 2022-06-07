@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
-import categories from './src/models/routes/categoriesRoute.js'
+import categories from './src/routes/categoriesRoute.js'
 
 
 
