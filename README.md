@@ -14,6 +14,8 @@ E-commerce desarrollado como proyecto final para el bootcamp Soy Henry.
 -   redux
 -   react-redux
 -   redux-thunk
+-   styled-components
+-   sass
 
 #### Back
 
@@ -31,7 +33,7 @@ E-commerce desarrollado como proyecto final para el bootcamp Soy Henry.
     -   /locales _(ver todos los locales / buscar locales)_
     -   /categorias _(ver todas las categorias / buscar por categoria)_
     <!-- -   /productos _(ver todos los productos / buscar productos)_ -->
-    - /login _(iniciar sesion / crear sesion)_
+    -   /login _(iniciar sesion / crear sesion)_
 -   /usuario/[id] _(perfil)_
     <!-- -   /reseñas _(ver todas mis reseñas)_
     -   /pedidos _(ver todos mis pedidos)_ -->
