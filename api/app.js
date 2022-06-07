@@ -15,8 +15,10 @@ app.use(cors());
 app.use(morgan("dev"));
 
 
-
-// http://localhost:3000/api/v1/categories
+app.get('/',(req,res)=>{
+    res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
+})
+// http://localhost:3001/api/v1/categories
 app.use('/api/v1/categories', categories)
 
 
