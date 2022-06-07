@@ -1,7 +1,6 @@
-const {Schema,model}=require("mongoose");
+import mongoose from 'mongoose'
 
-const OrderSchema=Schema({
-
+const orderSchema= new mongoose.Schema({
 
     name:{
         type:String,
@@ -35,8 +34,8 @@ const OrderSchema=Schema({
        ref:"Product",
        required:true
    }
-    
 })
 
 
-module.exports=model("Usuario",OrderSchema)
+const Order = mongoose.model("Order",orderSchema)
+export default Order;
