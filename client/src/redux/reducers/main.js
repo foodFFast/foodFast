@@ -10,7 +10,7 @@ import {
 
 const initialState = {
     mainTest: "default",
-    categories: [],
+    allCategories: [],
     error: null,
     allProducts: [],
     filteredProducts: []
@@ -36,7 +36,7 @@ const main = (state = initialState, action) => {
             break
 
         case FETCH_CATEGORIES:
-            newState.categories = action.payload
+            newState.allCategories = action.payload
             break
 
         case FETCH_PRODUCTS:
@@ -61,7 +61,7 @@ const main = (state = initialState, action) => {
         case RESET_PRODUCTS:
             newState.allProducts = []
             newState.filteredProducts = []
-            newState.categories = []
+            newState.allCategories = []
             break
     }
 

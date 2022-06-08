@@ -16,7 +16,9 @@ export default function LandingPage() {
             />
 
             <div className={styles.categoryContainer}>
-                {hardCodeoCategoryCard.map(el=> <CategoryCard testObject={el} />)}
+                {hardCodeoCategoryCard.map((el) => (
+                    <CategoryCard key={el.categoryName} testObject={el} />
+                ))}
             </div>
         </section>
     )
