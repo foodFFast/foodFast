@@ -15,7 +15,8 @@ import {
     Orders,
     Product,
     Order,
-    Review
+    Review,
+    AxiosTest
 } from "./components/index"
 import NavBar from "./components/navBar"
 
@@ -79,20 +80,17 @@ function App() {
                         </Route>
                     </Route>
 
-                    <Route path="tests">
-                        <Route
-                            index
-                            element={
-                                <>
-                                    <h1>Redux Tests</h1>
-                                    <MainTest />
-                                    <ReduxTest />
-                                </>
-                            }
-                        />
-                        <Route path="main" element={<MainTest />} />
-                        <Route path="redux" element={<ReduxTest />} />
-                    </Route>
+                    <Route
+                        path="tests"
+                        element={
+                            <>
+                                <h1>Redux Tests</h1>
+                                <MainTest />
+                                <ReduxTest />
+                                <AxiosTest />
+                            </>
+                        }
+                    />
                 </Routes>
             </BrowserRouter>
         </div>

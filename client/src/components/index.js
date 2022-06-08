@@ -3,9 +3,10 @@ import Categories from "./Landing/Categories"
 import Landing from "./Landing/Landing"
 import Shop from "./Shop/Shop"
 import Shops from "./Landing/Shops"
-import MainTest from "./tests/MainTest"
+import MainTest from "./Tests/MainTest"
 import Profile from "./User/Profile"
-import ReduxTest from "./tests/ReduxTest"
+import ReduxTest from "./Tests/ReduxTest"
+import AxiosTest from "./Tests/AxiosTest"
 import Products from "./Common/Products"
 import Reviews from "./Common/Reviews"
 import Dashboard from "./Shop/Dashboard/Dashboard"
@@ -29,5 +30,6 @@ export {
     Orders,
     Product,
     Order,
-    Review
+    Review,
+    AxiosTest
 }
