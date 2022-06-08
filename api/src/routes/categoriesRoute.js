@@ -16,4 +16,5 @@ router.post('/',postCategory)
 router.delete('/:id', deleteCategory)
 
 
+
 export default router;
