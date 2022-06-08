@@ -23,7 +23,8 @@ export const category = async(req,res)=>{
     } catch (error) {
         console.log(error)
         return res.json({error: "Error de servidor"})   
-
+    }
+}
 export const postCategory = async(req,res)=>{
     try{
         const {name} = req.body;
@@ -47,6 +48,7 @@ export const postCategory = async(req,res)=>{
 }
 
 //Elimina dado un id de categoría.
+
 export const deleteCategory = async(req,res)=>{
     try{
         const id = req.params.id;
