@@ -17,7 +17,7 @@ const Landing = () => {
             </div>
             <LandingPage />
             <h1>Landing</h1>
-            <Link to="tests">Redux Tests</Link> <br />
+            <Link to="tests">Tests</Link> <br />
             <Link to="shops">Ver todos los locales</Link> <br />
             <Link to="categories">Ver toas las categorias</Link> <br />
             <Link to="user/1">Ir al perfil del usuario 1</Link> <br />

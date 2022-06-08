@@ -16,9 +16,10 @@ import {
     Product,
     Order,
     Review,
-    AxiosTest
+    AxiosTest,
+    NavBar,
+    SingleCat
 } from "./components/index"
-import NavBar from "./components/navBar"
 
 const productsNestedRoutes = () => (
     <Route path="products">
@@ -58,7 +59,10 @@ function App() {
                     <Route path="/">
                         <Route index element={<Landing />} />
                         <Route path="shops" element={<Shops />} />
-                        <Route path="categories" element={<Categories />} />
+                        <Route path="categories">
+                            <Route index element={<Categories />} />
+                            <Route path=":idCategory" element={<SingleCat />} />
+                        </Route>
                     </Route>
 
                     <Route path="/auth" element={<Auth />} />

@@ -3,6 +3,7 @@ import {
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
     FILTER_PRODUCTS,
+    // FIND_CATEGORY,
     MAIN_TEST,
     RESET_PRODUCTS,
     RESET_TESTS
@@ -10,7 +11,8 @@ import {
 
 const initialState = {
     mainTest: "default",
-    categories: [],
+    allCategories: [],
+    selectedCategory: null,
     error: null,
     allProducts: [],
     filteredProducts: []
@@ -36,8 +38,16 @@ const main = (state = initialState, action) => {
             break
 
         case FETCH_CATEGORIES:
-            newState.categories = action.payload
+            newState.allCategories = action.payload
             break
+
+        // case FIND_CATEGORY:
+        //     newState.selectedCategory = null
+        //     console.log(action.payload)
+        //     newState.selectedCategory = newState.allCategories.find(
+        //         (c) => c._id === action.payload
+        //     )
+        //     break
 
         case FETCH_PRODUCTS:
             let combinedProducts = [
@@ -61,7 +71,7 @@ const main = (state = initialState, action) => {
         case RESET_PRODUCTS:
             newState.allProducts = []
             newState.filteredProducts = []
-            newState.categories = []
+            newState.allCategories = []
             break
     }
 

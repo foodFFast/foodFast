@@ -13,10 +13,7 @@ const baseUrl = `http://localhost:3001/api/v1`
 const fetch = (url, type) => (dispatch) =>
     axios
         .get(url)
-        .then((res) => {
-            console.log(res)
-            dispatch({ type: type, payload: res.data })
-        })
+        .then((res) => dispatch({ type: type, payload: res.data }))
         .catch((err) => {
             console.log("error on fetch")
             dispatch({ type: ERROR, payload: err })
