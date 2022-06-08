@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import {
     GlobalContainer,
     MainIconContainer,
@@ -54,7 +55,7 @@ export default function NavBar() {
                 <ListRoutes>
                     <hr />
                     <h3>CONSUMER</h3>
-                    <RouteItem>Home</RouteItem>
+                    <Link to="/"><RouteItem>Home</RouteItem></Link>
                     <RouteItem>Categories</RouteItem>
                     <RouteItem>My orders</RouteItem>
                     <RouteItem>Oferts</RouteItem>
