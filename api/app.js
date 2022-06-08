@@ -5,6 +5,7 @@ import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import categories from './src/routes/categoriesRoute.js'
+import products from "./src/routes/productsRoute.js"
 
 
 
@@ -18,6 +19,8 @@ app.use(morgan("dev"));
 
 // http://localhost:3000/api/v1/categories
 app.use('/api/v1/categories', categories)
+// http://localhost:3000/api/v1/products
+app.use("/api/v1/products",products)
 
 
 

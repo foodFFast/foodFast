@@ -4,7 +4,7 @@ const productSchema =new mongoose.Schema({
 
     name:{
         type:String,
-        required:[true,"El nombre es requerido"]
+        required:true
     },
    description:{
        type:String,
@@ -16,15 +16,17 @@ const productSchema =new mongoose.Schema({
     price:{
         type:Number,
         required:true,
+        default:0
     },
    available:{
        type:Boolean,
        required:true,
+       default:false,
    },
-   categoria:{
-       type:Schema.Types.ObjectId,
-       ref:"Categoria",
-       required:true
+   category:{
+    type:String, 
+    ref:"Category",
+    required: true,
    },
    review:{
     type:Number,
