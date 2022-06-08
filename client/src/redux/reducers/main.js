@@ -1,7 +1,10 @@
 import {
     ERROR,
     FETCH_CATEGORIES,
+    FETCH_PRODUCTS,
+    FILTER_PRODUCTS,
     MAIN_TEST,
+    RESET_PRODUCTS,
     RESET_TESTS
 } from "../actions/types"
 
@@ -34,6 +37,31 @@ const main = (state = initialState, action) => {
 
         case FETCH_CATEGORIES:
             newState.categories = action.payload
+            break
+
+        case FETCH_PRODUCTS:
+            let combinedProducts = [
+                ...state.allProducts,
+                ...action.payload.product
+            ]
+            let uniqueProducts = [
+                ...new Map(
+                    combinedProducts.map((prod) => [prod._id, prod])
+                ).values()
+            ]
+            newState.allProducts = uniqueProducts
+            break
+
+        case FILTER_PRODUCTS:
+            newState.filteredProducts = []
+            !!action.payload.length &&
+                (newState.filteredProducts = [...action.payload])
+            break
+
+        case RESET_PRODUCTS:
+            newState.allProducts = []
+            newState.filteredProducts = []
+            newState.categories = []
             break
     }
 
