@@ -24,15 +24,15 @@ const productSchema =new mongoose.Schema({
        default:false,
    },
    category:{
+
     type:String, 
     ref:"Category",
     required: true,
    },
    review:{
-    type:Number,
-    default:0,
-},
-    
+        type:Number,
+        default:0,  
+    },
 })
 
 
