@@ -5,7 +5,7 @@ const productSchema =new mongoose.Schema({
 
     name:{
         type:String,
-        required:[true,"El nombre es requerido"]
+        required:true
     },
    description:{
        type:String,
@@ -17,18 +17,19 @@ const productSchema =new mongoose.Schema({
     price:{
         type:Number,
         required:true,
+        default:0
     },
    available:{
        type:Boolean,
        required:true,
+       default:false,
    },
    category:[Categories],
 
    review:{
-    type:Number,
-    default:0,
-},
-    
+        type:Number,
+        default:0,  
+    },
 })
 
 
