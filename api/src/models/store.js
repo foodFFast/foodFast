@@ -4,16 +4,13 @@ import Review from './review';
 import User from './user';
 
 const storeSchema= new mongoose.Schema({
-
-
     name:{
         type:String,
         required:[true,"El nombre es requerido"]
     },
-   description:{
+    description:{
        type:String,
-   },
-   
+    },
     img:{
         type:String
     },

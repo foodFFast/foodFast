@@ -40,23 +40,16 @@ const orderSchema= new mongoose.Schema({
     date:{
         type:Date, // o string
         required:true,
-
     },
-   products: [{
-       product: {
-        type: Schema.Types.ObjectId,
-        ref: 'Product'
-       },
-       cant: {
-           type: Number,
-           max: 12
-       }
-   }],
-
-   total:{
-    type:Number,
-    required:true
-    }
+    total:{
+       type:Number,
+       required:true
+    },
+    product:{
+       type:Schema.Types.ObjectId,
+       ref:"Product",
+       required:true
+   }
 })
 
 
