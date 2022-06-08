@@ -30,8 +30,7 @@ const storeSchema= new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:"Order",
     required:true
-   }
-    
+   } 
 })
 
 const Store = mongoose.model("Store",storeSchema)

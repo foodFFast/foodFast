@@ -24,7 +24,6 @@ const productSchema =new mongoose.Schema({
        default:false,
    },
    category:{
-
     type:String, 
     ref:"Category",
     required: true,

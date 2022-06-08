@@ -44,11 +44,7 @@ export const postProduct=async(req,res)=>{
           return res.status(400).json({
               msg:"Los campos nombres y/o categoria faltan"
           })
-      }
-
-  
-
-   
+      } 
 }
 
 export const deleteProduct=async(req,res)=>{
@@ -58,5 +54,18 @@ export const deleteProduct=async(req,res)=>{
         res.status(200).json({
             msg:"Producto Eliminado"
         })
+}
+
+export const upDate = async(req,res)=>{
+    try {
+        const id = req.params.id
+        const upDates = req.body
+        const product = await Product.findByIdAndUpdate(id, upDates)
+        if (!product) return res.json({err: "not found product"})
+        return res.json({ok: "upDate Product"})
+    } catch (error) {
+        console.log(error)
+        return res.json({msg: "Error de servidor"})
     }
+}
 

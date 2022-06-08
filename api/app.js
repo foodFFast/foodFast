@@ -21,10 +21,9 @@ app.get('/',(req,res)=>{
 })
 // http://localhost:3001/api/v1/categories
 app.use('/api/v1/categories', categories)
-/* // http://localhost:3000/api/v1/products
+// http://localhost:3001/api/v1/products
 app.use("/api/v1/products",products)
- */
-
+ 
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, console.log("server on port: " + PORT))
