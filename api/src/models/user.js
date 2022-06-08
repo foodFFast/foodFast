@@ -20,8 +20,13 @@ const userSchema=new mongoose.Schema({
     role:{
         type:String,
         required:true,
+<<<<<<< HEAD
         default:"USER",
         enum:["ADMIN", "USER", "GUEST", "OWNER"]
+=======
+        default:"GUEST",
+        enum:["ADMIN", "USER", "GUEST"]
+>>>>>>> 4dc8ce1 (models refactor, create review model)
     },
    address:{
        type:String,

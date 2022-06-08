@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import Categories from './category';
 
 const productSchema =new mongoose.Schema({
 
@@ -20,6 +21,7 @@ const productSchema =new mongoose.Schema({
     available:{
        type:Boolean,
        required:true,
+<<<<<<< HEAD
        default:false,
     },
     rating:{
@@ -39,6 +41,16 @@ const productSchema =new mongoose.Schema({
         type:Number,
         default:0,
     }
+=======
+   },
+   category:[Categories],
+
+   review:{
+    type:Number,
+    default:0,
+},
+    
+>>>>>>> 4dc8ce1 (models refactor, create review model)
 })
 
 const Product = mongoose.model("Product",productSchema)
