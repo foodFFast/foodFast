@@ -1,7 +1,6 @@
 import Store from "../models/store.js"
-import User from "../models/user.js"
 
-export const getStore = async(req,res) =>{
+export const allStore = async(req,res) =>{
     try {
         const stores = await Store.find()
         return res.json({stores})
@@ -9,6 +8,10 @@ export const getStore = async(req,res) =>{
         console.log(error)
         return res.json({err: 'Error de Servidor'})
     }
+}
+
+export const getStore = async(req,res)=>{
+    
 }
 
 export const postStore = async(req,res)=>{
