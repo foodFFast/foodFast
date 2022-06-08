@@ -1,7 +1,4 @@
 import mongoose from 'mongoose'
-import Order from './order';
-import Review from './review';
-import User from './user';
 
 const storeSchema= new mongoose.Schema({
     name:{
@@ -14,17 +11,24 @@ const storeSchema= new mongoose.Schema({
     img:{
         type:String
     },
-    rating:{ //promedio de todas sus reseñas
+    score:{
         type:Number,
-        default:0
+        default:0,
     },
-    schedule:{ //horario
+    categoria:{
+       type:mongoose.Schema.Types.ObjectId,
+       ref:"Categoria",
+       //required:true
+     },
+   hours:{
        type:String,
        default:"0"
-   },
-   orders: [Order],
-   managers: [User], //dueño/s
-   reviews: [Review]
+    },
+   order:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Order",
+    //required:true
+    } 
 })
 
 const Store = mongoose.model("Store",storeSchema)
