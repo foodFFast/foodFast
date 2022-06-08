@@ -2,15 +2,20 @@ import express from "express"
 import Product from "../models/product.js"
 
 export const getProduct=async(req,res)=>{
+    const {name}  = req.query
     
-   
-    const product= await Product.find()
-                   
-    
-    res.status(201).json({
-       product
-        
-    })
+    try {
+     if(name){
+         //GET http://localhost:3001/api/v1/products?name=vodka
+         const product = await Product.find({ name: {$regex: name, $options:'i'}})
+         return product.length === 0 ? res.json({error : "not found product"}) : res.json(product)
+     } else {
+        const allProducts = await Product.find()
+        return allProducts.length === 0 ? res.json({error: "not found all products"}) : res.json(allProducts) 
+     }  
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export const postProduct=async(req,res)=>{
@@ -25,7 +30,6 @@ export const postProduct=async(req,res)=>{
                 msg:`El producto ${product.name}, ya existe`
             })
         }
-       
         const data={
             ...resto,
             category,

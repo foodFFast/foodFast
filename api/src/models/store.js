@@ -25,7 +25,9 @@ const storeSchema= new mongoose.Schema({
        default:"0"
     },
    order:{
-    type:mongoose.Schema.Types.ObjectId,
+    type:mongoose.Schema.Types.
+    
+    ObjectId,
     ref:"Order",
     //required:true
     } 
