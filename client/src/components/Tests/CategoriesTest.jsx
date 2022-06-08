@@ -1,7 +1,11 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchAllCategories, postCategory } from "../../redux/actions/async"
+import {
+    deleteCategory,
+    fetchAllCategories,
+    postCategory
+} from "../../redux/actions/async"
 
 const CategoriesTest = () => {
     const dispatch = useDispatch()
@@ -30,7 +34,7 @@ const CategoriesTest = () => {
         <div>
             <h1>Categories Test</h1>
             <form onSubmit={(e) => e.preventDefault()}>
-                <label htmlFor="name">Nombre categoria</label>
+                <label htmlFor="name">Nombre nueva categoria = </label>
                 <input
                     type="text"
                     name="name"
@@ -44,7 +48,14 @@ const CategoriesTest = () => {
             </form>
             allCats ={" "}
             {!!categories.length &&
-                categories.map((c) => <button key={c._id}>{c.name}</button>)}
+                categories.map((c) => (
+                    <div key={c._id}>
+                        {c.name}
+                        <button onClick={() => dispatch(deleteCategory(c._id))}>
+                            Delete
+                        </button>
+                    </div>
+                ))}
         </div>
     )
 }

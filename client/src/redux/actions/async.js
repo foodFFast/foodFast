@@ -5,9 +5,10 @@ import {
     ERROR,
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
-    FILTER_PRODUCTS,
-    POST_CATEGORY
+    FILTER_PRODUCTS
 } from "./types"
+
+// FUNCTIONS AND CONSTS
 
 const baseUrl = `http://localhost:3001/api/v1`
 
@@ -46,6 +47,11 @@ export const fetchAllCategories = () =>
 export const postCategory = (name) => (dispatch) =>
     axios
         .post(`${baseUrl}/categories`, { name })
-        .then((res) => dispatch({ type: POST_CATEGORY, payload: res.data }))
+        .then(() => dispatch(fetchAllCategories()))
+        .catch((err) => dispatch({ type: ERROR, payload: err }))
+
+export const deleteCategory = (id) => (dispatch) =>
+    axios
+        .delete(`${baseUrl}/categories/${id}`)
         .then(() => dispatch(fetchAllCategories()))
         .catch((err) => dispatch({ type: ERROR, payload: err }))

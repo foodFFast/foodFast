@@ -4,7 +4,6 @@ import {
     FETCH_PRODUCTS,
     FILTER_PRODUCTS,
     MAIN_TEST,
-    POST_CATEGORY,
     RESET_PRODUCTS,
     RESET_TESTS
 } from "../actions/types"
@@ -64,9 +63,6 @@ const main = (state = initialState, action) => {
             newState.filteredProducts = []
             newState.allCategories = []
             break
-
-        case POST_CATEGORY:
-            newState.allCategories = [...newState.allCategories]
     }
 
     return { ...newState }
