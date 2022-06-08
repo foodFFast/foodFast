@@ -6,10 +6,9 @@ const productSchema =new mongoose.Schema({
         type:String,
         required:true
     },
-   description:{
+    description:{
        type:String,
-   },
-   
+    },
     img:{
         type:String
     },
@@ -18,12 +17,12 @@ const productSchema =new mongoose.Schema({
         required:true,
         default:0
     },
-   available:{
+    available:{
        type:Boolean,
        required:true,
        default:false,
-   },
-   category:{
+     },
+    category:{
     type:String, 
     ref:"Category",
     required: true,
@@ -31,14 +30,8 @@ const productSchema =new mongoose.Schema({
    review:{
         type:Number,
         default:0,  
-    },
-    orderId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Store",
-        required:true
-       }
+    }
 })
-
 
 const Product = mongoose.model("Product",productSchema)
 export default Product;

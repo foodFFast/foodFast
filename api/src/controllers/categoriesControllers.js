@@ -15,7 +15,7 @@ export const category = async (req, res) => {
     const name = req.query.name
     try {
         if (!name) return res.json({ error: "query invalid" })
-        const categories = await Product.find({ category: name })
+        const categories = await Product.find({ category:  {$regex: name, $options:'i'} })
         if (categories.length === 0)
             return res.json({ error: "not found category" })
         return res.json(categories)
@@ -28,9 +28,7 @@ export const category = async (req, res) => {
 export const postCategory = async (req, res) => {
     try {
         const { name } = req.body
-
         let exists = await Categories.find({ name: name })
-
         if (!exists.length) {
             const myCategory = new Categories({
                 name: name
