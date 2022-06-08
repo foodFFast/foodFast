@@ -14,8 +14,7 @@ const orderSchema= new mongoose.Schema({
     status:{
         type:String,
         required:true,
-        enum:["Pending","Rejected","Accepted"]
-        
+        enum:["Pending","Rejected","Accepted"]  
     },
     img:{
         type:String
@@ -23,13 +22,12 @@ const orderSchema= new mongoose.Schema({
     date:{
         type:Date, // o string
         required:true,
-
     },
-   total:{
+    total:{
        type:Number,
        required:true
-   },
-   product:{
+    },
+    product:{
        type:Schema.Types.ObjectId,
        ref:"Product",
        required:true

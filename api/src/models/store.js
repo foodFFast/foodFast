@@ -1,40 +1,34 @@
 import mongoose from 'mongoose'
 
 const storeSchema= new mongoose.Schema({
-
-
     name:{
         type:String,
         required:[true,"El nombre es requerido"]
     },
-   description:{
+    description:{
        type:String,
-   },
-   
+    },
     img:{
         type:String
     },
     score:{
         type:Number,
         default:0,
-       
     },
-
-   categoria:{
-       type:Schema.Types.ObjectId,
+    categoria:{
+       type:mongoose.Schema.Types.ObjectId,
        ref:"Categoria",
-       required:true
-   },
+       //required:true
+     },
    hours:{
        type:String,
        default:"0"
-   },
+    },
    order:{
-    type:Schema.Types.ObjectId,
+    type:mongoose.Schema.Types.ObjectId,
     ref:"Order",
-    required:true
-   }
-    
+    //required:true
+    } 
 })
 
 const Store = mongoose.model("Store",storeSchema)
