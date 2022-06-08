@@ -1,17 +1,37 @@
-import express from "express"
 import Product from "../models/product.js"
 
-export const getProduct=async(req,res)=>{
-    
-   
-    const product= await Product.find()
-                   
-    
+export const allProducts=async(req,res)=>{
+       const {name}=req.query
+    const products= await Product.find()
+    if(!products){
+        return res.status(400).json({
+            msg:"not found products"
+        })
+    }     
     res.status(201).json({
-       product
+       products
         
     })
 }
+export const filterProducts=async(req,res)=>{
+    const {name}=req.query
+ if (!name){
+     return res.status(400).json({
+         msg:"invalid query name"
+     })
+ }
+ const products= await Product.find({name:name})
+ if(products.length===0){
+     return res.status(400).json({
+         msg:"not found Products"
+     })
+ }     
+ res.status(201).json({
+    products
+     
+ })
+}
+
 
 export const postProduct=async(req,res)=>{
 
@@ -46,10 +66,22 @@ export const postProduct=async(req,res)=>{
           })
       }
 
-  
-
-   
 }
+
+export const putProduct=async(req,res)=>{
+    const {id}=req.params
+    const {...resto}=req.body
+
+    
+        const productoUpdate=await Product.findByIdAndUpdate(id,resto,{new:true})
+        res.status(200).json(productoUpdate)
+    if(id.length===0){
+        return res.status(400).json({
+            msg:"El id es incorrecto"
+        })
+    }
+}
+
 
 export const deleteProduct=async(req,res)=>{
         const {id}=req.params
