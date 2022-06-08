@@ -10,18 +10,15 @@ const storeSchema= new mongoose.Schema({
    description:{
        type:String,
    },
-   
     img:{
         type:String
     },
     score:{
         type:Number,
         default:0,
-       
     },
-
    categoria:{
-       type:Schema.Types.ObjectId,
+       type:mongoose.Schema.Types.ObjectId,
        ref:"Categoria",
        required:true
    },
@@ -30,7 +27,7 @@ const storeSchema= new mongoose.Schema({
        default:"0"
    },
    order:{
-    type:Schema.Types.ObjectId,
+    type:mongoose.Schema.Types.ObjectId,
     ref:"Order",
     required:true
    }
