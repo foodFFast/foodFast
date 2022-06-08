@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import Categories from './category';
 
 const productSchema =new mongoose.Schema({
 
@@ -21,11 +22,8 @@ const productSchema =new mongoose.Schema({
        type:Boolean,
        required:true,
    },
-   categoria:{
-       type:Schema.Types.ObjectId,
-       ref:"Categoria",
-       required:true
-   },
+   category:[Categories],
+
    review:{
     type:Number,
     default:0,
