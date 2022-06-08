@@ -1,6 +1,11 @@
 * {
     margin: 0px;
     padding: 0px;
+    a {
+        text-decoration: none;
+        width: 100%;
+        color: black;
+    }
 }
 
 .ornament {
@@ -33,4 +38,11 @@
     z-index: -2;
     position: absolute;
     top: 20px;
+}
+
+.categoryContainer{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 35vh;
+    justify-content: space-around;
 }
