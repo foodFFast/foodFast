@@ -56,16 +56,18 @@ const AxiosTest = () => {
                     </div>
                 </div>
             )}
-            {!!filteredProducts.length && (
-                <div>
-                    <h3>Productos Filtrados</h3>
+            <div>
+                <h3>Productos Filtrados</h3>
+                {!!filteredProducts.length ? (
                     <div style={{ display: "flex", gap: "1rem" }}>
                         {filteredProducts.map((prod) => (
                             <div key={prod._id}>{prod.name}</div>
                         ))}
                     </div>
-                </div>
-            )}
+                ) : (
+                    <div>No hay items con esa categoria</div>
+                )}
+            </div>
         </div>
     )
 }

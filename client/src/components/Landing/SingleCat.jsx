@@ -16,7 +16,7 @@ const SingleCat = () => {
 
     useEffect(() => {
         /*
-            ------------------------------- BUG EN SIGUIENTE LINEA !!! -------------------------------
+            ----------------- BUG EN SIGUIENTE LINEA !!! -----------------
 
             Bug: si el siguiente if no existiera, cuando estas en la pagina de
             una categoria en particular (pr ej: .../categories/[:idCategory]) y
@@ -24,7 +24,7 @@ const SingleCat = () => {
             categoria.
 
             TL;DR: el fetch de categorias esta en la pagina anterior, si refrescamos
-            en esta pagina no se ejecuta.
+            en esta pagina no se ejecuta. PUEDE PASAR EN OTRAS PAGINAS !!!
 
             Explicacion: los useEffects se ejecutan de adentro hacia afuera. eso
             significa que primero va a empezar a ejecutarse el useEffect de App.jsx

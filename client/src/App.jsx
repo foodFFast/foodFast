@@ -19,7 +19,8 @@ import {
     Review,
     AxiosTest,
     NavBar,
-    SingleCat
+    SingleCat,
+    CategoriesTest
 } from "./components/index"
 
 const ScrollToTop = (props) => {
@@ -106,6 +107,7 @@ function App() {
                                     <MainTest />
                                     <ReduxTest />
                                     <AxiosTest />
+                                    <CategoriesTest />
                                 </>
                             }
                         />

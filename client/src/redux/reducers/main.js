@@ -3,8 +3,8 @@ import {
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
     FILTER_PRODUCTS,
-    // FIND_CATEGORY,
     MAIN_TEST,
+    POST_CATEGORY,
     RESET_PRODUCTS,
     RESET_TESTS
 } from "../actions/types"
@@ -12,7 +12,6 @@ import {
 const initialState = {
     mainTest: "default",
     allCategories: [],
-    selectedCategory: null,
     error: null,
     allProducts: [],
     filteredProducts: []
@@ -41,14 +40,6 @@ const main = (state = initialState, action) => {
             newState.allCategories = action.payload
             break
 
-        // case FIND_CATEGORY:
-        //     newState.selectedCategory = null
-        //     console.log(action.payload)
-        //     newState.selectedCategory = newState.allCategories.find(
-        //         (c) => c._id === action.payload
-        //     )
-        //     break
-
         case FETCH_PRODUCTS:
             let combinedProducts = [
                 ...state.allProducts,
@@ -73,6 +64,9 @@ const main = (state = initialState, action) => {
             newState.filteredProducts = []
             newState.allCategories = []
             break
+
+        case POST_CATEGORY:
+            newState.allCategories = [...newState.allCategories]
     }
 
     return { ...newState }

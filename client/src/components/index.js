@@ -16,6 +16,7 @@ import Order from "./Common/Details/Order"
 import Review from "./Common/Details/Review"
 import NavBar from "./navBar"
 import SingleCat from "./Landing/SingleCat"
+import CategoriesTest from "./Tests/CategoriesTest"
 
 export {
     Auth,
@@ -35,5 +36,6 @@ export {
     Review,
     AxiosTest,
     NavBar,
-    SingleCat
+    SingleCat,
+    CategoriesTest
 }

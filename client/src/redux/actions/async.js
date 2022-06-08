@@ -5,7 +5,8 @@ import {
     ERROR,
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
-    FILTER_PRODUCTS
+    FILTER_PRODUCTS,
+    POST_CATEGORY
 } from "./types"
 
 const baseUrl = `http://localhost:3001/api/v1`
@@ -19,6 +20,8 @@ const fetch = (url, type) => (dispatch) =>
             dispatch({ type: ERROR, payload: err })
         })
 
+// TESTS
+
 export const runAsyncTest = () => (dispatch) => {
     dispatch({ type: ASYNC_TEST_1, payload: "waiting" })
 
@@ -27,11 +30,22 @@ export const runAsyncTest = () => (dispatch) => {
     }, 5000)
 }
 
-export const fetchAllCategories = () =>
-    fetch(`${baseUrl}/categories`, FETCH_CATEGORIES)
+// PRODUCTS
 
 export const fetchAllProducts = () =>
     fetch(`${baseUrl}/products`, FETCH_PRODUCTS)
 
 export const fetchProductsByCat = (cat) =>
     fetch(`${baseUrl}/categories/category?name=${cat}`, FILTER_PRODUCTS)
+
+// CATEGORIES
+
+export const fetchAllCategories = () =>
+    fetch(`${baseUrl}/categories`, FETCH_CATEGORIES)
+
+export const postCategory = (name) => (dispatch) =>
+    axios
+        .post(`${baseUrl}/categories`, { name })
+        .then((res) => dispatch({ type: POST_CATEGORY, payload: res.data }))
+        .then(() => dispatch(fetchAllCategories()))
+        .catch((err) => dispatch({ type: ERROR, payload: err }))
