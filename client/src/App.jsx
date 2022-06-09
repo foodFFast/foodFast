@@ -19,6 +19,7 @@ import {
     AxiosTest
 } from "./components/index"
 import NavBar from "./components/navBar"
+import ProductForm from "./components/productForm"
 
 const productsNestedRoutes = () => (
     <Route path="products">
@@ -61,6 +62,7 @@ function App() {
                         <Route path="categories" element={<Categories />} />
                     </Route>
 
+                    <Route path="/createProduct" element={<ProductForm />} />
                     <Route path="/auth" element={<Auth />} />
 
                     <Route path="user/:idUser">
@@ -91,6 +93,7 @@ function App() {
                             </>
                         }
                     />
+                    
                 </Routes>
             </BrowserRouter>
         </div>
