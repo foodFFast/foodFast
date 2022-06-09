@@ -22,6 +22,7 @@ import {
     SingleCat,
     CategoriesTest
 } from "./components/index"
+import "./App.module.scss"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
