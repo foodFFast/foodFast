@@ -7,7 +7,8 @@ const router = express.Router()
 //get  http://localhost:3000/api/v1/store
 router.get('/', allStore)
 
-router.get('/sotre', getStore)
+//get  http://localhost:3000/api/v1/store/:idStore
+router.get('/:id', getStore)
 
 //post  http://localhost:3000/api/v1/store
 router.post('/', postStore)

@@ -1,5 +1,6 @@
 import express from "express"
 import Product from "../models/product.js"
+import Store from "../models/store.js"
 
 export const getProduct=async(req,res)=>{
     const {name, filter, sortOrder, filterValue,filterOrder}  = req.query
@@ -11,8 +12,9 @@ export const getProduct=async(req,res)=>{
          return product.length === 0 ? res.json({error : "not found product"}) : res.json(product)
     
     }else if(filter || sortOrder || filterValue || filterOrder){
-        //GET http://localhost:3001/api/v1/products?filter=category&filterValue=cafeteria&filterOrder=price&sortOrder=-1
 
+        //GET http://localhost:3001/api/v1/products?filter=category&filterValue=cafeteria&filterOrder=price&sortOrder=-1
+        
         //const objFilter = {};
         //objFilter["price"] = "123"  ->  { price: '123'}   
         const objFilter = {}
@@ -20,7 +22,7 @@ export const getProduct=async(req,res)=>{
         
         const objOrder = {}
         objOrder[filterOrder] = sortOrder
-        
+
         const product = await Product.find(objFilter).sort(objOrder)
         return res.json(product.length === 0? "not found product" : product)
         
@@ -35,10 +37,11 @@ export const getProduct=async(req,res)=>{
 
 export const postProduct=async(req,res)=>{
 
-    const {name,category,...resto}=req.body
-   
-      if(name && category){
+    const {name,category,storeId, ...resto}=req.body
 
+      if(name && category){
+        const store = await Store.findById(storeId)
+        console.log("store", store)
         const product=await Product.findOne({name})
         if(product){
             return res.status(400).json({
@@ -46,14 +49,16 @@ export const postProduct=async(req,res)=>{
             })
         }
         const data={
+            storeId: store._id,
             ...resto,
             category,
-          name
+            name
         }
-        
         const newProduct=new Product(data);
         await newProduct.save()
-
+        store.productId = store.productId.concat(newProduct._id)
+        await store.save()
+        console.log("esto es estore",store)
 
         res.status(201).json({
             msg:"Producto creado con éxito"
