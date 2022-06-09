@@ -9,7 +9,7 @@ export const getProduct=async(req,res)=>{
      if(name){
         //GET http://localhost:3001/api/v1/products?name=vodka
          const product = await Product.find({ name: {$regex: name, $options:'i'}})
-         return product.length === 0 ? res.json({error : "not found product"}) : res.json(product)
+         return product.length === 0 ? res.json({error : "no se encontro el producto"}) : res.json(product)
     
     }else if(filter || sortOrder || filterValue || filterOrder){
 
