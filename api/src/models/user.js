@@ -8,7 +8,7 @@ const userSchema=new mongoose.Schema({
     email:{
         type:String,
         required:[true,"El correo es obligatorio"],
-        unique:true
+        //unique:true
     },
     password:{
         type:String,
@@ -17,11 +17,11 @@ const userSchema=new mongoose.Schema({
     img:{
         type:String
     },
-    role:{
+    rol:{
         type:String,
         required:true,
-        default:"USER",
-        enum:["ADMIN", "USER", "GUEST", "OWNER"]
+        default:"USER_ROLE",
+        enum:["ADMIN_ROLE", "USER_ROLE", "GUEST", "OWNER"]
     },
    address:{
        type:String,
