@@ -2,35 +2,29 @@ import mongoose from 'mongoose'
 
 const orderSchema= new mongoose.Schema({
 
-    name:{
-        type:String,
-        required:[true,"El name es requerido"]
-    },
-    email:{
-        type:String,
-        required:[true,"El email es obligatorio"],
-        unique:true
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true
     },
     status:{
         type:String,
         required:true,
-        enum:["Pending","Rejected","Accepted"]
-        
+        enum:["Pending","Rejected","Accepted"]  
     },
     img:{
         type:String
     },
     date:{
-        type:Date, // o string
+        type:String, // o string
         required:true,
-
     },
-   total:{
+    total:{
        type:Number,
        required:true
-   },
-   product:{
-       type:Schema.Types.ObjectId,
+    },
+    product:{
+        type:mongoose.Schema.Types.ObjectId,
        ref:"Product",
        required:true
    }

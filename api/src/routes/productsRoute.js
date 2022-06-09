@@ -1,13 +1,17 @@
 import express from 'express';
+
 import { check } from 'express-validator';
 import { validarCampos } from '../../middlewares/validar-campo.js';
-import { deleteProduct,putProduct, allProducts, postProduct, filterProducts} from '../controllers/productsControllers.js';
+import { deleteProduct,putProduct,upDate, allProducts, postProduct, filterProducts} from '../controllers/productsControllers.js';
+
+
 
 
 const router = express.Router()
 
 
 //get product = http://localhost:3001/api/v1/products
+
 router.get('/',allProducts)
 
 //get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
@@ -28,6 +32,10 @@ router.delete("/:id",[
     validarCampos
 ],deleteProduct)
 
+
+
+//patch product =  http://localhost:3001/api/v1/:id
+router.patch('/:id', upDate)
 
 
 

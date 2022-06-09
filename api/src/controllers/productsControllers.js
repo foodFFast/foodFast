@@ -35,9 +35,9 @@ export const filterProducts=async(req,res)=>{
 
 export const postProduct=async(req,res)=>{
 
-    const {name,category,...resto}=req.body
+    const {name,category,orderId,...resto}=req.body
    
-      if(name && category){
+      if(name && category && orderId){
 
         const product=await Product.findOne({name})
         if(product){
@@ -49,7 +49,8 @@ export const postProduct=async(req,res)=>{
         const data={
             ...resto,
             category,
-          name
+          name,
+          orderId
         }
         
         const newProduct=new Product(data);
@@ -64,7 +65,8 @@ export const postProduct=async(req,res)=>{
           return res.status(400).json({
               msg:"Los campos nombres y/o categoria faltan"
           })
-      }
+
+      } 
 
 }
 
@@ -90,5 +92,18 @@ export const deleteProduct=async(req,res)=>{
         res.status(200).json({
             msg:"Producto Eliminado"
         })
+}
+
+export const upDate = async(req,res)=>{
+    try {
+        const id = req.params.id
+        const upDates = req.body
+        const product = await Product.findByIdAndUpdate(id, upDates)
+        if (!product) return res.json({err: "not found product"})
+        return res.json({ok: "upDate Product"})
+    } catch (error) {
+        console.log(error)
+        return res.json({msg: "Error de servidor"})
     }
+}
 
