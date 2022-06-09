@@ -17,11 +17,17 @@ const userSchema=new mongoose.Schema({
     img:{
         type:String
     },
-    rol:{
+    role:{
         type:String,
+<<<<<<< HEAD
         // required:true,
          default:"USER_ROLE"
         // enum:["ADMIN_ROLE","USER_ROLE"]
+=======
+        required:true,
+        default:"USER",
+        enum:["ADMIN", "USER", "GUEST", "OWNER"]
+>>>>>>> 10484027d7d776a63e9ded780c8b33aa96052e90
     },
    address:{
        type:String,

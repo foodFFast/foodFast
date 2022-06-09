@@ -9,8 +9,12 @@ import cookieParser from 'cookie-parser'
 import categoriesRoute from './src/routes/categoriesRoute.js'
 import productsRoute from "./src/routes/productsRoute.js"
 import storeRoute from './src/routes/storeRoute.js'
+<<<<<<< HEAD
 import orderRoute from './src/routes/orderRoute.js'
 import  userRoute  from './src/routes/userRoute.js'
+=======
+import ordersRoute from './src/routes/ordersRoute.js'
+>>>>>>> 10484027d7d776a63e9ded780c8b33aa96052e90
 
 //middellwares
 const app = express()
@@ -33,6 +37,9 @@ app.use("/api/v1/products",productsRoute)
 
 //http://localhost:3001/api/v1/store
 app.use('/api/v1/store',storeRoute)
+
+//http://localhost:3001/api/v1/orders
+app.use("/api/v1/orders",ordersRoute)
  
 //http://localhost:3001/api/v1/order
 app.use('/api/v1/order',orderRoute)

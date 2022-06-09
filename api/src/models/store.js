@@ -15,20 +15,28 @@ const storeSchema= new mongoose.Schema({
         type:Number,
         default:0,
     },
-    categoria:{
+    categoria:[{
        type:mongoose.Schema.Types.ObjectId,
-       ref:"Categoria",
+       ref:"Category",
        //required:true
+     }],
+    tag: {
+         type: Array
      },
-   hours:{
-       type:String,
+    hours:{
+       type:Number,
        default:"0"
     },
-   order:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"Order",
-    //required:true
-    } 
+    order:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Order",
+        //required:true
+    }],
+    productId:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Product"
+        //required:true
+    }] 
 })
 
 const Store = mongoose.model("Store",storeSchema)
