@@ -1,17 +1,17 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const GlobalContainer = styled.section`
     z-index: 1;
 `
 export const ShowButton = styled.div`
-    right: ${({isShowing})=> isShowing ? "10px":"95vw"};
+    right: ${({ isShowing }) => (isShowing ? "10px" : "95vw")};
     height: 2.5rem;
     display: flex;
-    justify-content: ${({isShowing})=> isShowing ? "flex-end":"center"};
+    justify-content: ${({ isShowing }) => (isShowing ? "flex-end" : "center")};
     align-items: center;
     position: absolute;
     top: 10px;
-    svg{
+    svg {
         height: 70%;
         width: auto;
         cursor: pointer;
@@ -19,53 +19,49 @@ export const ShowButton = styled.div`
             transform: scale(1.2);
         }
     }
-    #HambugerMenu{
-        display: ${({isShowing})=> isShowing && "none"};;
+    #HambugerMenu {
+        display: ${({ isShowing }) => isShowing && "none"};
     }
-
 `
 export const NavBarContainer = styled.section`
-    *{
+    * {
         margin: 0px;
         padding: 0px;
     }
-    background-color: #fefefe;
+    background-color: ${({ theme }) => theme.colors.background};
     border-right: 4px solid #00a726;
     width: 30%;
     height: 100vh;
     position: absolute;
     top: 0px;
-    transition: all 1.5s ease-out;
-    left: ${({isShowing})=> isShowing ? "0px":"-50%"};
-    overflow-y: scroll;
-
+    transition: left 1.5s ease-out;
+    left: ${({ isShowing }) => (isShowing ? "0px" : "-50%")};
+    overflow-y: auto;
 `
 export const MainIconContainer = styled.div`
     height: 20vh;
     width: 100%;
     display: flex;
-    background-color: whitesmoke;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 1rem;
-    svg{
+    svg {
         height: 70%;
         width: auto;
-        color: black
-    };
+        color: ${({ theme }) => theme.text.highContrast};
+    }
 `
 
 export const Title = styled.h1`
-    color: #df411a;
+    color: ${({ theme }) => theme.text.highContrast};
     font-size: 25px;
-    
 `
 export const ButtonsContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 3rem;
-    background-color: whitesmoke;
+    background-color: ${({ theme }) => theme.colors.background};
     border-bottom: 1px solid black;
     margin-bottom: 1.5rem;
 `
@@ -77,13 +73,13 @@ export const LoginRegisterButton = styled.button`
     justify-content: space-around;
     align-items: center;
     font-size: 1rem;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.background};
     border: 1px solid orange;
     border-radius: 8px;
-    color: orange;
-    &:hover{
-        background-color: orange;
-        color: black;
+    color: ${({ theme }) => theme.colors.main};
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.main};
+        color: ${({ theme }) => theme.text.highContrast};
     }
 `
 export const ListRoutes = styled.ul`
