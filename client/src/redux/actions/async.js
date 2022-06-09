@@ -5,6 +5,7 @@ import {
     ERROR,
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
+    FETCH_SHOPS,
     FILTER_PRODUCTS
 } from "./types"
 
@@ -30,6 +31,10 @@ export const runAsyncTest = () => (dispatch) => {
         dispatch({ type: ASYNC_TEST_1, payload: "success" })
     }, 5000)
 }
+
+// SHOPS
+
+export const fetchAllShops = () => fetch(`${baseUrl}/store`, FETCH_SHOPS)
 
 // PRODUCTS
 
