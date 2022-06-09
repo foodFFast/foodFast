@@ -1,4 +1,4 @@
-import express from "express"
+import bcryptjs from 'bcryptjs';
 import User from "../models/user.js"
 
 export const postUser = async(req,res) =>{
@@ -7,11 +7,10 @@ export const postUser = async(req,res) =>{
 
    
     const users=new User({name,email,password,rol});
-    // if(users){
-    //   return res.status(400).json({
-    //     msg:"El usuario ya existe"
-    //   })
-    // }
+     
+    //Encriptar password
+    const salt=bcryptjs.genSaltSync() //hacer más complicado el método de encriptación 
+    users.password=bcryptjs.hashSync(password,salt);
      
        
     await users.save()

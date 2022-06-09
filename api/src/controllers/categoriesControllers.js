@@ -39,8 +39,10 @@ export const postCategory = async (req, res) => {
             await myCategory.save()
             res.status(201).send("categoría creada exitosamente")
         } else {
-            res.status(409).send(
-                "La categoría que intenta crear YA EXISTE en la base de datos"
+            res.status(409).json({
+                msg:"La categoría que intenta crear YA EXISTE en la base de datos"
+            }
+                
             )
         }
     } catch (e) {

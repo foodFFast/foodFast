@@ -35,9 +35,9 @@ export const filterProducts=async(req,res)=>{
 
 export const postProduct=async(req,res)=>{
 
-    const {name,category,orderId,...resto}=req.body
+    const {name,...resto}=req.body
    
-      if(name && category && orderId){
+      
 
         const product=await Product.findOne({name})
         if(product){
@@ -48,9 +48,7 @@ export const postProduct=async(req,res)=>{
        
         const data={
             ...resto,
-            category,
-          name,
-          orderId
+         name
         }
         
         const newProduct=new Product(data);
@@ -61,12 +59,6 @@ export const postProduct=async(req,res)=>{
             msg:"Producto creado con éxito"
         });
 
-      }else{
-          return res.status(400).json({
-              msg:"Los campos nombres y/o categoria faltan"
-          })
-
-      } 
 
 }
 
@@ -77,18 +69,15 @@ export const putProduct=async(req,res)=>{
     
         const productoUpdate=await Product.findByIdAndUpdate(id,resto,{new:true})
         res.status(200).json(productoUpdate)
-    if(id.length===0){
-        return res.status(400).json({
-            msg:"El id es incorrecto"
-        })
-    }
+   
 }
 
 
 export const deleteProduct=async(req,res)=>{
         const {id}=req.params
         const product=await Product.findByIdAndRemove(id)
-       
+      
+        
         res.status(200).json({
             msg:"Producto Eliminado"
         })

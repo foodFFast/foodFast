@@ -18,7 +18,12 @@ router.get('/',allProducts)
 router.get('/filProduct',filterProducts)
 
 //post product =  http://localhost:3001/api/v1/products
-router.post("/",postProduct)
+router.post("/",[
+    check("name","El name es obligatorio").not().isEmpty(), 
+    check("category","La category es obligatorio").not().isEmpty(), 
+    check("orderId","No es un id válido").isMongoId(),
+    validarCampos
+],postProduct)
 
 //put product = http://localhost:3001/api/v1/products/754325
 router.put("/:id",[
@@ -29,6 +34,7 @@ router.put("/:id",[
 //delete product = http://localhost:3000/api/v1/products/4312445
 router.delete("/:id",[
     check("id","No es un id válido").isMongoId(),
+    // check("product").custom(existeProducto),
     validarCampos
 ],deleteProduct)
 
