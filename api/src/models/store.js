@@ -20,17 +20,22 @@ const storeSchema= new mongoose.Schema({
        ref:"Categoria",
        //required:true
      },
-   hours:{
+    hours:{
        type:String,
        default:"0"
     },
-   order:{
-    type:mongoose.Schema.Types.
-    
-    ObjectId,
-    ref:"Order",
-    //required:true
-    } 
+    order:{
+        type:mongoose.Schema.Types.
+        ObjectId,
+        ref:"Order",
+        //required:true
+    },
+    product:{
+        type:mongoose.Schema.Types.
+        ObjectId,
+        ref:"Product"
+        //required:true
+        }  
 })
 
 const Store = mongoose.model("Store",storeSchema)

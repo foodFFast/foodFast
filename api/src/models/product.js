@@ -21,15 +21,23 @@ const productSchema =new mongoose.Schema({
        type:Boolean,
        required:true,
        default:false,
-     },
+    },
+    rating:{
+        type:Number,
+        default: 0
+    },
     category:{
-    type:String, 
-    ref:"Category",
-    required: true,
-   },
-   review:{
+        type:String, 
+        ref:"Category",
+        required: true,
+    },
+    review:{
         type:Number,
         default:0,  
+    },
+    stock:{
+        type:Number,
+        default:0,
     }
 })
 
