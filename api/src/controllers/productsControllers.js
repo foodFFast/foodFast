@@ -66,7 +66,6 @@ export const filterProducts=async(req,res)=>{
  })
 }
 
-
 export const postProduct=async(req,res)=>{
 
     const {storeId,name,...resto}=req.body
@@ -99,6 +98,7 @@ export const postProduct=async(req,res)=>{
 
 
 }
+
 
 export const putProduct=async(req,res)=>{
     const {id}=req.params
