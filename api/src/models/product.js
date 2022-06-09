@@ -19,7 +19,7 @@ const productSchema =new mongoose.Schema({
     },
     available:{
        type:Boolean,
-       required:true,
+      // required:true,
        default:false,
     },
     rating:{
@@ -35,6 +35,11 @@ const productSchema =new mongoose.Schema({
         type:Number,
         default:0,  
     },
+    storeId:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Store"
+        //required:true
+    }],
     stock:{
         type:Number,
         default:0,
