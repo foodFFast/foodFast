@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser'
 import categoriesRoute from './src/routes/categoriesRoute.js'
 import productsRoute from "./src/routes/productsRoute.js"
 import storeRoute from './src/routes/storeRoute.js'
-
+import ordersRoute from './src/routes/ordersRoute.js'
 
 //middellwares
 const app = express()
@@ -31,6 +31,9 @@ app.use("/api/v1/products",productsRoute)
 
 //http://localhost:3001/api/v1/store
 app.use('/api/v1/store',storeRoute)
+
+//http://localhost:3001/api/v1/orders
+app.use("/api/v1/orders",ordersRoute)
  
 
 const PORT = process.env.PORT || 3001;

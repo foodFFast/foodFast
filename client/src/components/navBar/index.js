@@ -16,7 +16,13 @@ import { FaUserAlt } from "react-icons/fa"
 import { GiHamburgerMenu, GiArchiveRegister } from "react-icons/gi"
 import { AiFillCloseCircle } from "react-icons/ai"
 
+import { useDispatch, useSelector } from "react-redux"
+import { switchTheme } from "../../redux/actions/sync"
+
 export default function NavBar() {
+    const dispatch = useDispatch()
+    const theme = useSelector((state) => state.theme.selectedTheme)
+
     const [showNavbar, setShowNavbar] = useState(false)
 
     return (
@@ -28,25 +34,25 @@ export default function NavBar() {
                 <GiHamburgerMenu id={"HambugerMenu"} />
             </ShowButton>
 
-            <NavBarContainer isShowing={showNavbar}>
+            <NavBarContainer theme={theme} isShowing={showNavbar}>
                 <ShowButton
                     onClick={() => setShowNavbar(false)}
                     isShowing={showNavbar}
                 >
                     <AiFillCloseCircle id={"close"} />
                 </ShowButton>
-                <MainIconContainer>
+                <MainIconContainer theme={theme}>
                     <IoFastFoodSharp />
-                    <Title>Fast Food APP</Title>
+                    <Title theme={theme}>Fast Food APP</Title>
                 </MainIconContainer>
 
-                <ButtonsContainer>
-                    <LoginRegisterButton>
+                <ButtonsContainer theme={theme}>
+                    <LoginRegisterButton theme={theme}>
                         <FaUserAlt />
                         Login
                     </LoginRegisterButton>
 
-                    <LoginRegisterButton>
+                    <LoginRegisterButton theme={theme}>
                         <GiArchiveRegister />
                         Register
                     </LoginRegisterButton>
@@ -55,7 +61,9 @@ export default function NavBar() {
                 <ListRoutes>
                     <hr />
                     <h3>CONSUMER</h3>
-                    <Link to="/"><RouteItem>Home</RouteItem></Link>
+                    <Link to="/">
+                        <RouteItem>Home</RouteItem>
+                    </Link>
                     <RouteItem>Categories</RouteItem>
                     <RouteItem>My orders</RouteItem>
                     <RouteItem>Oferts</RouteItem>
@@ -64,10 +72,14 @@ export default function NavBar() {
                     <hr />
                     <h3>SELLER</h3>
                     <RouteItem>Register a restaurant</RouteItem>
-                    <RouteItem>Create new product</RouteItem>
+                    <Link to="/createProduct"><RouteItem>Create new product</RouteItem></Link>
                     <RouteItem>Contact</RouteItem>
                     <hr />
                 </ListRoutes>
+
+                <button onClick={() => dispatch(switchTheme())}>
+                    Switch to {theme.name === "light" ? "dark" : "light"} theme
+                </button>
             </NavBarContainer>
         </GlobalContainer>
     )
