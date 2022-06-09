@@ -16,12 +16,13 @@ export const category = async (req, res) => {
     try {
         if (!name) return res.json({ error: "query invalid" })
         const categories = await Product.find({ category:  {$regex: name, $options:'i'} })
+
         if (categories.length === 0)
-            return res.json({ error: "not found category" })
+            return res.status(404).json({ error: "not found category" })
         return res.json(categories)
     } catch (error) {
-        console.log(error)
-        return res.json({ error: "Error de servidor" })
+        console.log(error.message)
+        return res.status(500).json({ error: "Error de servidor" })
     }
 }
 
@@ -32,7 +33,6 @@ export const postCategory = async (req, res) => {
         if (!exists.length) {
             const myCategory = new Categories({
                 name: name
-                //más campos a añadir
             })
             await myCategory.save()
             res.status(201).send("categoría creada exitosamente")
@@ -52,7 +52,7 @@ export const deleteCategory = async (req, res) => {
         const id = req.params.id
 
         let isDeleted = await Categories.findByIdAndDelete(id)
-        console.log("isDeleted es: ", isDeleted)
+
         if (isDeleted !== null) {
             res.send("Categoría eliminada exitosamente.")
         } else {
