@@ -12,6 +12,9 @@ import storeRoute from './src/routes/storeRoute.js'
 import orderRoute from './src/routes/orderRoute.js'
 import  userRoute  from './src/routes/userRoute.js'
 
+
+
+
 //middellwares
 const app = express()
 app.use(cookieParser());
@@ -33,6 +36,9 @@ app.use("/api/v1/products",productsRoute)
 
 //http://localhost:3001/api/v1/store
 app.use('/api/v1/store',storeRoute)
+
+//http://localhost:3001/api/v1/orders
+app.use("/api/v1/orders",orderRoute)
  
 //http://localhost:3001/api/v1/order
 app.use('/api/v1/order',orderRoute)

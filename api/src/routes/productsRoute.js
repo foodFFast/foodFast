@@ -21,7 +21,7 @@ router.get('/filProduct',filterProducts)
 router.post("/",[
     check("name","El name es obligatorio").not().isEmpty(), 
     check("category","La category es obligatorio").not().isEmpty(), 
-    check("orderId","No es un id válido").isMongoId(),
+    check("storeId","No es un id válido").isMongoId(),
     validarCampos
 ],postProduct)
 
