@@ -2,15 +2,35 @@ import express from "express"
 import Product from "../models/product.js"
 
 export const getProduct=async(req,res)=>{
+    const {name, filter, sortOrder, filterValue,filterOrder}  = req.query
     
-   
-    const product= await Product.find()
-                   
+    try {
+     if(name){
+        //GET http://localhost:3001/api/v1/products?name=vodka
+         const product = await Product.find({ name: {$regex: name, $options:'i'}})
+         return product.length === 0 ? res.json({error : "not found product"}) : res.json(product)
     
-    res.status(201).json({
-       product
+    }else if(filter || sortOrder || filterValue || filterOrder){
+        //GET http://localhost:3001/api/v1/products?filter=category&filterValue=cafeteria&filterOrder=price&sortOrder=-1
+
+        //const objFilter = {};
+        //objFilter["price"] = "123"  ->  { price: '123'}   
+        const objFilter = {}
+        objFilter[filter] = filterValue
         
-    })
+        const objOrder = {}
+        objOrder[filterOrder] = sortOrder
+        
+        const product = await Product.find(objFilter).sort(objOrder)
+        return res.json(product.length === 0? "not found product" : product)
+        
+     } else {
+        const allProducts = await Product.find()
+        return allProducts.length === 0 ? res.json({error: "not found all products"}) : res.json(allProducts) 
+     }  
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export const postProduct=async(req,res)=>{
@@ -25,7 +45,6 @@ export const postProduct=async(req,res)=>{
                 msg:`El producto ${product.name}, ya existe`
             })
         }
-       
         const data={
             ...resto,
             category,
