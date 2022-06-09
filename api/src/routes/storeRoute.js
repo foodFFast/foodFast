@@ -21,5 +21,4 @@ router.post('/',[
     validarCampos
 ],postStore)
 
-
 export default router;
