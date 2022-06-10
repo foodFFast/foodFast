@@ -1,0 +1,22 @@
+{
+    "name": "food-fast",
+    "version": "1.0.0",
+    "description": "E-commerce desarrollado como proyecto final para el bootcamp Soy Henry.",
+    "main": "index.js",
+    "scripts": {
+        "heroku-prebuild": "cd api/ && npm install",
+        "start": "node api/app.js",
+        "heroku-postbuild": "cd client/ && npm install && npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/foodFFast/foodFast.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/foodFFast/foodFast/issues"
+    },
+    "homepage": "https://github.com/foodFFast/foodFast#readme"
+}
