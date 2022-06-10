@@ -1,11 +1,11 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose"
+const Schema = mongoose.Schema
 
-const orderSchema= new mongoose.Schema({
-
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User",
-        required:true
+const orderSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     },
     status:{
         type:String,
@@ -13,25 +13,25 @@ const orderSchema= new mongoose.Schema({
         enum:["Pending","Rejected","Accepted","Completed"],
         default: "Pending"
     },
-    img:{
-        type:String
+    img: {
+        type: String
     },
-    date:{
-        type:Date, // o string
-        required:true,
+    date: {
+        type: Date, // o string
+        required: true,
         default: Date.now
     },
-    total:{
-       type:Number,
-       required:true
+    total: {
+        type: Number,
+        required: true
     },
     productId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"Product",
-        required:true
+        ref: "Product",
+        required: true
     }
     /* debería tener una cantidad?? */
 })
 
-const Order = mongoose.model("Order",orderSchema)
-export default Order;
+const Order = mongoose.model("Order", orderSchema)
+export default Order

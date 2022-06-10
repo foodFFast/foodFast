@@ -9,7 +9,7 @@ import {
 
 const CategoriesTest = () => {
     const dispatch = useDispatch()
-    const categories = useSelector((state) => state.main.allCategories)
+    const categories = useSelector((state) => state.main.categories.all)
 
     useEffect(() => {
         dispatch(fetchAllCategories())

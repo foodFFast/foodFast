@@ -22,6 +22,13 @@ import {
     SingleCat,
     CategoriesTest
 } from "./components/index"
+import "./App.module.scss"
+import {
+    fetchAllCategories,
+    fetchAllProducts,
+    fetchAllShops
+} from "./redux/actions/async"
+import { useDispatch } from "react-redux"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -54,14 +61,22 @@ const reviewsNestedRoutes = () => (
 )
 
 function App() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchAllShops())
+        dispatch(fetchAllProducts())
+        dispatch(fetchAllCategories())
+    }, [dispatch])
+
     return (
         <div className="App">
             <BrowserRouter>
                 <ScrollToTop>
                     {/* <Link to="/">
                     <h1>Food Fast</h1>
-                </Link>
-                <Link to="/auth">Auth</Link> */}
+                    </Link>
+                    <Link to="/auth">Auth</Link> */}
 
                     <div style={{ zIndex: 10, position: "sticky", top: 0 }}>
                         <NavBar />

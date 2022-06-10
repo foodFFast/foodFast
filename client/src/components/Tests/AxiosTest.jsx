@@ -8,9 +8,11 @@ import { resetProducts } from "../../redux/actions/sync"
 
 const AxiosTest = () => {
     const dispatch = useDispatch()
-    const categories = useSelector((state) => state.main.allCategories)
-    const allProducts = useSelector((state) => state.main.allProducts)
-    const filteredProducts = useSelector((state) => state.main.filteredProducts)
+    const categories = useSelector((state) => state.main.categories.all)
+    const allProducts = useSelector((state) => state.main.products.all)
+    const filteredProducts = useSelector(
+        (state) => state.main.products.filtered
+    )
 
     return (
         <div>

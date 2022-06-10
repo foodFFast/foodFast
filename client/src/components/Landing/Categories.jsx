@@ -1,15 +1,9 @@
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React from "react"
+import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { fetchAllCategories } from "../../redux/actions/async"
 
 const Categories = () => {
-    const dispatch = useDispatch()
-    const allCategories = useSelector((state) => state.main.allCategories)
-
-    useEffect(() => {
-        dispatch(fetchAllCategories())
-    }, [dispatch])
+    const allCategories = useSelector((state) => state.main.categories.all)
 
     return (
         <div>
