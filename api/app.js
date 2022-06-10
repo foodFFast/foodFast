@@ -53,12 +53,9 @@ app.use("/api/v1/order", orderRoute)
 //http://localhost:3001/api/v1/user
 app.use("/api/v1/user", userRoute)
 
-isProduction &&
-    app.get("*", function (request, response) {
-        response.sendFile(
-            path.resolve(__dirname, "../client/build", "index.html")
-        )
-    })
+app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "../client/build", "index.html"))
+})
 
 dbConn()
 const PORT = process.env.PORT || 3001
