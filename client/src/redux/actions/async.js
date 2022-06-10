@@ -10,9 +10,7 @@ import {
 
 // FUNCTIONS AND CONSTS
 console.log(process.env.BACK_URL)
-const baseUrl = `${
-    process.env.REACT_APP_BACK_URL || "https://food-fast-henry.herokuapp.com"
-}/api/v1`
+const baseUrl = `https://food-fast-henry.herokuapp.com/api/v1`
 
 const fetch = (url, type) => (dispatch) =>
     axios
