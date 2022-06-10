@@ -2,14 +2,10 @@ import mongoose from "mongoose"
 const Schema = mongoose.Schema
 
 const orderSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, "El name es requerido"]
-    },
-    email: {
-        type: String,
-        required: [true, "El email es obligatorio"],
-        unique: true
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     },
     status: {
         type: String,
@@ -21,17 +17,20 @@ const orderSchema = new mongoose.Schema({
     },
     date: {
         type: Date, // o string
-        required: true
+        required: true,
+        default: Date.now
     },
     total: {
         type: Number,
         required: true
     },
+
     productId: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Product",
         required: true
     }
+    /* */
 })
 
 const Order = mongoose.model("Order", orderSchema)

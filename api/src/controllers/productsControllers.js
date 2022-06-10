@@ -1,7 +1,19 @@
-import express from "express"
 import Product from "../models/product.js"
 import Store from "../models/store.js"
 
+
+export const allProducts=async(req,res)=>{
+       const {name}=req.query
+    const products= await Product.find()
+    if(!products){
+        return res.status(400).json({
+            msg:"not found products"
+        })
+    }     
+    res.status(201).json({
+       products
+    })
+}
 export const getProduct=async(req,res)=>{
     const {name, filter, sortOrder, filterValue,filterOrder}  = req.query
     
@@ -14,6 +26,7 @@ export const getProduct=async(req,res)=>{
     }else if(filter || sortOrder || filterValue || filterOrder){
 
         //GET http://localhost:3001/api/v1/products?filter=category&filterValue=cafeteria&filterOrder=price&sortOrder=-1
+
         
         //const objFilter = {};
         //objFilter["price"] = "123"  ->  { price: '123'}   
@@ -34,47 +47,75 @@ export const getProduct=async(req,res)=>{
         console.log(error)
     }
 }
+export const filterProducts=async(req,res)=>{
+    const {name}=req.query
+ if (!name){
+     return res.status(400).json({
+         msg:"invalid query name"
+     })
+ }
+ const products= await Product.find({name:name})
+ if(products.length===0){
+     return res.status(400).json({
+         msg:"not found Products"
+     })
+ }     
+ res.status(201).json({
+    products
+     
+ })
+}
+
 
 export const postProduct=async(req,res)=>{
 
-    const {name,category,storeId, ...resto}=req.body
+    const {storeId,name,...resto}=req.body
 
-      if(name && category){
         const store = await Store.findById(storeId)
-        console.log("store", store)
-        const product=await Product.findOne({name})
+  
+         const product=await Product.findOne({name})
         if(product){
             return res.status(400).json({
                 msg:`El producto ${product.name}, ya existe`
             })
         }
         const data={
-            storeId: store._id,
             ...resto,
-            category,
+            storeId: store._id,
             name
+            
+
+        
         }
         const newProduct=new Product(data);
         await newProduct.save()
         store.productId = store.productId.concat(newProduct._id)
         await store.save()
-        console.log("esto es estore",store)
+       
 
         res.status(201).json({
             msg:"Producto creado con éxito"
         });
 
-      }else{
-          return res.status(400).json({
-              msg:"Los campos nombres y/o categoria faltan"
-          })
-      } 
+
 }
+
+export const putProduct=async(req,res)=>{
+    const {id}=req.params
+    const {...resto}=req.body
+
+    
+        const productoUpdate=await Product.findByIdAndUpdate(id,resto,{new:true})
+        res.status(200).json(productoUpdate)
+   
+}
+
 
 export const deleteProduct=async(req,res)=>{
         const {id}=req.params
         const product=await Product.findByIdAndRemove(id)
-       
+      
+        
         res.status(200).json({
             msg:"Producto Eliminado"
         })
