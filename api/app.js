@@ -4,8 +4,6 @@ import morgan from "morgan"
 import cors from "cors"
 import express from "express"
 import cookieParser from "cookie-parser"
-
-import favicon from "express-favicon"
 import path from "path"
 
 //import router
@@ -23,9 +21,8 @@ app.use(cors())
 app.use(morgan("dev"))
 
 // the __dirname is the current directory from where the script is running
-app.use(favicon(__dirname + "/build/favicon.ico"))
 app.use(express.static(__dirname))
-app.use(express.static(path.join(__dirname, "build")))
+app.use(express.static(path.join(__dirname, "./client/build")))
 
 app.get("/", (req, res) => {
     res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
