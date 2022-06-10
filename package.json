@@ -2,7 +2,7 @@
     "name": "food-fast",
     "version": "1.0.0",
     "description": "E-commerce desarrollado como proyecto final para el bootcamp Soy Henry.",
-    "main": "index.js",
+    "main": "./client/build/index.js",
     "scripts": {
         "heroku-prebuild": "cd api/ && npm install",
         "start": "node ./api/app.js",
