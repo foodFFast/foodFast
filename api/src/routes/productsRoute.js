@@ -4,8 +4,10 @@ import { check } from 'express-validator';
 import { validarCampos } from '../../middlewares/validar-campo.js';
 import { deleteProduct,putProduct,upDate, allProducts, postProduct, filterProducts} from '../controllers/productsControllers.js';
 
-
-
+import multer from "multer"
+import path, {dirname} from "path"
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const router = express.Router()
 
@@ -40,9 +42,32 @@ router.delete("/:id",[
 
 
 
+
+//=======================================
+const diskstorage = multer.diskStorage({
+    destination: path.join(__dirname, '../public/imagesProducts'),
+    filename: (req, file, cb)=> {
+        cb(null, Date.now() + file.originalname)
+    }
+})
+
+const fileUpload = multer({
+    storage: diskstorage
+    // Ahora aqui coloco el NOMBRE QUE FORMATEE EN EL FRONT-END
+}).single("imageProduct")
+
+//patch product =  http://localhost:3001/api/v1/products/image
+router.post("/image", fileUpload,(req,res)=> {
+    // Luego de pasar por el middleware me devuelve las caracteristicas en req.file
+    // ASi que se lo devuelvo a mi front primero XD
+    const url = req.file.path
+    res.json({img: url})
+   })
+
+
+
 //patch product =  http://localhost:3001/api/v1/:id
 router.patch('/:id', upDate)
-
 
 
 export default router;

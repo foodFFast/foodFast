@@ -1,6 +1,9 @@
 import Product from "../models/product.js"
 import Store from "../models/store.js"
-
+import fs from "fs"
+import path, {dirname} from "path"
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const allProducts=async(req,res)=>{
        const {name}=req.query
@@ -82,23 +85,22 @@ export const postProduct=async(req,res)=>{
         const data={
             ...resto,
             storeId: store._id,
-            name
-            
-
-        
+            name 
         }
+        
         const newProduct=new Product(data);
         await newProduct.save()
         store.productId = store.productId.concat(newProduct._id)
         await store.save()
        
-
+        
         res.status(201).json({
             msg:"Producto creado con éxito"
         });
 
 
-}
+
+}        
 
 export const putProduct=async(req,res)=>{
     const {id}=req.params
