@@ -10,7 +10,7 @@ import {
 
 // FUNCTIONS AND CONSTS
 
-const baseUrl = `http://localhost:3001/api/v1`
+const baseUrl = `https://food-fast-henry.herokuapp.com/api/v1`
 
 const fetch = (url, type) => (dispatch) =>
     axios
