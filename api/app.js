@@ -50,7 +50,7 @@ app.use("/api/v1/order", orderRoute)
 app.use("/api/v1/user", userRoute)
 
 app.get("*", function (request, response) {
-    response.sendFile(path.resolve(__dirname, "../client/build", "index.html"))
+    express.static(path.resolve(__dirname, "../client/build"))
 })
 
 dbConn()
