@@ -1,8 +1,6 @@
 import Order from "../models/order.js"
 
 
-
-
 export const postOrder = async(req,res)=>{
     try{
         const {user,productId,...resto}=req.body
@@ -42,9 +40,7 @@ export const postOrder = async(req,res)=>{
 //función para admins
 export const getAllOrders = async (req, res)=>{
     try{
-        const allOrders = await Order.find().populate('user',{
-            name: 1, _id: 0
-        });
+        const allOrders = await Order.find().populate("productId");
         allOrders.length ? res.json(allOrders) :
         res.status(404).send({error: "no se encontraron órdenes"});
     }catch(e){

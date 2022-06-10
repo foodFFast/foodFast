@@ -4,13 +4,13 @@ import {allStore, postStore, getStore} from '../controllers/storeControllers.js'
 
 const router = express.Router()
 
-//get  http://localhost:3000/api/v1/store
+//get  http://localhost:3001/api/v1/store
 router.get('/', allStore)
 
-//get  http://localhost:3000/api/v1/store/:idStore
+//get  http://localhost:3001/api/v1/store/:idStore
 router.get('/:id', getStore)
 
-//post  http://localhost:3000/api/v1/store
+//post  http://localhost:3001/api/v1/store
 router.post('/', postStore)
 
 
