@@ -1,51 +1,50 @@
-import 'dotenv/config'
-import './connectDB.js'
-import morgan from 'morgan'
-import cors from 'cors'
-import express from 'express'
-import cookieParser from 'cookie-parser'
+import "dotenv/config"
+import "./connectDB.js"
+import morgan from "morgan"
+import cors from "cors"
+import express from "express"
+import cookieParser from "cookie-parser"
 
 //import router
-import categoriesRoute from './src/routes/categoriesRoute.js'
+import categoriesRoute from "./src/routes/categoriesRoute.js"
 import productsRoute from "./src/routes/productsRoute.js"
-import storeRoute from './src/routes/storeRoute.js'
-import orderRoute from './src/routes/orderRoute.js'
-import  userRoute  from './src/routes/userRoute.js'
-
-
-
+import storeRoute from "./src/routes/storeRoute.js"
+import orderRoute from "./src/routes/orderRoute.js"
+import userRoute from "./src/routes/userRoute.js"
 
 //middellwares
 const app = express()
-app.use(cookieParser());
-app.use(express.json());
-app.use(cors());
-app.use(morgan("dev"));
+app.use(cookieParser())
+app.use(express.json())
+app.use(cors())
+app.use(morgan("dev"))
 
+// the __dirname is the current directory from where the script is running
+app.use(favicon(__dirname + "/build/favicon.ico"))
+app.use(express.static(__dirname))
+app.use(express.static(path.join(__dirname, "build")))
 
-app.get('/',(req,res)=>{
+app.get("/", (req, res) => {
     res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
 })
 
 // http://localhost:3001/api/v1/categories
-app.use('/api/v1/categories', categoriesRoute)
-
+app.use("/api/v1/categories", categoriesRoute)
 
 // http://localhost:3001/api/v1/products
-app.use("/api/v1/products",productsRoute)
+app.use("/api/v1/products", productsRoute)
 
 //http://localhost:3001/api/v1/store
-app.use('/api/v1/store',storeRoute)
+app.use("/api/v1/store", storeRoute)
 
 //http://localhost:3001/api/v1/orders
-app.use("/api/v1/orders",orderRoute)
- 
+app.use("/api/v1/orders", orderRoute)
+
 //http://localhost:3001/api/v1/order
-app.use('/api/v1/order',orderRoute)
+app.use("/api/v1/order", orderRoute)
 
- 
 //http://localhost:3001/api/v1/user
-app.use('/api/v1/user',userRoute)
+app.use("/api/v1/user", userRoute)
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001
 app.listen(PORT, console.log("server on port: " + PORT))
