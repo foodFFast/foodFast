@@ -9,7 +9,6 @@ import {
 } from "./types"
 
 // FUNCTIONS AND CONSTS
-console.log(process.env.BACK_URL)
 const baseUrl =
     "https://" +
     (!process.env.NODE_ENV || process.env.NODE_ENV === "development"
