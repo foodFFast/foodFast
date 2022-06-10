@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import dotenv from 'dotenv'
 import './connectDB.js'
 import morgan from 'morgan'
 import cors from 'cors'
@@ -11,7 +11,7 @@ import productsRoute from "./src/routes/productsRoute.js"
 import storeRoute from './src/routes/storeRoute.js'
 import orderRoute from './src/routes/orderRoute.js'
 import  userRoute  from './src/routes/userRoute.js'
-
+dotenv.config()
 
 
 
