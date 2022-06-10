@@ -3,16 +3,21 @@ import mongoose from 'mongoose'
 const userSchema=new mongoose.Schema({
     name:{
         type:String,
-        required:[true,"El nombre es requerido"]
+        required:true,
     },
     email:{
         type:String,
+<<<<<<< HEAD
         required:[true,"El correo es obligatorio"],
         //unique:true
+=======
+        required:true,
+        unique:true
+>>>>>>> 5f52e2254a4dfcba83c0d9896e4439a234e40c73
     },
     password:{
         type:String,
-        required:[true,"El password es requerido"]
+        required:true
     },
     img:{
         type:String
@@ -20,12 +25,18 @@ const userSchema=new mongoose.Schema({
     rol:{
         type:String,
         required:true,
+<<<<<<< HEAD
         default:"USER_ROLE",
         enum:["ADMIN_ROLE", "USER_ROLE", "GUEST", "OWNER"]
+=======
+        default:"USER",
+        enum:["ADMIN", "USER", "GUEST", "OWNER"]
+
+>>>>>>> 5f52e2254a4dfcba83c0d9896e4439a234e40c73
     },
    address:{
        type:String,
-       required:true
+       
    }
     
 })

@@ -17,7 +17,11 @@ export const category = async (req, res) => {
         if (!name) return res.json({ error: "query invalid" })
         const categories = await Product.find({ category:  {$regex: name, $options:'i'} })
         if (categories.length === 0)
+
+           
+
             return res.status(404).json({ error: "not found category" })
+
         return res.json(categories)
     } catch (error) {
         console.log(error.message)
@@ -36,8 +40,10 @@ export const postCategory = async (req, res) => {
             await myCategory.save()
             res.status(201).send("categoría creada exitosamente")
         } else {
-            res.status(409).send(
-                "La categoría que intenta crear YA EXISTE en la base de datos"
+            res.status(409).json({
+                msg:"La categoría que intenta crear YA EXISTE en la base de datos"
+            }
+                
             )
         }
     } catch (e) {
