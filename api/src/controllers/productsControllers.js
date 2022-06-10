@@ -47,6 +47,25 @@ export const getProduct=async(req,res)=>{
         console.log(error)
     }
 }
+
+export const getProductbyId = async (req,res)=>{
+    try{
+        const id = req.params.id;
+
+        let isHex = /^[0-9A-F]{24}$/ig.test(id); //verificación que es un hex de 24 caracteres
+        if(!isHex){
+            return res.status(400).json({error: "no es un objectId"});
+        }
+
+        const prod = await Product.findById(id); //populate
+        if (!prod) return res.status(404).json({ error: "not found product" });
+        res.json(prod);
+    }catch(e){
+        console.log(e)
+        return res.json({msg: "Error de servidor, en getProductById"})
+    }
+}
+
 export const filterProducts=async(req,res)=>{
     const {name}=req.query
  if (!name){
