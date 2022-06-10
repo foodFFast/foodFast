@@ -25,7 +25,7 @@ app.use(morgan("dev"))
 
 try {
     const __dirname = path.resolve()
-    app.use(express.static(__dirname))
+    // app.use(express.static(__dirname))
     app.use(express.static(path.join(__dirname, "./client/build")))
 } catch (error) {
     console.log("Error serving /build", error)
