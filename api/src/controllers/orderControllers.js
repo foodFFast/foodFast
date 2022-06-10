@@ -1,3 +1,4 @@
+import mongoose from "mongoose"
 import Order from "../models/order.js"
 
 
@@ -44,6 +45,30 @@ export const getAllOrders = async (req, res)=>{
 
 }
 
+export const deleteOrderById = async (req,res)=>{
+    try{
+        const id = req.params.id;
+
+        let isHex = /^[0-9A-F]{24}$/ig.test(id); //verificación que es un hex de 24 caracteres
+        if(!isHex){
+            return res.status(400).send("No es un ObjectId");
+        }
+
+        let Deleted = await Order.findByIdAndDelete(id);
+
+        if (Deleted !== null) {
+            res.send({
+                msg: "Orden eliminada exitosamente.",
+                value: Deleted
+        })
+        } else {
+            res.status(404).send("No se encontró la categoría a eliminar.")
+        }
+    }catch(e){
+        console.log(e.message);
+        res.status(500).send("Error de servidor en deleteOrder");
+    }
+}
 
 
 // import Order from "../models/order.js"

@@ -1,6 +1,6 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { getAllOrders, postOrder} from '../controllers/orderControllers.js'
+import { deleteOrderById, getAllOrders, postOrder} from '../controllers/orderControllers.js'
 import { validarCampos } from '../../middlewares/validar-campo.js';
 
 const router = express.Router()
@@ -10,8 +10,10 @@ router.post('/',[
     check("user","No es un id de MongoDb válido").isMongoId(),
     check("productId","No es un id de MongoDb válido").isMongoId(),
     validarCampos
-],postOrder)
-router.get("/",getAllOrders)
+],postOrder);
+
+router.get("/",getAllOrders);
+router.delete('/:id', deleteOrderById)
 
 
 
