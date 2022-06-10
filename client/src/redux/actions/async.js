@@ -10,7 +10,7 @@ import {
 
 // FUNCTIONS AND CONSTS
 
-const baseUrl = `${process.env.REACT_APP_BACK_URL}/api/v1`
+const baseUrl = `${process.env.BACK_URL || "https://localhost:3001"}/api/v1`
 
 const fetch = (url, type) => (dispatch) =>
     axios
