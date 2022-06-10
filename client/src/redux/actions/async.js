@@ -9,7 +9,7 @@ import {
 } from "./types"
 
 // FUNCTIONS AND CONSTS
-
+console.log(process.env.BACK_URL)
 const baseUrl = `${process.env.BACK_URL || "https://localhost:3001"}/api/v1`
 
 const fetch = (url, type) => (dispatch) =>
