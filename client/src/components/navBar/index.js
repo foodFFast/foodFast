@@ -24,6 +24,9 @@ export default function NavBar() {
     const theme = useSelector((state) => state.theme.selectedTheme)
 
     const [showNavbar, setShowNavbar] = useState(false)
+    const handleSelectRoute = ()=> {
+        setShowNavbar(false)
+    }
 
     return (
         <GlobalContainer>
@@ -71,8 +74,13 @@ export default function NavBar() {
 
                     <hr />
                     <h3>SELLER</h3>
-                    <RouteItem>Register a restaurant</RouteItem>
-                    <RouteItem>Create new product</RouteItem>
+                    <Link to="/createStore">
+                        <RouteItem onClick={handleSelectRoute}>Register a restaurant</RouteItem>
+                    </Link>
+
+                    <Link to={"/createProduct"}>
+                         <RouteItem onClick={handleSelectRoute}>Create new product</RouteItem>
+                    </Link>
                     <RouteItem>Contact</RouteItem>
                     <hr />
                 </ListRoutes>

@@ -5,11 +5,11 @@ import { runMainTest } from "../../redux/actions/sync"
 
 const MainTest = () => {
     const dispatch = useDispatch()
-    const state = useSelector((state) => state.main)
+    const mainTest = useSelector((state) => state.main.mainTest)
 
     return (
         <div>
-            main Test = {state.mainTest}
+            main Test = {mainTest}
             <button onClick={() => dispatch(runMainTest())}>
                 Run Main Test
             </button>

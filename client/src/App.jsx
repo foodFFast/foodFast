@@ -22,6 +22,17 @@ import {
     SingleCat,
     CategoriesTest
 } from "./components/index"
+import "./App.module.scss"
+import {
+    fetchAllCategories,
+    fetchAllProducts,
+    fetchAllShops
+} from "./redux/actions/async"
+import { useDispatch } from "react-redux"
+
+import CategoriesForm from "./components/categoryForm"
+import ProductForm from "./components/productForm"
+import StoreForm from "./components/storeForm"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -54,14 +65,22 @@ const reviewsNestedRoutes = () => (
 )
 
 function App() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchAllShops())
+        dispatch(fetchAllProducts())
+        dispatch(fetchAllCategories())
+    }, [dispatch])
+
     return (
         <div className="App">
             <BrowserRouter>
                 <ScrollToTop>
                     {/* <Link to="/">
                     <h1>Food Fast</h1>
-                </Link>
-                <Link to="/auth">Auth</Link> */}
+                    </Link>
+                    <Link to="/auth">Auth</Link> */}
 
                     <div style={{ zIndex: 10, position: "sticky", top: 0 }}>
                         <NavBar />
@@ -78,6 +97,9 @@ function App() {
                                     element={<SingleCat />}
                                 />
                             </Route>
+                             <Route path="createCategories/:id" element={<CategoriesForm />}/>
+                            <Route path="createProduct/:storeID/:category" element={<ProductForm />}/>
+                            <Route path="createStore" element={<StoreForm />} />
                         </Route>
 
                         <Route path="/auth" element={<Auth />} />

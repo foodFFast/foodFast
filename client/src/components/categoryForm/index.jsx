@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useParams, Link } from "react-router-dom"
 import {
     deleteCategory,
     fetchAllCategories,
@@ -11,6 +12,7 @@ const CategoriesTest = () => {
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.main.categories.all)
 
+    const {id} = useParams(); 
     useEffect(() => {
         dispatch(fetchAllCategories())
     }, [dispatch])
@@ -51,6 +53,13 @@ const CategoriesTest = () => {
                 categories.map((c) => (
                     <div key={c._id}>
                         {c.name}
+           
+                        <Link to={`/createProduct/${id}/${c.name}`}>
+                            <button>
+                                Agregar productos a la categoría
+                            </button>
+                        </Link>
+                        
                         <button onClick={() => dispatch(deleteCategory(c._id))}>
                             Delete
                         </button>
