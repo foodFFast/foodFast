@@ -24,8 +24,8 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan("dev"))
 
-app.use(express.static(__dirname))
-app.use(express.static(path.join(__dirname, "./client/build")))
+// app.use(express.static(__dirname))
+// app.use(express.static(path.join(__dirname, "./client/build")))
 
 // app.get("/", (req, res) => {
 //     res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
@@ -50,7 +50,7 @@ app.use("/api/v1/order", orderRoute)
 app.use("/api/v1/user", userRoute)
 
 app.get("*", function (request, response) {
-    express.static(path.resolve(__dirname, "../client/build"))
+    response.sendFile(path.resolve(__dirname + "../client/build/index.html"))
 })
 
 dbConn()
