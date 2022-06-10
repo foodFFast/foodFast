@@ -49,5 +49,5 @@ app.use('/api/v1/order',orderRoute)
 app.use('/api/v1/user',userRoute)
 
 dbConn();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 app.listen(PORT, console.log("server on port: " + PORT))
