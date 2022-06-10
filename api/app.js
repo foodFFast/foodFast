@@ -1,5 +1,4 @@
-import "dotenv/config"
-import "./connectDB.js"
+import dotenv from "dotenv"
 import morgan from "morgan"
 import cors from "cors"
 import express from "express"
@@ -12,6 +11,10 @@ import productsRoute from "./src/routes/productsRoute.js"
 import storeRoute from "./src/routes/storeRoute.js"
 import orderRoute from "./src/routes/orderRoute.js"
 import userRoute from "./src/routes/userRoute.js"
+
+import dbConn from "./connectDB.js"
+
+dotenv.config()
 
 //middellwares
 const app = express()
@@ -47,5 +50,6 @@ app.use("/api/v1/order", orderRoute)
 //http://localhost:3001/api/v1/user
 app.use("/api/v1/user", userRoute)
 
+dbConn()
 const PORT = process.env.PORT || 3001
 app.listen(PORT, console.log("server on port: " + PORT))
