@@ -23,11 +23,12 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan("dev"))
 
-// the __dirname is the current directory from where the script is running
-if (!process.env.NODE_ENV === "development") {
+try {
     const __dirname = path.resolve()
     app.use(express.static(__dirname))
     app.use(express.static(path.join(__dirname, "./client/build")))
+} catch (error) {
+    console.log("Error serving /build", error)
 }
 
 app.get("/", (req, res) => {
