@@ -24,9 +24,11 @@ app.use(cors())
 app.use(morgan("dev"))
 
 // the __dirname is the current directory from where the script is running
-const __dirname = path.resolve()
-app.use(express.static(__dirname))
-app.use(express.static(path.join(__dirname, "./client/build")))
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+    const __dirname = path.resolve()
+    app.use(express.static(__dirname))
+    app.use(express.static(path.join(__dirname, "./client/build")))
+}
 
 app.get("/", (req, res) => {
     res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
