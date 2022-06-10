@@ -7,10 +7,18 @@ const orderSchema = new mongoose.Schema({
         ref: "User",
         required: true
     },
+<<<<<<< HEAD
     status: {
         type: String,
         required: true,
         enum: ["Pending", "Rejected", "Accepted"]
+=======
+    status:{
+        type:String,
+        required:true,
+        enum:["Pending","Rejected","Accepted","Completed"],
+        default: "Pending"
+>>>>>>> ed92bc6fa1b96a9a101cae120f9152020245771d
     },
     img: {
         type: String
