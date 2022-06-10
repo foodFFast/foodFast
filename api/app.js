@@ -5,6 +5,9 @@ import cors from "cors"
 import express from "express"
 import cookieParser from "cookie-parser"
 
+import favicon from "express-favicon"
+import path from "path"
+
 //import router
 import categoriesRoute from "./src/routes/categoriesRoute.js"
 import productsRoute from "./src/routes/productsRoute.js"
