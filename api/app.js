@@ -27,8 +27,8 @@ app.use(morgan("dev"))
 app.use(express.static(__dirname))
 app.use(express.static(path.join(__dirname, "./client/build")))
 
-app.get("*", (req, res) => {
-    res.redirect("/")
+app.get("/", (req, res) => {
+    res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
 })
 
 // http://localhost:3001/api/v1/categories
