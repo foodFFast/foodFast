@@ -24,8 +24,8 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan("dev"))
 
-// app.use(express.static(__dirname))
-// app.use(express.static(path.join(__dirname, "./client/build")))
+app.use(express.static(__dirname))
+app.use(express.static(path.join(__dirname, "./client/build")))
 
 // app.get("/", (req, res) => {
 //     res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
