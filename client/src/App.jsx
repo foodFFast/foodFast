@@ -30,6 +30,10 @@ import {
 } from "./redux/actions/async"
 import { useDispatch } from "react-redux"
 
+import CategoriesForm from "./components/categoryForm"
+import ProductForm from "./components/productForm"
+import StoreForm from "./components/storeForm"
+
 const ScrollToTop = (props) => {
     const location = useLocation()
     useEffect(() => {
@@ -93,6 +97,9 @@ function App() {
                                     element={<SingleCat />}
                                 />
                             </Route>
+                             <Route path="createCategories/:id" element={<CategoriesForm />}/>
+                            <Route path="createProduct/:storeID/:category" element={<ProductForm />}/>
+                            <Route path="createStore" element={<StoreForm />} />
                         </Route>
 
                         <Route path="/auth" element={<Auth />} />
