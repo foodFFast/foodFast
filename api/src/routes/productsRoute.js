@@ -4,7 +4,7 @@ import { check } from 'express-validator';
 import { validarCampos } from '../../middlewares/validar-campo.js';
 import { deleteProduct,putProduct,upDate, allProducts, postProduct, filterProducts} from '../controllers/productsControllers.js';
 
-
+import fileUpload from '../../middlewares/imgProductsCapter.js';
 
 
 const router = express.Router()
@@ -24,6 +24,13 @@ router.post("/",[
     check("storeId","No es un id válido").isMongoId(),
     validarCampos
 ],postProduct)
+
+//post IMGproduct =  http://localhost:3001/api/v1/products/image
+router.post("/image", fileUpload,(req,res)=> {
+    const url = req.file.path
+    res.json({img: url})
+   })
+
 
 //put product = http://localhost:3001/api/v1/products/754325
 router.put("/:id",[
