@@ -62,11 +62,28 @@ export const deleteOrderById = async (req,res)=>{
                 value: Deleted
         })
         } else {
-            res.status(404).send("No se encontró la categoría a eliminar.")
+            res.status(404).send({msg: "No se encontró la categoría a eliminar."})
         }
     }catch(e){
         console.log(e.message);
         res.status(500).send("Error de servidor en deleteOrder");
+    }
+}
+
+export const deleteCompletedOrders = async (req,res)=>{
+    try{
+        let Deleteds = await Order.deleteMany({status: "Completed"});
+        if(Deleteds.deletedCount !== 0){
+            res.send({
+                msg: "Órdenes eliminadas con éxito.",
+                deletedCount: Deleteds.deletedCount
+            })
+        }else{
+            res.status(404).send({msg: "No se encontraron órdenes completas."})
+        }
+    }catch(e){
+        console.log(e.message);
+        res.status(500).send("Error de servidor en deleteOrders Completed");
     }
 }
 
