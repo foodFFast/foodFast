@@ -30,11 +30,11 @@ export const getStore = async(req,res)=>{
 export const postStore = async(req,res)=>{
     try {
         const {name,description,hours} = req.body
-        let store = await Store.findOne({name})
+        const store = await Store.findOne({name})
         if(store) return res.json({msg: "the store is already registered"})
-        store = new Store({name,description,hours})  
-        await store.save()
-        return res.json({store})
+        const newStore = new Store({name,description,hours})  
+        await newStore.save()
+        return res.json({newStore})
     } catch (error) {
         console.log(error)
         return res.json({err: 'Error de Servidor'})
