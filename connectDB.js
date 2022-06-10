@@ -1,7 +1,6 @@
 import mongoose from "mongoose"
 
-
- const dbConn=async()=>{
+const dbConn=async()=>{
 
     try{
         await mongoose.connect(process.env.MONGODB_CNN,{
@@ -9,7 +8,7 @@ import mongoose from "mongoose"
             useUnifiedTopology:true,
           
         });
-        console.log("Db connect")
+        console.log("Db connected")
 
     }catch (error){
         console.log(error);

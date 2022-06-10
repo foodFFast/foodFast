@@ -1,10 +1,10 @@
 import dotenv from 'dotenv'
-import './connectDB.js'
 import morgan from 'morgan'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
-import dbConn from "./connectDB.js"
+import "./connectDB.js"
+
 
 //import router
 import categoriesRoute from './src/routes/categoriesRoute.js'
@@ -12,6 +12,7 @@ import productsRoute from "./src/routes/productsRoute.js"
 import storeRoute from './src/routes/storeRoute.js'
 import orderRoute from './src/routes/orderRoute.js'
 import  userRoute  from './src/routes/userRoute.js'
+import dbConn from './connectDB.js'
 dotenv.config()
 
 
