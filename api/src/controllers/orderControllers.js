@@ -24,7 +24,11 @@ export const postOrder = async(req,res)=>{
 export const getAllOrders = async (req, res)=>{
     try{
         const allOrders = await Order.find()
-        .populate('productId');
+        .populate('user',{
+            name: 1, email: 1, _id: 0})
+        .populate('productId',{
+            name: 1, stock: 1, price: 1, available: 1
+        });
        
 
         if(allOrders.length){

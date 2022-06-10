@@ -10,7 +10,7 @@ const orderSchema= new mongoose.Schema({
     status:{
         type:String,
         required:true,
-        enum:["Pending","Rejected","Accepted"]  
+        enum:["Pending","Rejected","Accepted","Completed"]
     },
     img:{
         type:String
