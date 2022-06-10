@@ -4,7 +4,7 @@ import { hardCodeoCategoryCard } from "./hardcodeCategoryCard"
 import styles from "./landing.module.scss"
 export default function LandingPage() {
     return (
-        <section>
+        <section className={styles.landing}>
             <div className={styles.blockDisplay} />
 
             <div className={styles.ornament} />

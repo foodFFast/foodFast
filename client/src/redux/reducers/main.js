@@ -2,6 +2,7 @@ import {
     ERROR,
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
+    FETCH_SHOPS,
     FILTER_PRODUCTS,
     MAIN_TEST,
     RESET_PRODUCTS,
@@ -10,10 +11,23 @@ import {
 
 const initialState = {
     mainTest: "default",
-    allCategories: [],
     error: null,
-    allProducts: [],
-    filteredProducts: []
+    shops: {
+        all: [],
+        filtered: []
+    },
+    products: {
+        all: [],
+        filtered: []
+    },
+    categories: {
+        all: [],
+        filtered: []
+    },
+    tags: {
+        all: [],
+        filtered: []
+    }
 }
 
 const main = (state = initialState, action) => {
@@ -35,33 +49,34 @@ const main = (state = initialState, action) => {
             newState.error = action.payload
             break
 
-        case FETCH_CATEGORIES:
-            newState.allCategories = action.payload
+        case FETCH_SHOPS:
+            newState.shops.all = action.payload
             break
 
         case FETCH_PRODUCTS:
-            let combinedProducts = [
-                ...state.allProducts,
-                ...action.payload.product
-            ]
+            let combinedProducts = [...state.products.all, ...action.payload]
             let uniqueProducts = [
                 ...new Map(
                     combinedProducts.map((prod) => [prod._id, prod])
                 ).values()
             ]
-            newState.allProducts = uniqueProducts
+            newState.products.all = uniqueProducts
             break
 
         case FILTER_PRODUCTS:
-            newState.filteredProducts = []
+            newState.products.filtered = []
             !!action.payload.length &&
-                (newState.filteredProducts = [...action.payload])
+                (newState.products.filtered = [...action.payload])
             break
 
         case RESET_PRODUCTS:
-            newState.allProducts = []
-            newState.filteredProducts = []
-            newState.allCategories = []
+            newState.products.all = []
+            newState.products.filtered = []
+            newState.categories.all = []
+            break
+
+        case FETCH_CATEGORIES:
+            newState.categories.all = action.payload
             break
     }
 
