@@ -43,8 +43,10 @@ export const fetchProductsByCat = (cat) =>
 
 // CATEGORIES
 
-export const fetchAllCategories = () =>
+export const fetchAllCategories = () => {
+    console.log(`fetching categories to ${baseUrl}/categories`)
     fetch(`${baseUrl}/categories`, FETCH_CATEGORIES)
+}
 
 export const postCategory = (name) => (dispatch) =>
     axios
