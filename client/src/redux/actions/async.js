@@ -10,11 +10,9 @@ import {
 
 // FUNCTIONS AND CONSTS
 const baseUrl =
-    "https://" +
     (!process.env.NODE_ENV || process.env.NODE_ENV === "development"
-        ? "localhost:3001"
-        : "food-fast-henry.herokuapp.com") +
-    "/api/v1"
+        ? "http://localhost:3001"
+        : "https://food-fast-henry.herokuapp.com") + "/api/v1"
 
 const fetch = (url, type) => (dispatch) =>
     axios
