@@ -6,8 +6,9 @@ const StyledShops = styled.div`
     .shopsContainer {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
+
         justify-content: center;
+
         gap: 1rem;
     }
 `
