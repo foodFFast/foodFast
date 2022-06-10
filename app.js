@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
+import dbConn from "./connectDB.js"
 
 //import router
 import categoriesRoute from './src/routes/categoriesRoute.js'
@@ -47,5 +48,6 @@ app.use('/api/v1/order',orderRoute)
 //http://localhost:3001/api/v1/user
 app.use('/api/v1/user',userRoute)
 
+dbConn();
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, console.log("server on port: " + PORT))

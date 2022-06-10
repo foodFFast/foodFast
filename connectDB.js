@@ -1,11 +1,21 @@
-import mongoose from "mongoose";
-
-try {
-    await mongoose.connect(process.env.MONGODB_CNN);
+import mongoose from "mongoose"
 
 
-    console.log('connect to db');
-} catch (error) {
-    console.log("error" + error);
+ const dbConn=async()=>{
+
+    try{
+        const conn=await mongoose.connect(process.env.MONGODB_CNN,{
+            useNewUrlParser:true,
+            useUnifiedTopology:true,
+          
+        });
+        console.log("Db connect")
+
+    }catch (error){
+        console.log(error);
+        throw new Error("Error a la hora de iniciar la base de datos");
+    }
+
 }
 
+export default dbConn
