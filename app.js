@@ -3,7 +3,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
-import "./connectDB.js"
+import dbConn from "./connectDB.js"
 
 
 //import router
@@ -12,7 +12,8 @@ import productsRoute from "./src/routes/productsRoute.js"
 import storeRoute from './src/routes/storeRoute.js'
 import orderRoute from './src/routes/orderRoute.js'
 import  userRoute  from './src/routes/userRoute.js'
-import dbConn from './connectDB.js'
+import  authRoute  from './src/routes/authRoute.js'
+
 dotenv.config()
 
 
@@ -48,6 +49,9 @@ app.use('/api/v1/order',orderRoute)
  
 //http://localhost:3001/api/v1/user
 app.use('/api/v1/user',userRoute)
+
+//http://localhost:3001/api/v1/auth
+app.use('/api/v1/auth',authRoute)
 
 dbConn();
 const PORT = process.env.PORT;
