@@ -14,6 +14,7 @@ import userRoute from "./src/routes/userRoute.js"
 
 import dbConn from "./connectDB.js"
 
+const __dirname = path.resolve()
 dotenv.config()
 
 //middellwares
@@ -23,13 +24,8 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan("dev"))
 
-try {
-    const __dirname = path.resolve()
-    app.use(express.static(__dirname))
-    app.use(express.static(path.join(__dirname, "./client/build")))
-} catch (error) {
-    console.log("Error serving /build", error)
-}
+app.use(express.static(__dirname))
+app.use(express.static(path.join(__dirname, "./client/build")))
 
 // app.get("/", (req, res) => {
 //     res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
