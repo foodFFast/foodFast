@@ -6,7 +6,8 @@ import {
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
     FETCH_SHOPS,
-    FILTER_PRODUCTS
+    FILTER_PRODUCTS,
+    FIND_SHOP_BY_ID
 } from "./types"
 
 // FUNCTIONS AND CONSTS
@@ -35,6 +36,9 @@ export const runAsyncTest = () => (dispatch) => {
 // SHOPS
 
 export const fetchAllShops = () => fetch(`${baseUrl}/store`, FETCH_SHOPS)
+
+export const fetchShopById = (id) =>
+    fetch(`${baseUrl}/store/${id}`, FIND_SHOP_BY_ID)
 
 // PRODUCTS
 
