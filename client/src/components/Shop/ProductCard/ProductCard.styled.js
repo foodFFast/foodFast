@@ -10,8 +10,8 @@ export const StyledProductCard = styled(Link)`
     grid-template-columns: 2fr 4fr 1fr;
     grid-template-areas:
         "img header addBtn"
-        "img desc   addBtn";
-    gap: 1rem;
+        "img description addBtn";
+    column-gap: 1rem;
 
     min-width: 40rem;
 
@@ -42,9 +42,10 @@ export const StyledProductCard = styled(Link)`
         }
     }
 
-    .desc {
-        grid-area: desc;
-        padding: 0.25rem;
+    .description {
+        grid-area: description;
+        padding: 0.5rem;
+        color: ${({ theme }) => theme.text.soft};
     }
 
     .addBtn {
