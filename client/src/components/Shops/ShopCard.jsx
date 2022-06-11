@@ -66,8 +66,6 @@ const ShopCard = ({ shop }) => {
                 <span className="score">{score}/5</span>
             </div>
             <StyledLogo className="img" img={img || randomImg} />
-            {/* <img src={img || randomImg} alt="shop img" /> */}
-
             <span className="description">{description}</span>
         </StyledShopCard>
     )
