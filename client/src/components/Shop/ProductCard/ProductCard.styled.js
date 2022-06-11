@@ -7,10 +7,10 @@ export const StyledProductCard = styled(Link)`
     text-decoration: none;
 
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 4fr 1fr;
     grid-template-areas:
-        "img header"
-        "img desc";
+        "img header addBtn"
+        "img desc   addBtn";
     gap: 1rem;
 
     min-width: 40rem;
@@ -28,10 +28,38 @@ export const StyledProductCard = styled(Link)`
         padding: 0.25rem;
         display: flex;
         justify-content: space-between;
-        font-size: 2rem;
+
+        & > * {
+            display: flex;
+            align-items: center;
+        }
+
+        .name {
+            font-size: 2rem;
+        }
+        .price {
+            font-size: 1.5rem;
+        }
     }
 
     .desc {
         grid-area: desc;
+        padding: 0.25rem;
+    }
+
+    .addBtn {
+        grid-area: addBtn;
+
+        border: none;
+
+        background-color: ${({ theme }) => theme.colors.main};
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:disabled {
+            background-color: ${({ theme }) => theme.text.soft};
+            color: ${({ theme }) => theme.text.light};
+        }
     }
 `
