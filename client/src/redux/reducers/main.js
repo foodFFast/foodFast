@@ -6,7 +6,8 @@ import {
     FILTER_PRODUCTS,
     MAIN_TEST,
     RESET_PRODUCTS,
-    RESET_TESTS
+    RESET_TESTS,
+    SEARCH_PRODUCT
 } from "../actions/types"
 
 const initialState = {
@@ -69,6 +70,10 @@ const main = (state = initialState, action) => {
                 (newState.products.filtered = [...action.payload])
             break
 
+        case SEARCH_PRODUCT:
+            newState.products.filtered = [action.payload]
+            break
+            
         case RESET_PRODUCTS:
             newState.products.all = []
             newState.products.filtered = []

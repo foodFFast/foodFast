@@ -14,3 +14,5 @@ export const FILTER_PRODUCTS = "filter_products"
 export const RESET_PRODUCTS = "reset_products"
 
 export const FETCH_SHOPS = "fetch_shops"
+
+export const SEARCH_PRODUCT = "search_product"

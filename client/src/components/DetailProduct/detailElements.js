@@ -6,6 +6,7 @@ export const GlobalContainer = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    justify-content: center;
     background-color: #ccc;
 `
 export const TitleContainer = styled.section`

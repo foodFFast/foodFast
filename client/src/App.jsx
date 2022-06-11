@@ -34,6 +34,7 @@ import CategoriesForm from "./components/categoryForm"
 import ProductForm from "./components/productForm"
 import StoreForm from "./components/storeForm"
 import DetailProduct from "./components/DetailProduct"
+import DisplayProducts from "./components/DisplayProducts"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -102,6 +103,7 @@ function App() {
                             <Route path="createProduct/:storeID/:category" element={<ProductForm />}/>
                             <Route path="createStore" element={<StoreForm />} />
                             <Route path="product/:productID" element={<DetailProduct/>}/>
+                            <Route path="products" element={<DisplayProducts />}/>
                         </Route>
 
                         <Route path="/auth" element={<Auth />} />
