@@ -20,9 +20,6 @@ const storeSchema= new mongoose.Schema({
        ref:"Category",
        //required:true
      }],
-    tag: {
-         type: Array
-     },
     hours:{
        type:Number,
        default:"0"

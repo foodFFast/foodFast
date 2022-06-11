@@ -29,10 +29,10 @@ export const getStore = async (req, res) => {
 
 export const postStore = async (req, res) => {
     try {
-        const { name, description, hours } = req.body
+        const { name, description, hours, img } = req.body
         const store = await Store.findOne({ name })
         if (store) return res.json({ msg: "the store is already registered" })
-        const newStore = new Store({ name, description, hours })
+        const newStore = new Store({ name, description, hours, img })
         await newStore.save()
         return res.json({ newStore })
     } catch (error) {

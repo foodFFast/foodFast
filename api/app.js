@@ -11,7 +11,9 @@ import productsRoute from "./src/routes/productsRoute.js"
 import storeRoute from './src/routes/storeRoute.js'
 import orderRoute from './src/routes/orderRoute.js'
 import  userRoute  from './src/routes/userRoute.js'
-
+import path, {dirname} from "path"
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
 
@@ -46,6 +48,10 @@ app.use("/api/v1/orders",orderRoute)
  
 //http://localhost:3001/api/v1/user
 app.use('/api/v1/user',userRoute)
+
+
+// hago accesible la carpeta de imágenes
+app.use(express.static(path.join(__dirname, "public")))
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, console.log("server on port: " + PORT))
