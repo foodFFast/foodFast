@@ -6,7 +6,7 @@ export const allStore = async (req, res) => {
             storeId: 0,
             __v: 0
         })
-        return res.json({ stores })
+        return res.json(stores)
     } catch (error) {
         console.log(error)
         return res.json({ err: "Error de Servidor" })

@@ -2,17 +2,23 @@ import express from 'express';
 
 import { check } from 'express-validator';
 import { validarCampos } from '../../middlewares/validar-campo.js';
-import { deleteProduct,putProduct,upDate, allProducts, postProduct, filterProducts} from '../controllers/productsControllers.js';
+import { deleteProduct,
+    putProduct,upDate, 
+    allProducts, postProduct, 
+    filterProducts, 
+    getProductbyId} from '../controllers/productsControllers.js';
 
-
+import fileUpload from '../../middlewares/imgProductsCapter.js';
 
 
 const router = express.Router()
 
 
 //get product = http://localhost:3001/api/v1/products
-
 router.get('/',allProducts)
+
+//GET http://localhost:3001/api/v1/products/12345
+router.get('/:id', getProductbyId);
 
 //get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
 router.get('/filProduct',filterProducts)
@@ -24,6 +30,13 @@ router.post("/",[
     check("storeId","No es un id válido").isMongoId(),
     validarCampos
 ],postProduct)
+
+//post IMGproduct =  http://localhost:3001/api/v1/products/image
+router.post("/image", fileUpload,(req,res)=> {
+    const url = req.file.path
+    res.json({img: url})
+   })
+
 
 //put product = http://localhost:3001/api/v1/products/754325
 router.put("/:id",[

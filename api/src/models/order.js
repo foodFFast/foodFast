@@ -7,10 +7,11 @@ const orderSchema = new mongoose.Schema({
         ref: "User",
         required: true
     },
-    status: {
-        type: String,
-        required: true,
-        enum: ["Pending", "Rejected", "Accepted"]
+    status:{
+        type:String,
+        required:true,
+        enum:["Pending","Rejected","Accepted","Completed"],
+        default: "Pending"
     },
     img: {
         type: String
@@ -24,13 +25,12 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-
     productId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product",
         required: true
     }
-    /* */
+    /* debería tener una cantidad?? */
 })
 
 const Order = mongoose.model("Order", orderSchema)
