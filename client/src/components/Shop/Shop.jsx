@@ -1,15 +1,54 @@
-import React from "react"
 import { Link, useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { StyledShop } from "./Shop.styled"
+
+import { FaRegClock, FaMapMarkerAlt, FaStar } from "react-icons/fa"
+import { fetchShopById } from "../../redux/actions/async"
+import { useEffect } from "react"
+import ProductCard from "./ProductCard/ProductCard"
 
 const Shop = () => {
     const { idShop } = useParams()
-    return (
-        <div>
-            <h1>Local numero {idShop}</h1>
+
+    const dispatch = useDispatch()
+
+    const shop = useSelector((state) => state.main.shops.selected)
+    const theme = useSelector((state) => state.theme.selectedTheme)
+
+    useEffect(() => {
+        dispatch(fetchShopById(idShop))
+    }, [dispatch, idShop])
+
+    return !!shop ? (
+        <StyledShop theme={theme}>
+            <div className="banner">{shop.name}</div>
+            <div className="info">
+                <span className="hours">
+                    <FaRegClock />
+                    {shop.hours || "implementar horarios"}
+                </span>
+
+                <span className="address">
+                    <FaMapMarkerAlt />
+                    {shop.address || "implementar direccion"}
+                </span>
+
+                <span className="score">
+                    <FaStar />
+                    {shop.score} / 5
+                </span>
+            </div>
+            <div className="products">
+                {shop.productId.map((p) => (
+                    <ProductCard key={p._id} product={p} />
+                ))}
+            </div>
             <Link to="products">Ver todos los productos del local</Link> <br />
             <Link to="reviews">Ver todas las reseñas del local</Link> <br />
             <Link to="dashboard">Ir al dashboard</Link>
-        </div>
+        </StyledShop>
+    ) : (
+        <h1>Loading...</h1>
     )
 }
 

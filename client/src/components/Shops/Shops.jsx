@@ -2,8 +2,8 @@ import { useSelector } from "react-redux"
 
 import { AiOutlineSearch } from "react-icons/ai"
 
-import ShopCard from "./ShopCard"
-import { StyledShops, StyledSideBar } from "./Styled"
+import ShopCard from "./ShopCard/ShopCard"
+import { StyledShops, StyledSideBar } from "./Shops.styled"
 
 const Shops = () => {
     const theme = useSelector((state) => state.theme.selectedTheme)
