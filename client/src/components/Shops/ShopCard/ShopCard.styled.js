@@ -14,7 +14,6 @@ export const StyledShopCard = styled(Link)`
     background-color: ${({ theme }) => theme.colors.background};
     text-decoration: none;
     border-radius: 5px;
-    /* overflow: hidden; */
     box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
 
     .header {

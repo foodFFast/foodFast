@@ -7,7 +7,7 @@ const randomImg =
     "https://orlandoinformer.com/wp-content/uploads/2014/07/ollivanders-wand-shop-universal-studios-florida-8211-oi.jpg"
 
 const ShopCard = ({ shop }) => {
-    const { _id, name, description, img, score } = shop
+    const { _id, name, description, img = randomImg, score } = shop
 
     const theme = useSelector((state) => state.theme.selectedTheme)
 
@@ -20,7 +20,7 @@ const ShopCard = ({ shop }) => {
                     {score} / 5
                 </span>
             </div>
-            <StyledLogo className="img" img={img || randomImg} />
+            <StyledLogo className="img" img={img} />
             <span className="description">{description}</span>
         </StyledShopCard>
     )
