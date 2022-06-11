@@ -1,0 +1,23 @@
+#MainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+
+#iconContainer{
+    height: 25vh;
+    margin: 1rem;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg{
+        height: 8rem;
+        width: 100%;
+        cursor: pointer;
+        
+    }
+    svg:hover {
+        transform: scale(1.5);
+    }
+}

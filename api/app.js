@@ -41,7 +41,7 @@ app.use('/api/v1/store',storeRoute)
 app.use("/api/v1/orders",orderRoute)
  
 //http://localhost:3001/api/v1/order
-app.use('/api/v1/order',orderRoute)
+//app.use('/api/v1/order',orderRoute)
 
  
 //http://localhost:3001/api/v1/user

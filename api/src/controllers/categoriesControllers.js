@@ -16,7 +16,6 @@ export const category = async (req, res) => {
     try {
         if (!name) return res.json({ error: "query invalid" })
         const categories = await Product.find({ category:  {$regex: name, $options:'i'} })
-
         if (categories.length === 0)
 
            
