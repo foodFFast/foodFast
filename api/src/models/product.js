@@ -35,9 +35,8 @@ const productSchema =new mongoose.Schema({
         type:Number,
         default:0,  
     },
-    tag: {
-        type: String,
-        required: true
+    tags: {
+        type: Array,
     },
     storeId:[{
         type:mongoose.Schema.Types.ObjectId,

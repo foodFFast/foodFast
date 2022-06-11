@@ -33,7 +33,7 @@ router.post("/",[
 
 //post IMGproduct =  http://localhost:3001/api/v1/products/image
 router.post("/image", fileUpload,(req,res)=> {
-    const url = req.file.path
+    const url = `http://localhost:3001/imagesProducts/${req.file.filename}`
     res.json({img: url})
    })
 

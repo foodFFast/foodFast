@@ -33,6 +33,7 @@ import { useDispatch } from "react-redux"
 import CategoriesForm from "./components/categoryForm"
 import ProductForm from "./components/productForm"
 import StoreForm from "./components/storeForm"
+import DetailProduct from "./components/DetailProduct"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -100,6 +101,7 @@ function App() {
                              <Route path="createCategories/:id" element={<CategoriesForm />}/>
                             <Route path="createProduct/:storeID/:category" element={<ProductForm />}/>
                             <Route path="createStore" element={<StoreForm />} />
+                            <Route path="product/:productID" element={<DetailProduct/>}/>
                         </Route>
 
                         <Route path="/auth" element={<Auth />} />
