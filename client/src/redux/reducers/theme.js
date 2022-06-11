@@ -6,7 +6,8 @@ const themes = {
         colors: {
             main: "#c9933e",
             secondary: "",
-            background: "#f5f5f5"
+            background: "#e5e5e5",
+            bgPage: "#f5f5f5"
         },
         text: {
             highContrast: "#000000",
@@ -20,7 +21,8 @@ const themes = {
         colors: {
             main: "#c9933e",
             secondary: "",
-            background: "#161616"
+            background: "#161616",
+            bgPage: "#111111"
         },
         text: {
             highContrast: "#ffffff",
