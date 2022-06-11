@@ -16,3 +16,4 @@ export const RESET_PRODUCTS = "reset_products"
 export const FETCH_SHOPS = "fetch_shops"
 
 export const SEARCH_PRODUCT = "search_product"
+export const FIND_SHOP_BY_ID = "find_shop_by_id"

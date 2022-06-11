@@ -27,7 +27,8 @@ const themes = {
         text: {
             highContrast: "#ffffff",
             light: "#ffffff",
-            dark: "#000000"
+            dark: "#000000",
+            soft: "#555555"
         }
     }
 }

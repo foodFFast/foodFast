@@ -4,6 +4,7 @@ import {
     FETCH_PRODUCTS,
     FETCH_SHOPS,
     FILTER_PRODUCTS,
+    FIND_SHOP_BY_ID,
     MAIN_TEST,
     RESET_PRODUCTS,
     RESET_TESTS,
@@ -38,6 +39,8 @@ const main = (state = initialState, action) => {
         default:
             break
 
+        // TESTS
+
         case MAIN_TEST:
             newState.mainTest = "success"
             break
@@ -50,9 +53,23 @@ const main = (state = initialState, action) => {
             newState.error = action.payload
             break
 
+        // SHOPS
+
         case FETCH_SHOPS:
             newState.shops.all = action.payload
             break
+
+        case FIND_SHOP_BY_ID:
+            newState.shops.selected = action.payload
+            break
+
+        // CATEGORIES
+
+        case FETCH_CATEGORIES:
+            newState.categories.all = action.payload
+            break
+
+        // PRODUCTS
 
         case FETCH_PRODUCTS:
             let combinedProducts = [...state.products.all, ...action.payload]
@@ -78,10 +95,6 @@ const main = (state = initialState, action) => {
             newState.products.all = []
             newState.products.filtered = []
             newState.categories.all = []
-            break
-
-        case FETCH_CATEGORIES:
-            newState.categories.all = action.payload
             break
     }
 
