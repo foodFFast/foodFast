@@ -39,7 +39,7 @@ export default function StoreForm(){
                 return axios.post('http://localhost:3001/api/v1/store', {
                     name: input.name,
                     description: input.description, 
-                    img: json.path
+                    img: json.img
                     })}
               ).then(json=> {       
                 setIsCreated(true)

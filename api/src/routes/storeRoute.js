@@ -22,7 +22,8 @@ router.post('/',[
 
 //postIMG  http://localhost:3001/api/v1/store/image
 router.post("/image", fileUpload,(req,res)=> {
-    res.json(req.file)
+    const url = `http://localhost:3001/imagesStore/${req.file.filename}`
+    res.json({img: url})
 })
 
 

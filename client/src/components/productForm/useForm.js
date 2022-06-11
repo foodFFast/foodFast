@@ -33,8 +33,8 @@ export default function useForm(initialForm, validateForm) {
                 body: formdata
             }).then(res=> res.json())
             .then(json=> 
-          
-                {
+                
+                {console.log(json)
                 return axios.post('http://localhost:3001/api/v1/products', {
                 storeId: form.storeID,
                 name: form.name,
@@ -42,7 +42,7 @@ export default function useForm(initialForm, validateForm) {
                 img: json.img,
                 price: form.price,
                 category: form.category,
-                // tags: form.tags,
+                tags: form.tags,
                 stock: form.stock
             })}
               ).then(res=> console.log("Se logro mrd")).catch(err=> console.log(err))
