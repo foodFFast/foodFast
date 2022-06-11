@@ -2,7 +2,6 @@ import Auth from "./Auth/Auth"
 import Categories from "./Landing/Categories"
 import Landing from "./Landing/Landing"
 import Shop from "./Shop/Shop"
-import Shops from "./Landing/Shops"
 import MainTest from "./Tests/MainTest"
 import Profile from "./User/Profile"
 import ReduxTest from "./Tests/ReduxTest"
@@ -17,13 +16,13 @@ import Review from "./Common/Details/Review"
 import NavBar from "./navBar"
 import SingleCat from "./Landing/SingleCat"
 import CategoriesTest from "./Tests/CategoriesTest"
+import Shops from "./Shops/Shops"
 
 export {
     Auth,
     Categories,
     Landing,
     Shop,
-    Shops,
     MainTest,
     Profile,
     ReduxTest,
@@ -37,5 +36,6 @@ export {
     AxiosTest,
     NavBar,
     SingleCat,
+    Shops,
     CategoriesTest
 }
