@@ -17,11 +17,13 @@ const router = express.Router()
 //get product = http://localhost:3001/api/v1/products
 router.get('/',allProducts)
 
+//get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
+router.get('/filProduct',filterProducts)
+
 //GET http://localhost:3001/api/v1/products/12345
 router.get('/:id', getProductbyId);
 
-//get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
-router.get('/filProduct',filterProducts)
+
 
 //post product =  http://localhost:3001/api/v1/products
 router.post("/",[

@@ -73,7 +73,8 @@ export const filterProducts=async(req,res)=>{
          msg:"invalid query name"
      })
  }
- const products= await Product.find({name:name})
+
+ const products= await Product.find({name: name.toLowerCase()})
  if(products.length===0){
      return res.status(400).json({
          msg:"not found Products"
