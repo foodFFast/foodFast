@@ -4,6 +4,10 @@ const randomImg =
     "https://orlandoinformer.com/wp-content/uploads/2014/07/ollivanders-wand-shop-universal-studios-florida-8211-oi.jpg"
 
 export const StyledShop = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .banner {
         width: 100%;
         height: 20rem;
@@ -24,10 +28,10 @@ export const StyledShop = styled.div`
     .info {
         display: flex;
         justify-content: center;
-        gap: 1rem;
+        gap: 2rem;
 
         width: 100%;
-
+        font-size: 1.25rem;
         padding: 1rem 0;
 
         background-color: ${({ theme }) => theme.colors.main};
@@ -38,5 +42,12 @@ export const StyledShop = styled.div`
             align-items: center;
             gap: 0.25rem;
         }
+    }
+
+    .products {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        gap: 0.25rem;
     }
 `

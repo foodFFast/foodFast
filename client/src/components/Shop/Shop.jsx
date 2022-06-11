@@ -5,6 +5,7 @@ import { StyledShop } from "./Shop.styled"
 import { FaRegClock, FaMapMarkerAlt, FaStar } from "react-icons/fa"
 import { fetchShopById } from "../../redux/actions/async"
 import { useEffect } from "react"
+import ProductCard from "./ProductCard/ProductCard"
 
 const Shop = () => {
     const { idShop } = useParams()
@@ -36,6 +37,11 @@ const Shop = () => {
                     <FaStar />
                     {shop.score} / 5
                 </span>
+            </div>
+            <div className="products">
+                {shop.productId.map((p) => (
+                    <ProductCard key={p._id} product={p} />
+                ))}
             </div>
             <Link to="products">Ver todos los productos del local</Link> <br />
             <Link to="reviews">Ver todas las reseñas del local</Link> <br />
