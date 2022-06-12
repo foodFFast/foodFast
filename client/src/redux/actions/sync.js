@@ -1,5 +1,3 @@
-import { RESET_PRODUCTS, SWITCH_THEME } from "./types"
-
-export const resetProducts = () => ({ type: RESET_PRODUCTS })
+import { SWITCH_THEME } from "./types"
 
 export const switchTheme = () => ({ type: SWITCH_THEME })

@@ -3,8 +3,7 @@ import {
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
     FILTER_PRODUCTS,
-    FIND_PRODUCT_BY_ID,
-    RESET_PRODUCTS
+    FIND_PRODUCT_BY_ID
 } from "../actions/types"
 
 const initialState = {
@@ -56,12 +55,6 @@ const main = (state = initialState, action) => {
             newState.products.filtered = []
             !!action.payload.length &&
                 (newState.products.filtered = [...action.payload])
-            break
-
-        case RESET_PRODUCTS:
-            newState.products.all = []
-            newState.products.filtered = []
-            newState.categories.all = []
             break
 
         case FIND_PRODUCT_BY_ID:
