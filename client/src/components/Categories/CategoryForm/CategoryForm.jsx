@@ -8,7 +8,7 @@ import {
     postCategory
 } from "../../../redux/actions/async"
 
-const CategoriesTest = () => {
+const CategoryForm = () => {
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.main.categories.all)
 
@@ -67,4 +67,4 @@ const CategoriesTest = () => {
     )
 }
 
-export default CategoriesTest
+export default CategoryForm

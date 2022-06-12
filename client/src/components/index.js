@@ -8,17 +8,19 @@ import MainTest from "./Tests/MainTest"
 import ReduxTest from "./Tests/ReduxTest"
 
 // User
-import Dashboard from "./User/Dashboard"
+import Dashboard from "./User/Dashboard/Dashboard"
 import Auth from "./User/Auth"
 import Profile from "./User/Profile"
 
 // Products
 import Products from "./Products/Products"
 import DetailProduct from "./Products/DetailProduct/DetailProduct"
+import ProductForm from "./Products/ProductForm/ProductForm"
 
 // Categories
 import Categories from "./Categories/Categories"
 import DetailCategory from "./Categories/DetailCategory/DetailCategoty"
+import CategoryForm from "./Categories/CategoryForm/CategoryForm"
 
 // Orders
 import Orders from "./Orders/Orders"
@@ -45,5 +47,7 @@ export {
     DetailCategory,
     DetailProduct,
     Reviews,
-    DetailReview
+    DetailReview,
+    ProductForm,
+    CategoryForm
 }

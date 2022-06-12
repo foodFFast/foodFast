@@ -10,6 +10,7 @@ import {
     AxiosTest,
     Categories,
     CategoriesTest,
+    CategoryForm,
     Dashboard,
     DetailCategory,
     DetailOrder,
@@ -19,6 +20,7 @@ import {
     MainTest,
     NavBar,
     Orders,
+    ProductForm,
     Products,
     Profile,
     ReduxTest,
@@ -53,8 +55,16 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Landing />} />
 
-                        <Route path="/dashboard">
+                        <Route path="dashboard">
                             <Route index element={<Dashboard />} />
+                            <Route
+                                path="createProduct"
+                                element={<ProductForm />}
+                            />
+                            <Route
+                                path="createCategory"
+                                element={<CategoryForm />}
+                            />
                         </Route>
 
                         <Route path="products">
