@@ -29,7 +29,6 @@ const Products = () => {
                             <Link
                                 to={`/categories/${c._id}`}
                                 key={c._id}
-                                onClick={() => console.log("A implementar")}
                                 className="category"
                             >
                                 {c.name}
