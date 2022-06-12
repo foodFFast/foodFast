@@ -18,7 +18,7 @@ const baseUrl = `http://localhost:3001/api/v1`
 const fetch = (url, type) => (dispatch) =>
     axios
         .get(url)
-        .then((res) => dispatch({ type: type, payload: res.data.products }))
+        .then((res) => dispatch({ type: type, payload: res.data }))
         .catch((err) => {
             console.log(`error en ${type} \n url = ${url} \n mensaje = ${err}`)
             dispatch({ type: ERROR, payload: err })
@@ -50,8 +50,7 @@ export const fetchProductsByCat = (cat) =>
     fetch(`${baseUrl}/categories/category?name=${cat}`, FILTER_PRODUCTS)
 
 export const searchProduct = (name) => 
-    fetch(`${baseUrl}/products/filProduct?name=${name}`, SEARCH_PRODUCT)
-
+    fetch(`${baseUrl}/products?name=${name}`, SEARCH_PRODUCT)
 
 
 

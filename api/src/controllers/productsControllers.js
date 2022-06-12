@@ -86,9 +86,8 @@ export const filterProducts = async (req, res) => {
 }
 
 export const postProduct = async (req, res) => {
-    const { storeId, name, ...resto } = req.body
+    const { name, categories, ...resto } = req.body
 
-    const store = await Store.findById(storeId)
 
     const product = await Product.findOne({ name })
     if (product) {
@@ -98,14 +97,11 @@ export const postProduct = async (req, res) => {
     }
     const data = {
         ...resto,
-        storeId: store._id,
-        name
+        name,
+        categories: categories
     }
     const newProduct = new Product(data)
     await newProduct.save()
-    store.productId = store.productId.concat(newProduct._id)
-    await store.save()
-
     res.status(201).json({
         msg: "Producto creado con éxito"
     })

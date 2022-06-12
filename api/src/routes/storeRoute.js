@@ -3,7 +3,7 @@ import { check } from 'express-validator';
 import { validarCampos } from '../../middlewares/validar-campo.js';
 
 import {allStore, postStore, getStore} from '../controllers/storeControllers.js'
-import fileUpload from '../../middlewares/imgStoreCapter.js';
+import fileUpload from '../../middlewares/imgCategoryCapter.js';
 
 const router = express.Router()
 
@@ -20,11 +20,6 @@ router.post('/',[
     validarCampos
 ],postStore)
 
-//postIMG  http://localhost:3001/api/v1/store/image
-router.post("/image", fileUpload,(req,res)=> {
-    const url = `http://localhost:3001/imagesStore/${req.file.filename}`
-    res.json({img: url})
-})
 
 
 export default router;

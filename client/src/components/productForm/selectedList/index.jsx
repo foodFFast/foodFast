@@ -1,23 +1,25 @@
 import React from "react";
 import styles from "./select.module.scss"
-
+import {useSelector} from "react-redux"
 const categoryTest = ["Main Dish", "Drinks", "Apperitives"]
 
 export default function SelectedList({setFormCategories, form}) {
+    const categories = useSelector(state=> state.main.categories.all)
 
     const handleChange = (e)=> {
         let value = e.target.value;
-        let coincidence = form.tags.find(el=> el === value)
+        let coincidence = form.categories.find(el=> el === value)
         if(!coincidence) {
-            setFormCategories(prev=> ({...prev, tags: [...prev.tags, value]}))
+            setFormCategories(prev=> ({...prev, categories: [...prev.categories, value]}))
         } 
     }
 
     return(
     <section className={styles.container}>
+        {console.log(categories)}
         <select onChange={handleChange} className={styles.selected}>
-            <option value={""} className={styles.option}>--Select Tags--</option>
-            {categoryTest.map(el=> <option key={el} value={el} className={styles.option}>{el}</option>)}
+            <option value={""} className={styles.option}>--Select Categories--</option>
+            {categories.map(el=> <option key={el._id} value={el.name} className={styles.option}>{el.name}</option>)}
 
         </select>
 

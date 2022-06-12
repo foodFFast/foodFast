@@ -6,16 +6,24 @@ import { deleteProduct,
     putProduct,upDate, 
     allProducts, postProduct, 
     filterProducts, 
-    getProductbyId} from '../controllers/productsControllers.js';
+    getProductbyId,
+    getProduct} from '../controllers/productsControllers.js';
 
 import fileUpload from '../../middlewares/imgProductsCapter.js';
 
 
 const router = express.Router()
 
+//GET http://localhost:3001/api/v1/products?filter=category&filterValue=cafeteria&filterOrder=price&sortOrder=-1
+router.get('/', getProduct);
 
+//DEPRECADO
 //get product = http://localhost:3001/api/v1/products
-router.get('/',allProducts)
+//router.get('/',allProducts)
+
+//DEPRECADO
+//get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
+//router.get('/filProduct',filterProducts)
 
 //get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
 router.get('/filProduct',filterProducts)
@@ -23,13 +31,9 @@ router.get('/filProduct',filterProducts)
 //GET http://localhost:3001/api/v1/products/12345
 router.get('/:id', getProductbyId);
 
-
-
 //post product =  http://localhost:3001/api/v1/products
 router.post("/",[
     check("name","El name es obligatorio").not().isEmpty(), 
-    check("category","La category es obligatorio").not().isEmpty(), 
-    check("storeId","No es un id válido").isMongoId(),
     validarCampos
 ],postProduct)
 

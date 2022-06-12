@@ -5,11 +5,12 @@ import { useState } from "react";
 import SingleProductCard from "./singleCard";
 import FilterBar from "../filterBar";
 import { FilterContainer, CardsContainer } from "./displayElements";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllProducts } from "../../redux/actions/async";
+import { useSelector } from "react-redux";
+
 
 export default function DisplayProducts() {
-    const allProducts = useSelector((state) => state.main.products.all)
+    const allProducts = useSelector((state) => state.main.products.all);
+    const filterProducts = useSelector((state)=> state.main.products.filtered);
 
   return (
   <GlobalContainer>
@@ -17,8 +18,9 @@ export default function DisplayProducts() {
        <FilterBar />
     </FilterContainer>
     <CardsContainer >
-      {allProducts && allProducts.map(p=> <SingleProductCard 
-      key={p._id} id={p._id} name={p.name} price={p.price} img={p.img}/>)}
+      {filterProducts.length ===0 ? allProducts.map(p=> <SingleProductCard 
+      key={p._id} id={p._id} name={p.name} price={p.price} img={p.img}/>): filterProducts.map(p=> <SingleProductCard 
+        key={p._id} id={p._id} name={p.name} price={p.price} img={p.img}/>)}
     </CardsContainer>
   </GlobalContainer>
   )

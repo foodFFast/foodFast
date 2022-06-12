@@ -32,7 +32,7 @@ import { useDispatch } from "react-redux"
 
 import CategoriesForm from "./components/categoryForm"
 import ProductForm from "./components/productForm"
-import StoreForm from "./components/storeForm"
+import CategoryFormV2 from "./components/categoryFormV2"
 import DetailProduct from "./components/DetailProduct"
 import DisplayProducts from "./components/DisplayProducts"
 
@@ -100,8 +100,8 @@ function App() {
                                 />
                             </Route>
                              <Route path="createCategories/:id" element={<CategoriesForm />}/>
-                            <Route path="createProduct/:storeID/:category" element={<ProductForm />}/>
-                            <Route path="createStore" element={<StoreForm />} />
+                            <Route path="createProduct" element={<ProductForm />}/>
+                            <Route path="createCategory" element={<CategoryFormV2 />} />
                             <Route path="product/:productID" element={<DetailProduct/>}/>
                             <Route path="products" element={<DisplayProducts />}/>
                         </Route>

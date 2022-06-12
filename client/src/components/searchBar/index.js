@@ -11,6 +11,7 @@ export default function SearchBar(){
     
     const handleChange = (e)=> {
         setInput(e.target.value)
+        dispatch(searchProduct(e.target.value))
     }
 
     const handleSubmit = ()=> {

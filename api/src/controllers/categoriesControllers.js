@@ -31,11 +31,11 @@ export const category = async (req, res) => {
 
 export const postCategory = async (req, res) => {
     try {
-        const { name } = req.body
+        const { name, description, img } = req.body
         let exists = await Categories.find({ name: name })
         if (!exists.length) {
             const myCategory = new Categories({
-                name: name
+                name, description, img
             })
             await myCategory.save()
             res.status(201).send("categoría creada exitosamente")

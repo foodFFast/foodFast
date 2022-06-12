@@ -88,7 +88,7 @@ const main = (state = initialState, action) => {
             break
 
         case SEARCH_PRODUCT:
-            newState.products.filtered = [action.payload]
+            newState.products.filtered = action.payload
             break
             
         case RESET_PRODUCTS:

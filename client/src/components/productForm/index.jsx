@@ -21,31 +21,26 @@ import { validateForm } from "./validateForm";
 import SelectedList from "./selectedList";
 import {CgUnavailable} from "react-icons/cg"
 import {MdOutlineEventAvailable} from "react-icons/md"
-import {useParams} from "react-router-dom"
 import { useEffect } from "react";
 
 const initialForm = {
-  storeID: "",
   name: "",
   description: "",
   price: 0,
   stock: 0,
-  category: "",
+  categories: [],
   img: null,
-  tags: [],
 };
 
 export default function ProductForm() {
   // Usando el hook personalizado
   const { form, handleChange, errors, setForm,  isAvailable, handleSubmit } = useForm(initialForm, validateForm);
   
-  const [newTag, setNewTag] = useState(""); 
+  const [newCategory, setNewCategory] = useState(""); 
   const [file, setFile] = useState(null); 
-  
-  const { storeID, category } = useParams();
 
   useEffect(()=> {
-    setForm({...form, storeID, category})
+    setForm({...form})
   }, [])
 
   const handleChangeFile = (e)=> {
@@ -54,19 +49,19 @@ export default function ProductForm() {
   }
 
   const handleAddTag = ()=> {
-    if(newTag !== "") {
-      setForm({...form, tags: [...form.tags, newTag]})
-      setNewTag("")
+    if(newCategory !== "") {
+      setForm({...form, tags: [...form.tags, setNewCategory]})
+      setNewCategory("")
     }
   }
 
   const handleChangeTag = (e) => {
     let value = e.target.value; 
-    setNewTag(value)
+    setNewCategory(value)
   }
 
   const handleDeleteCategory = (value)=> {
-    setForm({...form, tags: form.tags.filter(el=> el !== value)})
+    setForm({...form, categories: form.categories.filter(el=> el !== value)})
   }
   
   return (
@@ -115,13 +110,13 @@ export default function ProductForm() {
 
       <SecondColumnContainer>
         <InputContainer>
-          <Label>Tags:</Label>
+          <Label>Categories:</Label>
           <SelectedList setFormCategories={setForm} form={form}/>
-            <InputSimple type={"text"} name="tags" value={newTag} onChange={handleChangeTag}/>  
+            <InputSimple type={"text"} name="categories" value={newCategory} onChange={handleChangeTag}/>  
             <button id="addTag" onClick={handleAddTag}>Add new</button>
           <TagsProduct>
             Tags for this product:
-            {form.tags.map(el=> 
+            {form.categories.map(el=> 
               <TagCard key={el}>
                 <div id="tag">{el}</div>
                 <div id="button">

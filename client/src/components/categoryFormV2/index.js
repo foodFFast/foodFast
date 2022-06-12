@@ -1,15 +1,14 @@
 import React, {  useState } from "react"
 import { GlobalContainer, InputContainer, InputFiled, InputSimple, Label, MainContainer } from "../productForm/formElements"
-import styles from "./store.module.scss"; 
+import styles from "./category.module.scss"; 
 import {GrFormNextLink} from "react-icons/gr";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-export default function StoreForm(){
+export default function CategoryFormV2(){
     // ruta
-    // http://localhost:3001/api/v1/store
+    // http://localhost:3001/api/v1/categories
     const [input, setInput]= useState({name:"", description: ""})
-    const [storeID, setStoreID] = useState(null);
     const [isCreated, setIsCreated] = useState(false); 
     const [file, setFile] = useState(null); 
 
@@ -27,23 +26,22 @@ export default function StoreForm(){
             if(!file) alert("You must upload a image") 
             else {
                 const formdata = new FormData();
-                formdata.append('imageStore', file);
+                formdata.append('imageCategory', file);
 
-                fetch("http://localhost:3001/api/v1/store/image", {
+                fetch("http://localhost:3001/api/v1/categories/image", {
                 method: 'POST',
                 body: formdata
                 }).then(res=> res.json())
                 .then(json=> 
           
                 {
-                return axios.post('http://localhost:3001/api/v1/store', {
+                return axios.post('http://localhost:3001/api/v1/categories', {
                     name: input.name,
                     description: input.description, 
                     img: json.img
                     })}
               ).then(json=> {       
                 setIsCreated(true)
-                setStoreID(json.data.newStore._id)
                 document.getElementById("imageStore").value = null; 
                 setInput({name:"", description: ""})
             })
@@ -59,7 +57,7 @@ export default function StoreForm(){
         <GlobalContainer>
             <MainContainer id={styles.MainContainer}>
                 <InputContainer>
-                    <Label>Store Name:</Label>
+                    <Label>Category Name:</Label>
                     <InputSimple onChange={handleChange} type={"text"} name="name" value={input.name}required/>
                 </InputContainer>
 
@@ -70,7 +68,7 @@ export default function StoreForm(){
                 
                 <InputContainer>
                     <Label>Image:</Label>
-                    <InputFiled type={"file"} onChange={handleChangeFile} id="imageStore" name="imageStore"/>
+                    <InputFiled type={"file"} onChange={handleChangeFile} id="imageCategory" name="imageCategory"/>
                 </InputContainer>    
 
                 <div>
@@ -79,7 +77,7 @@ export default function StoreForm(){
                     </button> 
                     
                     {isCreated && <div id={styles.iconContainer}>
-                        <Link to={`/createCategories/${storeID}`}>
+                        <Link to={`/createProduct`}>
                             <GrFormNextLink />
                         </Link>   
                     </div>}          
