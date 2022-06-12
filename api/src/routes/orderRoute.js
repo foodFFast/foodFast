@@ -4,7 +4,8 @@ import {
     deleteCompletedOrders,
     deleteOrderById,
     getAllOrders, 
-    postOrder} from '../controllers/orderControllers.js'
+    postOrder,
+    updateOrderStatus} from '../controllers/orderControllers.js'
 import { validarCampos } from '../../middlewares/validar-campo.js';
 
 const router = express.Router()
@@ -16,16 +17,17 @@ router.post('/',[
     validarCampos
 ],postOrder);
 
-//GET http://localhost:3001/api/v1/order
+//GET http://localhost:3001/api/v1/orders
 router.get("/",getAllOrders);
 
-//DELETE http://localhost:3001/api/v1/order
+//DELETE http://localhost:3001/api/v1/orders
 router.delete('/', deleteCompletedOrders)
 
-//DELETE http://localhost:3001/api/v1/order/"ObjetId de orden"
+//DELETE http://localhost:3001/api/v1/orders/"ObjetId de orden"
 router.delete('/:id', deleteOrderById)
 
-
+//PUT http://localhost:3001/api/v1/orders?id=${orderId}&status=${orderStatus}
+router.put('/', updateOrderStatus)
 
 
 export default router;
