@@ -12,6 +12,7 @@ export const FETCH_CATEGORIES = "fetch_categories"
 export const FETCH_PRODUCTS = "fetch_products"
 export const FILTER_PRODUCTS = "filter_products"
 export const RESET_PRODUCTS = "reset_products"
+export const FIND_PRODUCT_BY_ID = "find_product_by_id"
 
 export const FETCH_SHOPS = "fetch_shops"
 export const FIND_SHOP_BY_ID = "find_shop_by_id"

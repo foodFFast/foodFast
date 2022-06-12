@@ -7,6 +7,7 @@ import {
     FETCH_PRODUCTS,
     FETCH_SHOPS,
     FILTER_PRODUCTS,
+    FIND_PRODUCT_BY_ID,
     FIND_SHOP_BY_ID
 } from "./types"
 
@@ -47,6 +48,9 @@ export const fetchAllProducts = () =>
 
 export const fetchProductsByCat = (cat) =>
     fetch(`${baseUrl}/categories/category?name=${cat}`, FILTER_PRODUCTS)
+
+export const findProductById = (id) =>
+    fetch(`${baseUrl}/products/${id}`, FIND_PRODUCT_BY_ID)
 
 // CATEGORIES
 
