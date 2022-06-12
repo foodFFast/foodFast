@@ -13,6 +13,7 @@ export const FETCH_PRODUCTS = "fetch_products"
 export const FILTER_PRODUCTS = "filter_products"
 export const RESET_PRODUCTS = "reset_products"
 export const FIND_PRODUCT_BY_ID = "find_product_by_id"
+export const NEWFILTER_PRODUCTS = "newfilter_products"
 
 export const FETCH_SHOPS = "fetch_shops"
 

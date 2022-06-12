@@ -6,17 +6,16 @@ import { FilterContainer, CardsContainer } from "./displayElements";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { clean_categories, clean_products } from "../../redux/actions/sync";
-import { searchCategory, searchProduct } from "../../redux/actions/async";
+import { newFilterProduct, searchCategory, searchProduct } from "../../redux/actions/async";
 
 
 export default function DisplayProducts() {
     const filterProducts = useSelector((state)=> state.main.products.filtered);
     const dispatch = useDispatch(); 
 
-
+   
     useEffect(()=> {
-      dispatch(searchProduct(""))
-      dispatch(searchCategory(""))
+      dispatch(newFilterProduct("price", "1"))
       return () => {dispatch(clean_products); dispatch(clean_categories)}
   }, [])
   return (

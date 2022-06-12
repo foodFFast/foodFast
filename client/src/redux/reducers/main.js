@@ -12,6 +12,7 @@ import {
     FIND_PRODUCT_BY_ID,
     FIND_SHOP_BY_ID,
     MAIN_TEST,
+    NEWFILTER_PRODUCTS,
     RESET_PRODUCTS,
     RESET_TESTS,
     SEARCH_CATEGORY,
@@ -115,13 +116,10 @@ const main = (state = initialState, action) => {
         // PRODUCTS
 
         case FETCH_PRODUCTS:
-            // let combinedProducts = [...state.products.all, ...action.payload]
-            // let uniqueProducts = [
-            //     ...new Map(
-            //         combinedProducts.map((prod) => [prod._id, prod])
-            //     ).values()
-            // ]
             newState.products.all = action.payload
+            newState.products.filtered = action.payload
+            break
+        case NEWFILTER_PRODUCTS:
             newState.products.filtered = action.payload
             break
 

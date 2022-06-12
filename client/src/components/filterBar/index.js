@@ -7,7 +7,7 @@ import {FaUserAlt, FaShoppingCart} from "react-icons/fa";
 import Select from "react-select"; 
 import { useDispatch, useSelector } from "react-redux";
 import { filterbyCategories } from "../../redux/actions/sync";
-import { fetchAllProducts } from "../../redux/actions/async";
+import { fetchAllProducts, newFilterProduct } from "../../redux/actions/async";
 const OptionsTest = [{
     value: "test1", label: "test1"
 }, {
@@ -20,6 +20,7 @@ export default function FilterBar () {
     let categories = useSelector((state) => state.main.categories.filtered);
     const dispatch = useDispatch(); 
     const [categoriesfilter, setCategoriesfilter] = useState([]);
+    const [price, setPrice] = useState("1")
 
     let getCategories = () => {
         if(categories.length !== 0) {
@@ -28,16 +29,26 @@ export default function FilterBar () {
         return []
     }
 
+    const PricesValues = [{
+        value: "1", label: "Ascendente"
+    },{
+        value: "-1", label: "Descendente"
+    }
+
+]
     const handleCleanFilter = () => {
         setCategoriesfilter([])
         dispatch(fetchAllProducts())
         setIsOpen(false)
     }
-
+    const handleChangePrice = (e) => {
+        setPrice(e.value)
+    }
     const handleFilter = (data) => {
         setCategoriesfilter(data.map(el=> el.value))
     }
     const handleApplyFilter = () => {
+        dispatch(newFilterProduct("price",price))
         dispatch(filterbyCategories(categoriesfilter))
         setIsOpen(false)
     }
@@ -72,7 +83,7 @@ export default function FilterBar () {
                             <MyH4>
                             By price:
                             </MyH4>
-                            <Select options={OptionsTest}/>
+                            <Select options={PricesValues} onChange={handleChangePrice}/>
                         </ListContainer>
 
                         <ListContainer>
