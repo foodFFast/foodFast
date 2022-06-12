@@ -11,7 +11,6 @@ const Landing = () => {
             <SearchBar className="SearchBar" />
             <LocationBar className="LocationBar" />
             <Banner />
-            <Link to="tests">Tests</Link> <br />
             <Link to="dashboard">Ir al dashboard</Link> <br />
             <Link to="categories">Ver todas las categorias</Link> <br />
             <Link to="products">Ver todos los productos</Link> <br />
