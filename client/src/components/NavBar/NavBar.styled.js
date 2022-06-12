@@ -64,6 +64,7 @@ export const ButtonsContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.background};
     border-bottom: 1px solid black;
     margin-bottom: 1.5rem;
+
 `
 export const LoginRegisterButton = styled.button`
     height: 70%;
@@ -88,6 +89,11 @@ export const ListRoutes = styled.ul`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    a{
+        text-decoration: none;
+        color: black;
+        width: 100%;
+    }
 `
 
 export const RouteItem = styled.li`
@@ -101,6 +107,7 @@ export const RouteItem = styled.li`
     border-top: 1px solid red;
     list-style: none;
     height: 3em;
+
     &:hover {
         cursor: pointer;
         outline: 3px solid red;

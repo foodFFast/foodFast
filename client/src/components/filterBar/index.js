@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "../searchBar/index"
 import Modal from "react-modal"; 
 import {AiOutlineFilter, AiFillCloseCircle} from "react-icons/ai"
 import { FilterContainer, GlobalContainer, SearchContainer, UserContainer, ListContainer, MyH4, IconClose, FilterButton, ButtonContainer } from "./filterElements";
 import {FaUserAlt, FaShoppingCart} from "react-icons/fa"; 
 import Select from "react-select"; 
+import { useDispatch, useSelector } from "react-redux";
+import { filterbyCategories } from "../../redux/actions/sync";
+import { fetchAllProducts } from "../../redux/actions/async";
 const OptionsTest = [{
     value: "test1", label: "test1"
 }, {
@@ -14,12 +17,39 @@ const OptionsTest = [{
 }]
 export default function FilterBar () {
     const [isOpen, setIsOpen] = useState(false)
+    let categories = useSelector((state) => state.main.categories.filtered);
+    const dispatch = useDispatch(); 
+    const [categoriesfilter, setCategoriesfilter] = useState([]);
+
+    let getCategories = () => {
+        if(categories.length !== 0) {
+            return categories.map(el=> {return {value: el.name, label: el.name}})
+        }
+        return []
+    }
+
+    const handleCleanFilter = () => {
+        setCategoriesfilter([])
+        dispatch(fetchAllProducts())
+        setIsOpen(false)
+    }
+
+    const handleFilter = (data) => {
+        setCategoriesfilter(data.map(el=> el.value))
+    }
+    const handleApplyFilter = () => {
+        dispatch(filterbyCategories(categoriesfilter))
+        setIsOpen(false)
+    }
     const handleOpen = ()=> {
         setIsOpen(true)
     }
     const handleClose = ()=> {
         setIsOpen(false)
     }
+    useEffect(()=>{
+        Modal.setAppElement('body');
+    },[])
     return(
     <GlobalContainer>
         <FilterContainer>
@@ -35,7 +65,7 @@ export default function FilterBar () {
                             <MyH4>
                             By category:
                             </MyH4>
-                            <Select options={OptionsTest} />
+                            <Select options={getCategories()} isMulti onChange={handleFilter}/>
                         </ListContainer>
 
                         <ListContainer>
@@ -60,7 +90,8 @@ export default function FilterBar () {
                         </ListContainer>
 
                         <ButtonContainer>
-                            <FilterButton>Apply filters</FilterButton>
+                            <FilterButton onClick={handleApplyFilter}>Apply filters</FilterButton>
+                            <FilterButton onClick={handleCleanFilter}>Clean Filter</FilterButton>
                         </ButtonContainer>
             </Modal>
         </FilterContainer>

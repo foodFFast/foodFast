@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const GlobalContainer = styled.section`
     display: flex;
-    position: absolute;
     width: 50%;
     top: 55vh;
     left: 24vw;

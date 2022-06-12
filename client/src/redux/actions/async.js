@@ -9,7 +9,8 @@ import {
     FILTER_PRODUCTS,
     SEARCH_PRODUCT,
     FIND_PRODUCT_BY_ID,
-    FIND_SHOP_BY_ID
+    FIND_SHOP_BY_ID,
+    SEARCH_CATEGORY
 } from "./types"
 
 // FUNCTIONS AND CONSTS
@@ -61,6 +62,9 @@ export const findProductById = (id) =>
 
 export const fetchAllCategories = () =>
     fetch(`${baseUrl}/categories`, FETCH_CATEGORIES)
+   
+export const searchCategory = (name) => 
+    fetch(`http://localhost:3001/api/v1/categories/category?name=${name}`, SEARCH_CATEGORY)
 
 export const postCategory = (name) => (dispatch) =>
     axios

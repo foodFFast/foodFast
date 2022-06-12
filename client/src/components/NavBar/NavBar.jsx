@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import {
     GlobalContainer,
     MainIconContainer,
@@ -64,27 +64,28 @@ const NavBar = () => {
                 <ListRoutes>
                     <hr />
                     <h3>CONSUMER</h3>
-                    <Link to="/">
+                    <NavLink to="/" onClick={handleSelectRoute}>
                         <RouteItem>Home</RouteItem>
-                    </Link>
-                    <RouteItem>Categories</RouteItem>
+                    </NavLink>
+
+                    <NavLink to="/products" onClick={handleSelectRoute}>
+                        <RouteItem>Products</RouteItem>
+                    </NavLink>
+
+
                     <RouteItem>My orders</RouteItem>
                     <RouteItem>Oferts</RouteItem>
+                    <RouteItem>Contact</RouteItem>
                     <hr />
 
                     <hr />
                     <h3>SELLER</h3>
-                    <Link to="/createStore">
+                    <NavLink to="/dashboard" onClick={handleSelectRoute}>
                         <RouteItem onClick={handleSelectRoute}>
-                            Register a restaurant
+                            DashBoard
                         </RouteItem>
-                    </Link>
+                    </NavLink>
 
-                    <Link to={"/createProduct"}>
-                        <RouteItem onClick={handleSelectRoute}>
-                            Create new product
-                        </RouteItem>
-                    </Link>
                     <RouteItem>Contact</RouteItem>
                     <hr />
                 </ListRoutes>

@@ -27,6 +27,7 @@ import {
     Reviews
 } from "./components"
 
+
 const ScrollToTop = (props) => {
     const location = useLocation()
     useEffect(() => {
@@ -54,7 +55,9 @@ function App() {
 
                     <Routes>
                         <Route path="/" element={<Landing />} />
-                        <Route path="/productsTest" element={<DisplayProducts />} />
+                        <Route path="/products" element={<DisplayProducts />} />
+                        <Route path="/products/:idProduct" element={<DetailProduct />} />
+                        <Route path="/category/:idCategory" element={<DetailCategory />}/>
                         <Route path="dashboard">
                             <Route index element={<Dashboard />} />
                             <Route
@@ -67,7 +70,7 @@ function App() {
                             />
                         </Route>
 
-                        <Route path="products">
+                        <Route path="/dashboard/products">
                             <Route index element={<Products />} />
                             <Route
                                 path=":idProduct"

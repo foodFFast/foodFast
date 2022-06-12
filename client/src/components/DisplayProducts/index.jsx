@@ -1,25 +1,31 @@
 import React from "react";
 import {GlobalContainer,} from "./displayElements";
-import { useEffect } from "react";
-import { useState } from "react";
 import SingleProductCard from "./singleCard";
 import FilterBar from "../filterBar";
 import { FilterContainer, CardsContainer } from "./displayElements";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { clean_categories, clean_products } from "../../redux/actions/sync";
+import { searchCategory, searchProduct } from "../../redux/actions/async";
 
 
 export default function DisplayProducts() {
-    const allProducts = useSelector((state) => state.main.products.all);
     const filterProducts = useSelector((state)=> state.main.products.filtered);
+    const dispatch = useDispatch(); 
 
+
+    useEffect(()=> {
+      dispatch(searchProduct(""))
+      dispatch(searchCategory(""))
+      return () => {dispatch(clean_products); dispatch(clean_categories)}
+  }, [])
   return (
   <GlobalContainer>
     <FilterContainer>
        <FilterBar />
     </FilterContainer>
     <CardsContainer >
-      {filterProducts.length ===0 ? allProducts.map(p=> <SingleProductCard 
-      key={p._id} id={p._id} name={p.name} price={p.price} img={p.img}/>): filterProducts.map(p=> <SingleProductCard 
+      {filterProducts.length ===0 ? <div>Not results found</div>: filterProducts.map(p=> <SingleProductCard 
         key={p._id} id={p._id} name={p.name} price={p.price} img={p.img}/>)}
     </CardsContainer>
   </GlobalContainer>

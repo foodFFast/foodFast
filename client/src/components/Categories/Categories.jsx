@@ -8,7 +8,7 @@ import { StyledCategories } from "./Categories.styled"
 const Categories = () => {
     const theme = useSelector((state) => state.theme.selectedTheme)
 
-    const categories = useSelector((state) => state.main.categories.all)
+    const categories = useSelector((state) => state.main.categories.filtered)
 
     return (
         <StyledCategories theme={theme}>

@@ -70,19 +70,19 @@ const DetailProduct = () => {
                             </ListItem>
                         </div>
 
-                        <ListItem>
+                        {/* <ListItem>
                             <Etiqueta>Category:</Etiqueta>
                             <Data>{product.category}</Data>
-                        </ListItem>
+                        </ListItem> */}
 
-                        {/* <ListItem>
-                            <Etiqueta>Tags:</Etiqueta>
+                        <ListItem>
+                            <Etiqueta>Categories:</Etiqueta>
                             <Data>
-                                {product.tags.map((el) => (
-                                    <span>{`  ${el}- `}</span>
+                                {product.categories.map((el, i) => (
+                                    <span key={i}>{`  ${el}- `}</span>
                                 ))}
                             </Data>
-                        </ListItem> */}
+                        </ListItem>
                     </DescriptionContainer>
 
                     <ButtonsContainer>

@@ -19,7 +19,7 @@ export default function SingleProductCard ({id, name, price, img}){
         </TitleDiv>
 
         <ImageContainer > 
-            <Link to={`/product/${id}`}>
+            <Link to={`/products/${id}`}>
                 <img src={img} alt="imagen"/> 
             </Link>
         </ImageContainer>
@@ -30,11 +30,11 @@ export default function SingleProductCard ({id, name, price, img}){
             </PriceContainer>
             <ButtonsContainer>
                 
-                <Link to={`/product/${id}`}>
+                <Link to={`/products/${id}`}>
                     <AiOutlineShoppingCart id="car"/>
                 </Link>
                 
-                <Link to={`/product/${id}`} id="details">
+                <Link to={`/products/${id}`} id="details">
                     <MdReadMore />
                 </Link>
                 

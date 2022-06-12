@@ -18,3 +18,11 @@ export const FETCH_SHOPS = "fetch_shops"
 
 export const SEARCH_PRODUCT = "search_product"
 export const FIND_SHOP_BY_ID = "find_shop_by_id"
+export const SEARCH_CATEGORY = "search_category"
+
+export const CLEAN_PRODUCTS = "clean_products"
+export const CLEAN_CATEGORIES = "clean_categories"
+
+export const DELETE_CATEGORY = "delete_category"
+export const DELETE_PRODUCT = "delete_product"
+export const FILTER_BY_CATEGORY = "filter_by_category"
