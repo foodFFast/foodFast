@@ -1,9 +1,8 @@
 import { useEffect } from "react"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 
-import "./App.module.scss"
 import { fetchAllCategories, fetchAllProducts } from "./redux/actions/async"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import {
     Auth,
@@ -26,6 +25,7 @@ import {
     ReduxTest,
     Reviews
 } from "./components"
+import GlobalStyle from "./GlobalStyles"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -38,6 +38,7 @@ const ScrollToTop = (props) => {
 
 function App() {
     const dispatch = useDispatch()
+    const theme = useSelector((state) => state.theme.selectedTheme)
 
     useEffect(() => {
         dispatch(fetchAllProducts())
@@ -46,6 +47,7 @@ function App() {
 
     return (
         <div className="App">
+            <GlobalStyle theme={theme} />
             <BrowserRouter>
                 <ScrollToTop>
                     <div style={{ zIndex: 10, position: "sticky", top: 0 }}>
