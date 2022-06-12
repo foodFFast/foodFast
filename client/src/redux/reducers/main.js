@@ -4,6 +4,7 @@ import {
     FETCH_PRODUCTS,
     FETCH_SHOPS,
     FILTER_PRODUCTS,
+    FIND_PRODUCT_BY_ID,
     FIND_SHOP_BY_ID,
     MAIN_TEST,
     RESET_PRODUCTS,
@@ -95,6 +96,10 @@ const main = (state = initialState, action) => {
             newState.products.all = []
             newState.products.filtered = []
             newState.categories.all = []
+            break
+
+        case FIND_PRODUCT_BY_ID:
+            newState.products.selected = action.payload
             break
     }
 

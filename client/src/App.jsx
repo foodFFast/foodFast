@@ -1,40 +1,39 @@
 import { useEffect } from "react"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 
-import {
-    MainTest,
-    ReduxTest,
-    Landing,
-    Categories,
-    Shops,
-    Auth,
-    Profile,
-    Shop,
-    Products,
-    Reviews,
-    Dashboard,
-    Orders,
-    Product,
-    Order,
-    Review,
-    AxiosTest,
-    NavBar,
-    SingleCat,
-    CategoriesTest
-} from "./components/index"
 import "./App.module.scss"
-import {
-    fetchAllCategories,
-    fetchAllProducts,
-    fetchAllShops
-} from "./redux/actions/async"
+import { fetchAllCategories, fetchAllProducts } from "./redux/actions/async"
 import { useDispatch } from "react-redux"
 
+<<<<<<< HEAD
 import CategoriesForm from "./components/categoryForm"
 import ProductForm from "./components/productForm"
 import CategoryFormV2 from "./components/categoryFormV2"
 import DetailProduct from "./components/DetailProduct"
 import DisplayProducts from "./components/DisplayProducts"
+=======
+import {
+    Auth,
+    AxiosTest,
+    Categories,
+    CategoriesTest,
+    CategoryForm,
+    Dashboard,
+    DetailCategory,
+    DetailOrder,
+    DetailProduct,
+    DetailReview,
+    Landing,
+    MainTest,
+    NavBar,
+    Orders,
+    ProductForm,
+    Products,
+    Profile,
+    ReduxTest,
+    Reviews
+} from "./components"
+>>>>>>> 9e9eabb8da72d141756611314adb06fe5cb16f45
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -45,32 +44,10 @@ const ScrollToTop = (props) => {
     return <>{props.children}</>
 }
 
-const productsNestedRoutes = () => (
-    <Route path="products">
-        <Route index element={<Products />} />
-        <Route path=":idProduct" element={<Product />} />
-    </Route>
-)
-
-const ordersNestedRoutes = () => (
-    <Route path="orders">
-        <Route index element={<Orders />} />
-        <Route path=":idOrder" element={<Order />} />
-    </Route>
-)
-
-const reviewsNestedRoutes = () => (
-    <Route path="reviews">
-        <Route index element={<Reviews />} />
-        <Route path=":idReview" element={<Review />} />
-    </Route>
-)
-
 function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchAllShops())
         dispatch(fetchAllProducts())
         dispatch(fetchAllCategories())
     }, [dispatch])
@@ -79,49 +56,58 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <ScrollToTop>
-                    {/* <Link to="/">
-                    <h1>Food Fast</h1>
-                    </Link>
-                    <Link to="/auth">Auth</Link> */}
-
                     <div style={{ zIndex: 10, position: "sticky", top: 0 }}>
                         <NavBar />
                     </div>
 
                     <Routes>
-                        <Route path="/">
-                            <Route index element={<Landing />} />
-                            <Route path="shops" element={<Shops />} />
-                            <Route path="categories">
-                                <Route index element={<Categories />} />
-                                <Route
-                                    path=":idCategory"
-                                    element={<SingleCat />}
-                                />
-                            </Route>
-                             <Route path="createCategories/:id" element={<CategoriesForm />}/>
-                            <Route path="createProduct" element={<ProductForm />}/>
-                            <Route path="createCategory" element={<CategoryFormV2 />} />
-                            <Route path="product/:productID" element={<DetailProduct/>}/>
-                            <Route path="products" element={<DisplayProducts />}/>
+                        <Route path="/" element={<Landing />} />
+
+                        <Route path="dashboard">
+                            <Route index element={<Dashboard />} />
+                            <Route
+                                path="createProduct"
+                                element={<ProductForm />}
+                            />
+                            <Route
+                                path="createCategory"
+                                element={<CategoryForm />}
+                            />
+                        </Route>
+
+                        <Route path="products">
+                            <Route index element={<Products />} />
+                            <Route
+                                path=":idProduct"
+                                element={<DetailProduct />}
+                            />
+                        </Route>
+
+                        <Route path="categories">
+                            <Route index element={<Categories />} />
+                            <Route
+                                path=":idCategory"
+                                element={<DetailCategory />}
+                            />
                         </Route>
 
                         <Route path="/auth" element={<Auth />} />
 
                         <Route path="user/:idUser">
                             <Route index element={<Profile />} />
-                            {ordersNestedRoutes()}
-                            {reviewsNestedRoutes()}
-                        </Route>
-
-                        <Route path="shop/:idShop">
-                            <Route index element={<Shop />} />
-                            {productsNestedRoutes()}
-                            {reviewsNestedRoutes()}
-                            <Route path="dashboard">
-                                <Route index element={<Dashboard />} />
-                                {ordersNestedRoutes()}
-                                {productsNestedRoutes()}
+                            <Route path="orders">
+                                <Route index element={<Orders />} />
+                                <Route
+                                    path=":idOrder"
+                                    element={<DetailOrder />}
+                                />
+                            </Route>
+                            <Route path="reviews">
+                                <Route index element={<Reviews />} />
+                                <Route
+                                    path=":idReview"
+                                    element={<DetailReview />}
+                                />
                             </Route>
                         </Route>
 
