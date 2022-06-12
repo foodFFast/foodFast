@@ -26,8 +26,7 @@ export const getProduct=async(req,res)=>{
     }else if(filter || sortOrder || filterValue || filterOrder){
 
         //GET http://localhost:3001/api/v1/products?filter=category&filterValue=cafeteria&filterOrder=price&sortOrder=-1
-
-        
+    
         //const objFilter = {};
         //objFilter["price"] = "123"  ->  { price: '123'}   
         const objFilter = {}
@@ -36,7 +35,7 @@ export const getProduct=async(req,res)=>{
         const objOrder = {}
         objOrder[filterOrder] = sortOrder
 
-        const product = await Product.find(objFilter).sort(objOrder)
+        const product = await Product.find(objFilter).sort(objOrder)  
         return res.json(product.length === 0? "not found product" : product)
         
      } else {
@@ -66,13 +65,12 @@ export const filterProducts=async(req,res)=>{
  })
 }
 
-
 export const postProduct=async(req,res)=>{
 
     const {storeId,name,...resto}=req.body
 
         const store = await Store.findById(storeId)
-  
+        
          const product=await Product.findOne({name})
         if(product){
             return res.status(400).json({
@@ -83,9 +81,6 @@ export const postProduct=async(req,res)=>{
             ...resto,
             storeId: store._id,
             name
-            
-
-        
         }
         const newProduct=new Product(data);
         await newProduct.save()

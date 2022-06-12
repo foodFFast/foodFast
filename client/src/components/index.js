@@ -17,6 +17,7 @@ import Review from "./Common/Details/Review"
 import NavBar from "./navBar"
 import SingleCat from "./Landing/SingleCat"
 import CategoriesTest from "./Tests/CategoriesTest"
+import Home from './Home/Home'
 
 export {
     Auth,
@@ -37,5 +38,6 @@ export {
     AxiosTest,
     NavBar,
     SingleCat,
-    CategoriesTest
+    CategoriesTest,
+    Home,
 }

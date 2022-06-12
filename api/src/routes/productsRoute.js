@@ -2,20 +2,13 @@ import express from 'express';
 
 import { check } from 'express-validator';
 import { validarCampos } from '../../middlewares/validar-campo.js';
-import { deleteProduct,putProduct,upDate, allProducts, postProduct, filterProducts} from '../controllers/productsControllers.js';
-
-
+import { deleteProduct,putProduct,upDate,  postProduct, getProduct} from '../controllers/productsControllers.js';
 
 
 const router = express.Router()
 
-
 //get product = http://localhost:3001/api/v1/products
-
-router.get('/',allProducts)
-
-//get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
-router.get('/filProduct',filterProducts)
+router.get('/',getProduct)
 
 //post product =  http://localhost:3001/api/v1/products
 router.post("/",[
@@ -24,6 +17,9 @@ router.post("/",[
     check("storeId","No es un id válido").isMongoId(),
     validarCampos
 ],postProduct)
+
+//patch product =  http://localhost:3001/api/v1/:id
+router.patch('/:id', upDate)  
 
 //put product = http://localhost:3001/api/v1/products/754325
 router.put("/:id",[
@@ -40,8 +36,6 @@ router.delete("/:id",[
 
 
 
-//patch product =  http://localhost:3001/api/v1/:id
-router.patch('/:id', upDate)
 
 
 
