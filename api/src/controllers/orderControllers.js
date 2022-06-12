@@ -87,6 +87,20 @@ export const deleteCompletedOrders = async (req,res)=>{
     }
 }
 
+//función para Admin, que espera un id para buscar la orden y el nuevo estado por query
+export const updateOrderStatus = async (req,res)=>{
+    try{
+        const {id, status} = req.query;
+        if (!id || !status) return res.json({ error: "query invalid" });
+
+        let resp = await Order.findByIdAndUpdate(id,{$set: {status: status}});
+        console.log("El resp del update es: ",resp);
+        res.send("Estado de orden actualizada.");
+    }catch(e){
+        console.log(e.message);
+        res.status(500).send("Error de servidor en updateOrder.")
+    }
+}
 
 // import Order from "../models/order.js"
 
