@@ -7,8 +7,10 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .App {
-        overflow: hidden;
         height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
     }
 `
 

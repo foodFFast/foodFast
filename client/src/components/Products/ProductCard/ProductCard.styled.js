@@ -13,7 +13,7 @@ export const StyledProductCard = styled(Link)`
         "img description addBtn";
     column-gap: 1rem;
 
-    width: 40rem;
+    /* width: 40rem; */
 
     .img {
         grid-area: img;

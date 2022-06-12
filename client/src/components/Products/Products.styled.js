@@ -1,27 +1,25 @@
 import styled from "styled-components"
 
 export const StyledProducts = styled.div`
-    display: grid;
-    grid-template-columns: 20rem auto;
+    display: flex;
+    overflow: hidden;
 
     .productsContainer {
-        display: flex;
-        flex-wrap: wrap;
-
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
 
         padding: 2rem;
         gap: 1rem;
+
+        width: 100%;
+        overflow-y: auto;
     }
 `
 
 export const StyledSideBar = styled.div`
-    top: 0;
-    position: sticky;
-    max-height: 100vh;
-
     background-color: ${({ theme }) => theme.colors.background};
     box-shadow: 2px 0px 5px 5px rgba(0, 0, 0, 0.2);
+    min-width: 15rem;
 
     display: flex;
     flex-direction: column;

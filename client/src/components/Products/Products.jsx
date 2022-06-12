@@ -15,7 +15,7 @@ const Products = () => {
     return (
         <StyledProducts>
             <StyledSideBar theme={theme}>
-                <span className="title">Locales</span>
+                <span className="title">Productos</span>
 
                 <div className="searchInput">
                     <input type="text" placeholder="Buscar por nombre" />
