@@ -3,7 +3,6 @@ import styled from "styled-components"
 export const StyledDashboard = styled.div`
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 
     .title {
         text-align: center;
@@ -39,7 +38,6 @@ export const StyledDashboard = styled.div`
     .categories {
         display: flex;
         flex-direction: column;
-        overflow: hidden;
 
         .allCategories {
             overflow-y: auto;
@@ -49,7 +47,6 @@ export const StyledDashboard = styled.div`
     .products {
         display: flex;
         flex-direction: column;
-        overflow: hidden;
 
         .allProducts {
             overflow-y: auto;

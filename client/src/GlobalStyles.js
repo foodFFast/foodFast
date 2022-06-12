@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         overflow: hidden;
+
+        & > div {
+            overflow: auto;
+        }
     }
 `
 
