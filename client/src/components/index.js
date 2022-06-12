@@ -1,11 +1,7 @@
+// Components
+
 import NavBar from "./NavBar/NavBar"
 import Landing from "./Landing/Landing"
-
-// Tests
-import AxiosTest from "./Tests/AxiosTest"
-import CategoriesTest from "./Tests/CategoriesTest"
-import MainTest from "./Tests/MainTest"
-import ReduxTest from "./Tests/ReduxTest"
 
 // User
 import Dashboard from "./User/Dashboard/Dashboard"
@@ -31,10 +27,6 @@ import Reviews from "./Reviews/Reviews"
 import DetailReview from "./Reviews/DetailReview/DetailReview"
 
 export {
-    AxiosTest,
-    CategoriesTest,
-    MainTest,
-    ReduxTest,
     NavBar,
     Landing,
     Dashboard,

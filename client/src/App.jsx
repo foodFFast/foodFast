@@ -6,9 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import {
     Auth,
-    AxiosTest,
     Categories,
-    CategoriesTest,
     CategoryForm,
     Dashboard,
     DetailCategory,
@@ -16,13 +14,11 @@ import {
     DetailProduct,
     DetailReview,
     Landing,
-    MainTest,
     NavBar,
     Orders,
     ProductForm,
     Products,
     Profile,
-    ReduxTest,
     Reviews
 } from "./components"
 import GlobalStyle from "./GlobalStyles"
@@ -104,19 +100,6 @@ function App() {
                                 />
                             </Route>
                         </Route>
-
-                        <Route
-                            path="tests"
-                            element={
-                                <>
-                                    <h1>Redux Tests</h1>
-                                    <MainTest />
-                                    <ReduxTest />
-                                    <AxiosTest />
-                                    <CategoriesTest />
-                                </>
-                            }
-                        />
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>
