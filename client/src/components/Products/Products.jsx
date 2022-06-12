@@ -4,6 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai"
 
 import { StyledProducts, StyledSideBar } from "./Products.styled"
 import ProductCard from "./ProductCard/ProductCard"
+import { Link } from "react-router-dom"
 
 const Products = () => {
     const theme = useSelector((state) => state.theme.selectedTheme)
@@ -25,13 +26,14 @@ const Products = () => {
                     <span className="title">Filtrar por categoria</span>
                     <div className="container">
                         {categories.map((c) => (
-                            <button
+                            <Link
+                                to={`/categories/${c._id}`}
                                 key={c._id}
                                 onClick={() => console.log("A implementar")}
                                 className="category"
                             >
                                 {c.name}
-                            </button>
+                            </Link>
                         ))}
                     </div>
                 </div>

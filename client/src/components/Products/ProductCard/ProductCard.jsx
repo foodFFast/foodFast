@@ -18,7 +18,12 @@ const ProductCard = ({ product }) => {
     const theme = useSelector((state) => state.theme.selectedTheme)
 
     return (
-        <StyledProductCard theme={theme} key={_id} to={_id} img={img}>
+        <StyledProductCard
+            theme={theme}
+            key={_id}
+            to={`/products/${_id}`}
+            img={img}
+        >
             <span className="img" img={img} />
             <div className="header">
                 <span className="name">{name}</span>
