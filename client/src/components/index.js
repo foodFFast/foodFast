@@ -20,7 +20,7 @@ import ProductForm from "./Products/ProductForm/ProductForm"
 // Categories
 import Categories from "./Categories/Categories"
 import DetailCategory from "./Categories/DetailCategory/DetailCategoty"
-import CategoryForm from "./Categories/CategoryForm/CategoryForm"
+import CategoryForm from "./Categories/CategoryForm"
 
 // Orders
 import Orders from "./Orders/Orders"

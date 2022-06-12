@@ -4,14 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import "./App.module.scss"
 import { fetchAllCategories, fetchAllProducts } from "./redux/actions/async"
 import { useDispatch } from "react-redux"
-
-<<<<<<< HEAD
-import CategoriesForm from "./components/categoryForm"
-import ProductForm from "./components/productForm"
-import CategoryFormV2 from "./components/categoryFormV2"
-import DetailProduct from "./components/DetailProduct"
-import DisplayProducts from "./components/DisplayProducts"
-=======
+import DisplayProducts from "./components/DisplayProducts/index"
 import {
     Auth,
     AxiosTest,
@@ -33,7 +26,6 @@ import {
     ReduxTest,
     Reviews
 } from "./components"
->>>>>>> 9e9eabb8da72d141756611314adb06fe5cb16f45
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -62,7 +54,7 @@ function App() {
 
                     <Routes>
                         <Route path="/" element={<Landing />} />
-
+                        <Route path="/productsTest" element={<DisplayProducts />} />
                         <Route path="dashboard">
                             <Route index element={<Dashboard />} />
                             <Route

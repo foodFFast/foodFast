@@ -1,11 +1,11 @@
 import React, {  useState } from "react"
-import { GlobalContainer, InputContainer, InputFiled, InputSimple, Label, MainContainer } from "../productForm/formElements"
+import { GlobalContainer, InputContainer, InputFiled, InputSimple, Label, MainContainer } from "../../Products/ProductForm/formElements"
 import styles from "./category.module.scss"; 
 import {GrFormNextLink} from "react-icons/gr";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-export default function CategoryFormV2(){
+export default function CategoryForm(){
     // ruta
     // http://localhost:3001/api/v1/categories
     const [input, setInput]= useState({name:"", description: ""})
