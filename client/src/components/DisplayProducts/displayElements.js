@@ -8,7 +8,7 @@ export const GlobalContainer = styled.section`
 export const FilterContainer = styled.div`
     height: 10vh;
     width: 100%;
-    background-color: rebeccapurple;
+    background-color: white;
 `
 export const CardsContainer = styled.section`
     min-height: 100vh;

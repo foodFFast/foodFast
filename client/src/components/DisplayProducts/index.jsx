@@ -13,7 +13,6 @@ export default function DisplayProducts() {
 
   return (
   <GlobalContainer>
-    {console.log(allProducts)} 
     <FilterContainer>
        <FilterBar />
     </FilterContainer>

@@ -12,6 +12,8 @@ export const SearchIcon = styled.div`
     width: 3rem;
     border-radius: 10px;
     cursor: pointer;
+    height: 2.5rem;
+    margin-left: .4rem;
     svg{
         color: white
     }
