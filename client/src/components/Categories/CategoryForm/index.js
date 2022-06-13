@@ -42,13 +42,15 @@ export default function CategoryForm(){
                     })}
               ).then(json=> {       
                 setIsCreated(true)
-                console.log("Estoy")
+               
+                alert("Category created")
             })
               .catch(err=> console.log(err))
               .finally(err=> {            
                 document.getElementById("imageCategory").value = null; 
-              setInput({name:"", description: ""})})
 
+              setInput({name:"", description: ""})})
+                
             }
 
             
@@ -76,7 +78,7 @@ export default function CategoryForm(){
 
                 <div>
                     <button onClick={handleSubmit} id={styles.createStore}>
-                        CreateStore
+                        Create Category
                     </button> 
                     
                     {isCreated && <div id={styles.iconContainer}>

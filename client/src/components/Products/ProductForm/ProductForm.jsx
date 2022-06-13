@@ -112,8 +112,7 @@ export default function ProductForm() {
         <InputContainer>
           <Label>Categories:</Label>
           <SelectedList setFormCategories={setForm} form={form}/>
-            <InputSimple type={"text"} name="categories" value={newCategory} onChange={handleChangeTag}/>  
-            <button id="addTag" onClick={handleAddTag}>Add new</button>
+         
           <TagsProduct>
             Tags for this product:
             {form.categories.map(el=> 
