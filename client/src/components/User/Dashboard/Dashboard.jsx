@@ -53,12 +53,11 @@ const Dashboard = () => {
                         ) : (
                             filterCategories.map((c) => (
                                 <div key={c._id}>
-                                    <Link to={`/categories/${c._id}`}>
-                                        <CategoryCard
-                                            key={c._id}
-                                            category={c}
-                                        />
-                                    </Link>
+                                    <CategoryCard
+                                        key={c._id}
+                                        category={c}
+                                        url={`/categories/${c._id}`}
+                                    />
                                     <button
                                         onClick={() =>
                                             handleDeleteCategory(c._id)
@@ -82,8 +81,8 @@ const Dashboard = () => {
                             <div>Not results found</div>
                         ) : (
                             filterProducts.map((p) => (
-                                <div>
-                                    <ProductCard key={p._id} product={p} />
+                                <div key={p._id}>
+                                    <ProductCard product={p} />
                                     <button
                                         onClick={() =>
                                             handleDeleteProduct(p._id)

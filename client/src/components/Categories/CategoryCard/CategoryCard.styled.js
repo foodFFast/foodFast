@@ -15,6 +15,7 @@ export const StyledCategoryCard = styled(Link)`
     text-decoration: none;
     border-radius: 5px;
     box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
 
     .name {
         grid-area: name;
