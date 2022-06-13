@@ -15,7 +15,7 @@ export const StyledBanner = styled.div`
         position: absolute;
         z-index: -1;
         width: 100%;
-        background-color: #c9933e;
+        background: linear-gradient( #644005, #c9933e);
         clip-path: polygon(
             0% 0%,
             100% 0,

@@ -46,9 +46,9 @@ const DetailCategory = () => {
                     <ProductCard key={p._id} product={p} />
                 ))}
             </div>
-            <Link to="products">Ver todos los productos del local</Link> <br />
-            <Link to="reviews">Ver todas las reseñas del local</Link> <br />
-            <Link to="dashboard">Ir al dashboard</Link>
+            {/* <Link to="products">Ver todos los productos del local</Link> <br /> */}
+            <Link to="reviews">Ver todas las reseñas del local (in progress)</Link> <br />
+            {/* <Link to="dashboard">Ir al dashboard</Link> */}
         </StyledCategoryDetail>
     ) : (
         <h1>Loading...</h1>
