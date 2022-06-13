@@ -32,23 +32,25 @@ export const fetchAllProducts = () =>
 export const fetchProductsByCat = (cat) =>
     fetch(`${baseUrl}/categories/category?name=${cat}`, FILTER_PRODUCTS)
 
-export const searchProduct = (name) => 
+export const searchProduct = (name) =>
     fetch(`${baseUrl}/products?name=${name}`, SEARCH_PRODUCT)
-
 
 export const findProductById = (id) =>
     fetch(`${baseUrl}/products/${id}`, FIND_PRODUCT_BY_ID)
 
-export const newFilterProduct = (filterOrder, sortOrder) => 
-    fetch(`${baseUrl}/products?filterOrder=${filterOrder}&sortOrder=${sortOrder}`, NEWFILTER_PRODUCTS)
+export const newFilterProduct = (filterOrder, sortOrder) =>
+    fetch(
+        `${baseUrl}/products?filterOrder=${filterOrder}&sortOrder=${sortOrder}`,
+        NEWFILTER_PRODUCTS
+    )
 
 // CATEGORIES
 
 export const fetchAllCategories = () =>
     fetch(`${baseUrl}/categories`, FETCH_CATEGORIES)
-   
-export const searchCategory = (name) => 
-    fetch(`http://localhost:3001/api/v1/categories/category?name=${name}`, SEARCH_CATEGORY)
+
+export const searchCategory = (name) =>
+    fetch(`${baseUrl}/categories/category?name=${name}`, SEARCH_CATEGORY)
 
 export const postCategory = (name) => (dispatch) =>
     axios

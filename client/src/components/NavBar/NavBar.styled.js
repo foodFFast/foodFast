@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const GlobalContainer = styled.section`
-    z-index: 1;
+    z-index: 2;
 `
 export const ShowButton = styled.div`
     right: ${({ isShowing }) => (isShowing ? "10px" : "95vw")};
@@ -88,7 +88,7 @@ export const ListRoutes = styled.ul`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    a{
+    a {
         text-decoration: none;
         color: black;
         width: 100%;

@@ -3,17 +3,18 @@ export const GlobalContainer = styled.section`
     min-height: 100%;
     height: max-content;
     width: 100%;
+    z-index: 1;
 `
 
 export const CategoriesContainer = styled.section`
     margin-top: 8rem;
     width: 100%;
-    min-height: 100vh;
     height: max-content;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    a{
-    text-decoration: none;
-}
+
+    a {
+        text-decoration: none;
+    }
 `
