@@ -41,7 +41,7 @@ export default function useForm(initialForm, validateForm) {
                 categories: form.categories,
                 stock: form.stock
             })
-              ).then(res=> console.log("Xd")).catch(err=> console.log(err))
+              ).then(res=> alert("Product created ")).catch(err=> console.log(err))
 
 
         // imgURL: json,

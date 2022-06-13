@@ -69,8 +69,8 @@ export const getProductbyId = async (req, res) => {
 
 export const postProduct = async (req, res) => {
 
-    const { storeId, name, ...resto } = req.body
-    const store = await Store.findById(storeId)
+    const {  name, ...resto } = req.body
+    // const store = await Store.findById(storeId)
     const product = await Product.findOne({ name })
     if (product) {
         return res.status(400).json({
@@ -79,13 +79,13 @@ export const postProduct = async (req, res) => {
     }
     const data = {
         ...resto,
-        storeId: store._id,
+        // storeId: store._id,
         name
     }
     const newProduct = new Product(data)
     await newProduct.save()
-    store.productId = store.productId.concat(newProduct._id)
-    await store.save()
+    // store.productId = store.productId.concat(newProduct._id)
+    // await store.save()
     res.status(201).json({
         msg: "Producto creado con éxito"
     })
