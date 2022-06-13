@@ -16,7 +16,7 @@ export const FIND_PRODUCT_BY_ID = "find_product_by_id"
 export const NEWFILTER_PRODUCTS = "newfilter_products"
 
 export const FETCH_SHOPS = "fetch_shops"
-
+export const SORTBYPRICE = "sortbyprice"
 export const SEARCH_PRODUCT = "search_product"
 export const FIND_SHOP_BY_ID = "find_shop_by_id"
 export const SEARCH_CATEGORY = "search_category"

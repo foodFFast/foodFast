@@ -21,7 +21,7 @@ export default function CategoryForm(){
         setFile(newFile)
       }
 
-    const handleSubmit = async ()=> {
+    const handleSubmit = ()=> {
         if(input.name !== "" && input.description !== "") {
             if(!file) alert("You must upload a image") 
             else {
@@ -42,12 +42,15 @@ export default function CategoryForm(){
                     })}
               ).then(json=> {       
                 setIsCreated(true)
-                document.getElementById("imageStore").value = null; 
-                setInput({name:"", description: ""})
+                console.log("Estoy")
             })
               .catch(err=> console.log(err))
+              .finally(err=> {            
+                document.getElementById("imageCategory").value = null; 
+              setInput({name:"", description: ""})})
 
             }
+
             
         }  
     }
@@ -77,7 +80,7 @@ export default function CategoryForm(){
                     </button> 
                     
                     {isCreated && <div id={styles.iconContainer}>
-                        <Link to={`/createProduct`}>
+                        <Link to={`/dashboard/products`}>
                             <GrFormNextLink />
                         </Link>   
                     </div>}          

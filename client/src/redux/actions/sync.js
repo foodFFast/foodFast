@@ -8,7 +8,8 @@ import {
     CLEAN_PRODUCTS,
     DELETE_CATEGORY,
     DELETE_PRODUCT,
-    FILTER_BY_CATEGORY
+    FILTER_BY_CATEGORY,
+    SORTBYPRICE
 } from "./types"
 
 
@@ -22,5 +23,6 @@ export const clean_products = () => ({type: CLEAN_PRODUCTS})
 
 export const delete_category = (id)=> ({type: DELETE_CATEGORY, id})
 export const delete_product = (id) => ({type: DELETE_PRODUCT, id})
+export const sortbyPrice = (price) => ({type: SORTBYPRICE, price})
 
-export const filterbyCategories = (categories) => ({type: FILTER_BY_CATEGORY, categories})
+export const filterbyCategories = (categories, price) => ({type: FILTER_BY_CATEGORY, categories, price})
