@@ -35,7 +35,7 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(searchProduct(""))
         dispatch(searchCategory(""))
-    }, [])
+    }, [dispatch])
     return (
         <StyledDashboard theme={theme}>
             <h1 className="title">Dashboard </h1>
