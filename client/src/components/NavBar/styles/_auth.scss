@@ -1,0 +1,101 @@
+.auth_fondo{
+    background: url("../../User/img/foot.webp");
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    height: 100vw;
+    width: 100vw;
+    position:fixed; 
+}
+
+.auth_login{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    // background: linear-gradient(45deg, rgb(123, 75, 75), transparent);
+    box-shadow:1px 2px 4px 4px;
+    width: 30rem;
+    position:absolute;
+    margin-left:22rem;
+    margin-top:10rem;
+    
+
+}
+
+.auth_title{
+    text-align: center;
+    margin-top: 5px;
+}
+.auth_input{
+    display:block;
+    margin:5px;
+    width: 13rem;
+    
+}
+.auth_label{
+   
+    padding-left: 5px;
+}
+
+.auth_forget{
+    position:absolute;
+    top:9rem;
+    right:5rem;
+    font-size: 17px;
+  
+    
+}
+.auth_register{
+    position:absolute;
+    top:9rem;
+    font-size: 17px;
+   
+   
+}
+
+
+
+.google-btn {
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 42px;
+    background-color: #4285f4;
+    border-radius: 2px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+    
+    transition: box-shadow .3s ease;
+
+    .google-icon-wrapper {
+        position: absolute;
+        margin-top: 1px;
+        margin-left: 1px;
+        width: 40px;
+        height: 40px;
+        border-radius: 2px;
+        background-color: #fff;
+        
+    }
+    .google-icon {
+        position: absolute;
+        margin-top: 11px;
+        margin-left: 11px;
+        width: 18px;
+        height: 18px;
+    }
+    .btn-text {
+        float: right;
+        margin: 11px 50px 0 0;
+        color: #fff;
+        font-size: 17px;
+        letter-spacing: 0.2px;
+       
+    }
+    &:hover {
+        box-shadow: 0 0 6px #4285f4;
+    }
+    &:active {
+        background: #1669f2;
+    }
+}
