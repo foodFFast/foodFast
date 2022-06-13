@@ -4,23 +4,25 @@ import morgan from 'morgan'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
-
+import dotenv from 'dotenv'
 //import router
 import categoriesRoute from './src/routes/categoriesRoute.js'
 import productsRoute from "./src/routes/productsRoute.js"
 import storeRoute from './src/routes/storeRoute.js'
 import orderRoute from './src/routes/orderRoute.js'
 import  userRoute  from './src/routes/userRoute.js'
+import  authRoute  from './src/routes/authRoute.js'
 import path, {dirname} from "path"
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
-
+dotenv.config()
 //middellwares
 const app = express()
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.urlencoded({extended:false}))
 app.use(cors());
 app.use(morgan("dev"));
 
@@ -48,6 +50,10 @@ app.use("/api/v1/orders",orderRoute)
  
 //http://localhost:3001/api/v1/user
 app.use('/api/v1/user',userRoute)
+
+ 
+//http://localhost:3001/api/v1/user
+app.use('/api/v1/auth',authRoute)
 
 
 // hago accesible la carpeta de imágenes

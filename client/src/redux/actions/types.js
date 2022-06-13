@@ -17,3 +17,6 @@ export const FIND_PRODUCT_BY_ID = "find_product_by_id"
 // Orders
 
 // Reviews
+
+//Auth
+export const POST_LOGIN="POST_LOGIN"

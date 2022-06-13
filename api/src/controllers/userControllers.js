@@ -9,7 +9,7 @@ export const postUser = async(req,res) =>{
     const users=new User({name,email,password,rol});
      
     //Encriptar password
-    const salt=bcryptjs.genSaltSync() //hacer más complicado el método de encriptación 
+    const salt=bcryptjs.genSaltSync()
     users.password=bcryptjs.hashSync(password,salt);
      
        

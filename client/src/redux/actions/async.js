@@ -5,7 +5,8 @@ import {
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
     FILTER_PRODUCTS,
-    FIND_PRODUCT_BY_ID
+    FIND_PRODUCT_BY_ID,
+    POST_LOGIN
 } from "./types"
 
 // FUNCTIONS AND CONSTS
@@ -48,3 +49,18 @@ export const deleteCategory = (id) => (dispatch) =>
         .delete(`${baseUrl}/categories/${id}`)
         .then(() => dispatch(fetchAllCategories()))
         .catch((err) => dispatch({ type: ERROR, payload: err }))
+
+//AUTH
+
+// export function postLogin(input){
+//     return async function(dispatch){
+//       try{
+//         const pedido=await axios.post(`http://localhost:3001/api/v1/auth/login`,input)
+//         return dispatch({type:POST_LOGIN,
+//                 payload:pedido.data})
+//       }catch(e){
+//         console.log(e)
+//       }
+//     }
+//   }
+

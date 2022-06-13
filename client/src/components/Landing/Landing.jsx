@@ -14,6 +14,7 @@ const Landing = () => {
             <Link to="dashboard">Ir al dashboard</Link> <br />
             <Link to="categories">Ver todas las categorias</Link> <br />
             <Link to="products">Ver todos los productos</Link> <br />
+            <Link to="login">Ir al login</Link> <br />
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 
 import { fetchAllCategories, fetchAllProducts } from "./redux/actions/async"
 import { useDispatch, useSelector } from "react-redux"
-
+import Login from "./components/User/Login"
 import {
     Auth,
     Categories,
@@ -81,8 +81,8 @@ function App() {
                             />
                         </Route>
 
-                        <Route path="/auth" element={<Auth />} />
-
+                        <Route path="/login" element={<Login />} />
+                            
                         <Route path="user/:idUser">
                             <Route index element={<Profile />} />
                             <Route path="orders">

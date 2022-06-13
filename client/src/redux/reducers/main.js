@@ -3,7 +3,8 @@ import {
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
     FILTER_PRODUCTS,
-    FIND_PRODUCT_BY_ID
+    FIND_PRODUCT_BY_ID,
+    POST_LOGIN
 } from "../actions/types"
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
     tags: {
         all: [],
         filtered: []
-    }
+    },
+    // user:[]
 }
 
 const main = (state = initialState, action) => {
@@ -56,7 +58,10 @@ const main = (state = initialState, action) => {
             !!action.payload.length &&
                 (newState.products.filtered = [...action.payload])
             break
-
+        // case POST_LOGIN:
+        //     return {
+        //         user:[...state,action.payload]
+        //     }
         case FIND_PRODUCT_BY_ID:
             newState.products.selected = action.payload
             break
