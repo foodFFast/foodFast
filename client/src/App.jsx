@@ -1,9 +1,8 @@
 import { useEffect } from "react"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 
-import "./App.module.scss"
 import { fetchAllCategories, fetchAllProducts } from "./redux/actions/async"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import DisplayProducts from "./components/DisplayProducts/index"
 import {
     Auth,
@@ -22,7 +21,7 @@ import {
     Profile,
     Reviews
 } from "./components"
-
+import GlobalStyle from "./GlobalStyles"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -35,6 +34,7 @@ const ScrollToTop = (props) => {
 
 function App() {
     const dispatch = useDispatch()
+    const theme = useSelector((state) => state.theme.selectedTheme)
 
     useEffect(() => {
         dispatch(fetchAllProducts())
@@ -44,16 +44,22 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
+                <GlobalStyle theme={theme} />
+
                 <ScrollToTop>
-                    <div style={{ zIndex: 10, position: "sticky", top: 0 }}>
-                        <NavBar />
-                    </div>
+                    <NavBar />
 
                     <Routes>
                         <Route path="/" element={<Landing />} />
                         <Route path="/products" element={<DisplayProducts />} />
-                        <Route path="/products/:idProduct" element={<DetailProduct />} />
-                        <Route path="/category/:idCategory" element={<DetailCategory />}/>
+                        <Route
+                            path="/products/:idProduct"
+                            element={<DetailProduct />}
+                        />
+                        <Route
+                            path="/category/:idCategory"
+                            element={<DetailCategory />}
+                        />
                         <Route path="dashboard">
                             <Route index element={<Dashboard />} />
                             <Route
@@ -101,7 +107,6 @@ function App() {
                                 />
                             </Route>
                         </Route>
-
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>
