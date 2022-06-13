@@ -25,15 +25,15 @@ router.get('/', getProduct);
 //get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
 //router.get('/filProduct',filterProducts)
 
+//get product = http://localhost:3001/api/v1/products/filProduct?name=baggio
+router.get('/filProduct',filterProducts)
+
 //GET http://localhost:3001/api/v1/products/12345
 router.get('/:id', getProductbyId);
-
 
 //post product =  http://localhost:3001/api/v1/products
 router.post("/",[
     check("name","El name es obligatorio").not().isEmpty(), 
-    check("category","La category es obligatorio").not().isEmpty(), 
-    check("storeId","No es un id válido").isMongoId(),
     validarCampos
 ],postProduct)
 

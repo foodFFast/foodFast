@@ -88,6 +88,11 @@ export const ListRoutes = styled.ul`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    a{
+        text-decoration: none;
+        color: black;
+        width: 100%;
+    }
 `
 
 export const RouteItem = styled.li`

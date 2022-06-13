@@ -4,12 +4,10 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import "./App.module.scss"
 import { fetchAllCategories, fetchAllProducts } from "./redux/actions/async"
 import { useDispatch } from "react-redux"
-
+import DisplayProducts from "./components/DisplayProducts/index"
 import {
     Auth,
-    AxiosTest,
     Categories,
-    CategoriesTest,
     CategoryForm,
     Dashboard,
     DetailCategory,
@@ -17,15 +15,14 @@ import {
     DetailProduct,
     DetailReview,
     Landing,
-    MainTest,
     NavBar,
     Orders,
     ProductForm,
     Products,
     Profile,
-    ReduxTest,
     Reviews
 } from "./components"
+
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -54,7 +51,9 @@ function App() {
 
                     <Routes>
                         <Route path="/" element={<Landing />} />
-
+                        <Route path="/products" element={<DisplayProducts />} />
+                        <Route path="/products/:idProduct" element={<DetailProduct />} />
+                        <Route path="/category/:idCategory" element={<DetailCategory />}/>
                         <Route path="dashboard">
                             <Route index element={<Dashboard />} />
                             <Route
@@ -67,7 +66,7 @@ function App() {
                             />
                         </Route>
 
-                        <Route path="products">
+                        <Route path="/dashboard/products">
                             <Route index element={<Products />} />
                             <Route
                                 path=":idProduct"
@@ -103,18 +102,6 @@ function App() {
                             </Route>
                         </Route>
 
-                        <Route
-                            path="tests"
-                            element={
-                                <>
-                                    <h1>Redux Tests</h1>
-                                    <MainTest />
-                                    <ReduxTest />
-                                    <AxiosTest />
-                                    <CategoriesTest />
-                                </>
-                            }
-                        />
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>
