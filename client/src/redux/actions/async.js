@@ -1,15 +1,12 @@
 import axios from "axios"
 
 import {
-    ASYNC_TEST_1,
     ERROR,
     FETCH_CATEGORIES,
     FETCH_PRODUCTS,
-    FETCH_SHOPS,
     FILTER_PRODUCTS,
     SEARCH_PRODUCT,
     FIND_PRODUCT_BY_ID,
-    FIND_SHOP_BY_ID,
     SEARCH_CATEGORY,
     NEWFILTER_PRODUCTS
 } from "./types"
@@ -26,23 +23,6 @@ const fetch = (url, type) => (dispatch) =>
             console.log(`error en ${type} \n url = ${url} \n mensaje = ${err}`)
             dispatch({ type: ERROR, payload: err })
         })
-
-// TESTS
-
-export const runAsyncTest = () => (dispatch) => {
-    dispatch({ type: ASYNC_TEST_1, payload: "waiting" })
-
-    setTimeout(() => {
-        dispatch({ type: ASYNC_TEST_1, payload: "success" })
-    }, 5000)
-}
-
-// SHOPS
-
-export const fetchAllShops = () => fetch(`${baseUrl}/store`, FETCH_SHOPS)
-
-export const fetchShopById = (id) =>
-    fetch(`${baseUrl}/store/${id}`, FIND_SHOP_BY_ID)
 
 // PRODUCTS
 

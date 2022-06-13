@@ -48,6 +48,7 @@ export default function FilterBar () {
         setCategoriesfilter(data.map(el=> el.value))
     }
     const handleApplyFilter = () => {
+        
         dispatch(newFilterProduct("price",price))
         dispatch(filterbyCategories(categoriesfilter))
         setIsOpen(false)

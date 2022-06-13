@@ -12,7 +12,7 @@ const CategoryCard = ({ category }) => {
     const theme = useSelector((state) => state.theme.selectedTheme)
 
     return (
-        <StyledCategoryCard theme={theme} key={_id} to={_id}>
+        <StyledCategoryCard theme={theme} key={_id} to={`/categories/${_id}`}>
             <StyledLogo className="img" img={img} />
             <span className="name">{name}</span>
             <span className="description">

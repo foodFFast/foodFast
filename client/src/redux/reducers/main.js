@@ -43,12 +43,7 @@ function filterProduct(product, categories){
 }
 
 const initialState = {
-    mainTest: "default",
     error: null,
-    shops: {
-        all: [],
-        filtered: []
-    },
     products: {
         all: [],
         filtered: []
@@ -70,28 +65,8 @@ const main = (state = initialState, action) => {
         default:
             break
 
-        // TESTS
-
-        case MAIN_TEST:
-            newState.mainTest = "success"
-            break
-
-        case RESET_TESTS:
-            newState.mainTest = "default"
-            break
-
         case ERROR:
             newState.error = action.payload
-            break
-
-        // SHOPS
-
-        case FETCH_SHOPS:
-            newState.shops.all = action.payload
-            break
-
-        case FIND_SHOP_BY_ID:
-            newState.shops.selected = action.payload
             break
 
         // CATEGORIES

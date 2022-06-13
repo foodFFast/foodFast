@@ -41,8 +41,10 @@ const Dashboard = () => {
                 <Link to="createCategory">Crear categoria nueva</Link>
                 <div className="allCategories">
                     {filterCategories.length ===0 ? <div>Not results found</div>:filterCategories.map(c=> 
-                        <div>
-                        <CategoryCard key={c._id} category={c} />
+                        <div key={c._id}>
+                            <Link to={`/categories/${c._id}`}>
+                                <CategoryCard key={c._id} category={c} />
+                            </Link>
                         <button onClick={()=>handleDeleteCategory(c._id)}>Delete</button>
                     </div>
                     )}

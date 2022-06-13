@@ -7,9 +7,7 @@ import { useDispatch } from "react-redux"
 import DisplayProducts from "./components/DisplayProducts/index"
 import {
     Auth,
-    AxiosTest,
     Categories,
-    CategoriesTest,
     CategoryForm,
     Dashboard,
     DetailCategory,
@@ -17,13 +15,11 @@ import {
     DetailProduct,
     DetailReview,
     Landing,
-    MainTest,
     NavBar,
     Orders,
     ProductForm,
     Products,
     Profile,
-    ReduxTest,
     Reviews
 } from "./components"
 
@@ -106,18 +102,6 @@ function App() {
                             </Route>
                         </Route>
 
-                        <Route
-                            path="tests"
-                            element={
-                                <>
-                                    <h1>Redux Tests</h1>
-                                    <MainTest />
-                                    <ReduxTest />
-                                    <AxiosTest />
-                                    <CategoriesTest />
-                                </>
-                            }
-                        />
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>
