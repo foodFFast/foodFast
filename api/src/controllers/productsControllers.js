@@ -2,7 +2,7 @@ import Product from "../models/product.js"
 import Store from "../models/store.js"
 
 export const allProducts = async (req, res) => {
-    const { name } = req.query
+   
     const products = await Product.find()
     if (!products) {
         return res.status(400).json({
@@ -67,29 +67,10 @@ export const getProductbyId = async (req, res) => {
     }
 }
 
-export const filterProducts = async (req, res) => {
-    const { name } = req.query
-    if (!name) {
-        return res.status(400).json({
-            msg: "invalid query name"
-        })
-    }
-    const products = await Product.find({ name: name })
-    if (products.length === 0) {
-        return res.status(400).json({
-            msg: "not found Products"
-        })
-    }
-    res.status(201).json({
-        products
-    })
-}
-
 export const postProduct = async (req, res) => {
+
     const { storeId, name, ...resto } = req.body
-
     const store = await Store.findById(storeId)
-
     const product = await Product.findOne({ name })
     if (product) {
         return res.status(400).json({
@@ -105,7 +86,6 @@ export const postProduct = async (req, res) => {
     await newProduct.save()
     store.productId = store.productId.concat(newProduct._id)
     await store.save()
-
     res.status(201).json({
         msg: "Producto creado con éxito"
     })

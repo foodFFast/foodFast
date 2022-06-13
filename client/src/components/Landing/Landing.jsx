@@ -1,32 +1,45 @@
 import React from "react"
 import { Link } from "react-router-dom"
-
-import LandingPage from "../landingPage"
-import SearchBar from "../searchBar"
-import LocationBar from "../ubicationBar"
-import styles from "./Landing.module.scss"
+import { useDispatch, useSelector } from "react-redux"
+import Banner from "./Banner/Banner"
+import CategoryBar from "./UbicationBar/UbicationBar"
+import { CategoriesContainer, GlobalContainer } from "./landingElements"
+import CategoryCard from "../Categories/CategorysLanding"
+import { clean_categories, clean_products } from "../../redux/actions/sync"
+import { useEffect } from "react"
+import { searchCategory, searchProduct } from "../../redux/actions/async"
 
 const Landing = () => {
+    const categories = useSelector((state) => state.main.categories.all)
+    const filterCategories = useSelector((state)=> state.main.categories.filtered);
+    const dispatch = useDispatch()
+    
+    useEffect(()=> {
+        dispatch(searchProduct(""))
+        dispatch(searchCategory(""))
+    }, [])
+
+    useEffect(()=> {
+     return ()=> { dispatch(clean_categories()); dispatch(clean_products())}
+    })
     return (
-        <div>
-            <div className={styles.SearchBar}>
-                <SearchBar />
+        <GlobalContainer>
+
+            <Banner />
+            <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                <CategoryBar className="LocationBar" />
             </div>
-            <div className={styles.LocationBar}>
-                <LocationBar />
-            </div>
-            <LandingPage />
-            <h1>Landing</h1>
-            <Link to="tests">Tests</Link> <br />
-            <Link to="shops">Ver todos los locales</Link> <br />
-            <Link to="categories">Ver toas las categorias</Link> <br />
-            <Link to="user/1">Ir al perfil del usuario 1</Link> <br />
-            <Link to="user/2">Ir al perfil del usuario 2</Link> <br />
-            <Link to="user/3">Ir al perfil del usuario 3</Link> <br />
-            <Link to="shop/1">Ir al landing del local 1</Link> <br />
-            <Link to="shop/2">Ir al landing del local 2</Link> <br />
-            <Link to="shop/3">Ir al landing del local 3</Link> <br />
-        </div>
+            <CategoriesContainer>
+                          {filterCategories.length ===0 ? categories.map(c=> 
+                          <Link key={c._id} to={`/categories/${c._id}`}>
+                                <CategoryCard key={c._id} category={c} />
+                          </Link>):filterCategories.map(c=> 
+                            <Link key={c._id} to={`/categories/${c._id}`}>
+                            <CategoryCard key={c._id} category={c} />
+                        </Link>
+                          )}
+            </CategoriesContainer>
+        </GlobalContainer>
     )
 }
 

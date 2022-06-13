@@ -2,24 +2,36 @@ import express from 'express';
 
 import { check } from 'express-validator';
 import { validarCampos } from '../../middlewares/validar-campo.js';
-import { deleteProduct,putProduct,upDate,  postProduct, getProduct} from '../controllers/productsControllers.js';
 
+import { deleteProduct,putProduct, upDate,  postProduct, getProduct} from '../controllers/productsControllers.js';
+
+import fileUpload from '../../middlewares/imgProductsCapter.js';
 
 const router = express.Router()
+
 
 //get product = http://localhost:3001/api/v1/products
 router.get('/',getProduct)
 
+
+//GET http://localhost:3001/api/v1/products/12345
+router.get('/:id', getProductbyId);
+
 //post product =  http://localhost:3001/api/v1/products
 router.post("/",[
     check("name","El name es obligatorio").not().isEmpty(), 
-    check("category","La category es obligatorio").not().isEmpty(), 
-    check("storeId","No es un id válido").isMongoId(),
     validarCampos
 ],postProduct)
 
+
 //patch product =  http://localhost:3001/api/v1/:id
 router.patch('/:id', upDate)  
+
+//post IMGproduct =  http://localhost:3001/api/v1/products/image
+router.post("/image", fileUpload,(req,res)=> {
+    const url = `http://localhost:3001/imagesProducts/${req.file.filename}`
+    res.json({img: url})
+   })
 
 //put product = http://localhost:3001/api/v1/products/754325
 router.put("/:id",[
@@ -33,9 +45,6 @@ router.delete("/:id",[
     // check("product").custom(existeProducto),
     validarCampos
 ],deleteProduct)
-
-
-
 
 
 
