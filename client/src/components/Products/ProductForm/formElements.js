@@ -1,28 +1,27 @@
-import styled, {keyframes}from "styled-components"; 
+import styled, { keyframes } from "styled-components"
 
 export const GlobalContainer = styled.section`
-    z-index: -1;
+    z-index: 1;
     height: 100vh;
     width: 100%;
     background-image: linear-gradient(
-  45deg,
-  hsl(0deg 0% 58%) 0%,
-  hsl(344deg 0% 51%) 11%,
-  hsl(344deg 0% 44%) 22%,
-  hsl(344deg 0% 38%) 33%,
-  hsl(344deg 0% 31%) 44%,
-  hsl(344deg 0% 25%) 56%,
-  hsl(344deg 0% 19%) 67%,
-  hsl(344deg 0% 14%) 78%,
-  hsl(343deg 0% 8%) 89%,
-  hsl(0deg 0% 0%) 100%
-);
-        display: flex;
-        flex-direction: column;
-
+        45deg,
+        hsl(0deg 0% 58%) 0%,
+        hsl(344deg 0% 51%) 11%,
+        hsl(344deg 0% 44%) 22%,
+        hsl(344deg 0% 38%) 33%,
+        hsl(344deg 0% 31%) 44%,
+        hsl(344deg 0% 25%) 56%,
+        hsl(344deg 0% 19%) 67%,
+        hsl(344deg 0% 14%) 78%,
+        hsl(343deg 0% 8%) 89%,
+        hsl(0deg 0% 0%) 100%
+    );
+    display: flex;
+    flex-direction: column;
 `
 
-export const MainContainer = styled.section`    
+export const MainContainer = styled.section`
     height: 30rem;
     width: 50rem;
     z-index: 2;
@@ -42,21 +41,21 @@ export const FirstColumnContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    .row{
+    .row {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        #priceContainer{
+        #priceContainer {
             display: flex;
             align-items: center;
             margin-left: 4rem;
-            #price{
+            #price {
                 font-size: 1.5rem;
                 width: 50%;
             }
         }
-        span{
+        span {
             font-size: 1.5rem;
             margin-right: 0px;
             padding-right: 0px;
@@ -77,16 +76,16 @@ export const InputContainer = styled.div`
     width: 80%;
 
     input {
-        border-radius: .4rem;
+        border-radius: 0.4rem;
         background-color: rgba(201, 147, 62);
         color: wheat;
         padding-left: 1rem;
         font-size: 1rem;
-        font-family: 'Kanit', sans-serif;
-        &::placeholder{
+        font-family: "Kanit", sans-serif;
+        &::placeholder {
             color: wheat;
             font-size: 1rem;
-            font-family: 'Kanit', sans-serif;
+            font-family: "Kanit", sans-serif;
         }
     }
 
@@ -97,8 +96,8 @@ export const InputContainer = styled.div`
     #addTag {
         width: 50%;
         margin: auto;
-        margin-top: .5rem;
-        background-color: #FF5B00;
+        margin-top: 0.5rem;
+        background-color: #ff5b00;
         color: wheat;
         cursor: pointer;
         &:hover {
@@ -108,17 +107,16 @@ export const InputContainer = styled.div`
 `
 export const Label = styled.label`
     color: white;
-    font-family: 'Satisfy', cursive;
+    font-family: "Satisfy", cursive;
     font-size: 30px;
 `
 
 export const InputSimple = styled.input`
     height: 2rem;
-    
 `
 
 export const AvailableContainer = styled.div`
-    background-color: ${(props)=> props.isAvailable ? "green":"red"};
+    background-color: ${(props) => (props.isAvailable ? "green" : "red")};
     color: white;
     height: 2rem;
     width: 60%;
@@ -127,33 +125,31 @@ export const AvailableContainer = styled.div`
     border: 1px solid black;
     border-radius: 10px;
     justify-content: center;
-    transition: background .5s;
+    transition: background 0.5s;
 `
 
 export const InputTextArea = styled.textarea`
     resize: none;
     height: 3rem;
-    border-radius: .4rem;
+    border-radius: 0.4rem;
     background-color: rgba(201, 147, 62);
     color: wheat;
-    padding: .6rem;
+    padding: 0.6rem;
     font-size: 1rem;
-    font-family: 'Kanit', sans-serif;
-    &::placeholder{
+    font-family: "Kanit", sans-serif;
+    &::placeholder {
         color: wheat;
         font-size: 1rem;
-        font-family: 'Kanit', sans-serif;
-        }
+        font-family: "Kanit", sans-serif;
+    }
 `
-export const InputFiled = styled.input`
-
-`
+export const InputFiled = styled.input``
 
 export const ErrorMsg = styled.div`
-    background-color: #FF1000;
+    background-color: #ff1000;
     color: white;
-    height: ${(props)=> props.error ? "1.3rem":"0"};
-    transition: height .5s;
+    height: ${(props) => (props.error ? "1.3rem" : "0")};
+    transition: height 0.5s;
     text-align: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -175,7 +171,7 @@ export const TagsProduct = styled.div`
 `
 export const TagCard = styled.div`
     background-color: #f58220;
-    margin: .4rem;
+    margin: 0.4rem;
     height: 1.5rem;
     color: white;
     display: flex;
@@ -194,7 +190,7 @@ export const TagCard = styled.div`
         color: #f58220;
         background-color: black;
         cursor: pointer;
-        &:hover{
+        &:hover {
             color: black;
             background-color: #f58220;
         }
@@ -232,45 +228,44 @@ const ReboteAnimationChicken = keyframes`
 export const OrnamentContainer = styled.div`
     position: absolute;
     z-index: 2;
-    img{
+    img {
         height: 35vh;
         position: absolute;
     }
-    #burguer{
+    #burguer {
         top: 5vh;
         left: 6vw;
         transform: rotate(-50deg);
         animation: ${ReboteAnimationBurger} 3s infinite;
     }
-    #pizza{
+    #pizza {
         top: 50vh;
         left: 75vw;
         transform: rotate(-20deg);
         animation: ${ReboteAnimationPizza} 3s infinite;
     }
-    #chicken{
+    #chicken {
         height: 40vh;
         top: 55vh;
         left: 8vw;
         transform: rotate(10deg);
         animation: ${ReboteAnimationChicken} 3s infinite;
-    }   
+    }
 `
 export const ButtonCreate = styled.button`
     background-color: orange;
     width: 50%;
-    height: ${(props)=> props.isAvailable ? "2rem":"0px"};
-    color: ${(props)=> props.isAvailable ? "black":"transparent"};
+    height: ${(props) => (props.isAvailable ? "2rem" : "0px")};
+    color: ${(props) => (props.isAvailable ? "black" : "transparent")};
     position: absolute;
     transition: height 1s;
     top: 88%;
     left: 25%;
-    cursor: ${(props)=> props.isAvailable ? "pointer":"normal"};
+    cursor: ${(props) => (props.isAvailable ? "pointer" : "normal")};
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    &:hover{
-        color: ${(props)=> props.isAvailable ? "orange":"transparent"};
+    &:hover {
+        color: ${(props) => (props.isAvailable ? "orange" : "transparent")};
         background-color: black;
     }
 `
-
