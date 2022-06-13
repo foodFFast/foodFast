@@ -1,24 +1,37 @@
 import bcryptjs from 'bcryptjs';
 import User from "../models/user.js"
 
-export const postUser = async(req,res) =>{
+
+export const registerUser = async(req,res) =>{
+  const {name,email,password,rol}=req.body;
   try{
-    const {name,email,password,rol}=req.body;
+    let user = await User.findOne({email})
+    if(user) return res.json({err: "existing user"})
+    user = new User({name,email,password,rol})
+    await user.save()
+    return res.json(user)
+  }catch(error){
+    console.log(error)
+    return res.json({err: "Error server"})
+  }  
+}
 
-   
-    const users=new User({name,email,password,rol});
-     
-    //Encriptar password
-    const salt=bcryptjs.genSaltSync() //hacer más complicado el método de encriptación 
-    users.password=bcryptjs.hashSync(password,salt);  
-    await users.save()
-
-    res.json({users})
-  }catch(e){
-      console.log(e)
-  }
+export const login = async(req,res)=>{
+  const {email, password} = req.body
+  try{
+    let user = await User.findOne({email})
+    if(!user) return res.json({err: "not found user"})
+    const passwordCandidate = await user.comparePassword(password)
+    if(!passwordCandidate) return res.json({err:"invalid credential"})
     
-   
+    //token
+
+    return res.json(user)
+
+  }catch(error){
+    console.log(error)
+    return res.json({error: "Error server"})
+  }
 }
 
 
