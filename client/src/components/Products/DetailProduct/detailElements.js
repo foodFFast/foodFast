@@ -6,6 +6,7 @@ export const GlobalContainer = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    justify-content: center;
     background-color: #ccc;
 `
 export const TitleContainer = styled.section`
@@ -34,7 +35,6 @@ export const MainContainer = styled.section`
     display: flex;
     justify-content: space-around;
     align-items: center;
-
 `
 
 export const SecondMainContainer = styled.div`
@@ -78,7 +78,6 @@ export const Etiqueta = styled.div`
  font-family: 'Righteous', cursive;
     font-weight: lighter;
    
-
 `
 export const Data = styled.div`
      font-family: 'Acme', sans-serif;

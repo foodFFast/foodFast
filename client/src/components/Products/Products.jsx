@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import {  useSelector } from "react-redux"
 
 import { AiOutlineSearch } from "react-icons/ai"
 
@@ -6,16 +6,17 @@ import { StyledProducts, StyledSideBar } from "./Products.styled"
 import ProductCard from "./ProductCard/ProductCard"
 import { Link } from "react-router-dom"
 
+
 const Products = () => {
     const theme = useSelector((state) => state.theme.selectedTheme)
 
-    const products = useSelector((state) => state.main.products.all)
-    const categories = useSelector((state) => state.main.categories.all)
+    const products = useSelector((state) => state.main.products.filtered)
+    const categories = useSelector((state) => state.main.categories.filtered)
 
     return (
         <StyledProducts>
             <StyledSideBar theme={theme}>
-                <span className="title">Productos</span>
+                <span className="title">Locales</span>
 
                 <div className="searchInput">
                     <input type="text" placeholder="Buscar por nombre" />
@@ -41,7 +42,7 @@ const Products = () => {
             <div className="productsContainer">
                 {!!products.length &&
                     products.map((p) => (
-                        <ProductCard key={p._id} product={p} />
+                            <ProductCard key={p._id} product={p} />                    
                     ))}
             </div>
         </StyledProducts>

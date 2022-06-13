@@ -26,8 +26,8 @@ const productSchema =new mongoose.Schema({
         type:Number,
         default: 0
     },
-    category:{
-        type:String, 
+    categories:{
+        type:Array, 
         ref:"Category",
         required: true,
     },
@@ -35,14 +35,6 @@ const productSchema =new mongoose.Schema({
         type:Number,
         default:0,  
     },
-    tags: {
-        type: Array,
-    },
-    storeId:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Store"
-        //required:true
-    }],
     stock:{
         type:Number,
         default:0,

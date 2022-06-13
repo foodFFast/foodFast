@@ -33,19 +33,15 @@ export default function useForm(initialForm, validateForm) {
                 body: formdata
             }).then(res=> res.json())
             .then(json=> 
-                
-                {console.log(json)
-                return axios.post('http://localhost:3001/api/v1/products', {
-                storeId: form.storeID,
+                axios.post('http://localhost:3001/api/v1/products', {
                 name: form.name,
                 description: form.description, 
                 img: json.img,
                 price: form.price,
-                category: form.category,
-                tags: form.tags,
+                categories: form.categories,
                 stock: form.stock
-            })}
-              ).then(res=> console.log("Se logro mrd")).catch(err=> console.log(err))
+            })
+              ).then(res=> console.log("Xd")).catch(err=> console.log(err))
 
 
         // imgURL: json,
@@ -57,7 +53,7 @@ export default function useForm(initialForm, validateForm) {
               price: 0,
               stock: 0,
               img: null,
-              tags: [],
+              categories: []
             })
           document.getElementById("fileinput").value = null;
             return 
