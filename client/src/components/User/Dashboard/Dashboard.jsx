@@ -46,7 +46,9 @@ const Dashboard = () => {
                         <CategoryBar />
                     </div>
 
-                    <Link to="createCategory">Crear categoria nueva</Link>
+                    <Link className="addBtn" to="createCategory">
+                        Crear categoria nueva
+                    </Link>
                     <div className="allCategories">
                         {filterCategories.length === 0 ? (
                             <div>Not results found</div>
@@ -75,7 +77,9 @@ const Dashboard = () => {
                     <div>
                         <SearchBar />
                     </div>
-                    <Link to="createProduct">Crear producto nuevo</Link>
+                    <Link className="addBtn" to="createProduct">
+                        Crear producto nuevo
+                    </Link>
                     <div className="allProducts">
                         {filterProducts.length === 0 ? (
                             <div>Not results found</div>
