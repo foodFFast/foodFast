@@ -3,7 +3,12 @@ import express from 'express';
 import { check } from 'express-validator';
 import { validarCampos } from '../../middlewares/validar-campo.js';
 
-import { deleteProduct,putProduct, upDate,  postProduct, getProduct} from '../controllers/productsControllers.js';
+import { deleteProduct,
+        putProduct, 
+        upDate,  
+        postProduct, 
+        getProduct,
+        getProductbyId} from '../controllers/productsControllers.js';
 
 import fileUpload from '../../middlewares/imgProductsCapter.js';
 
