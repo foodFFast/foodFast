@@ -1,9 +1,6 @@
 
 import User from "../src/models/user.js";
 
-
-
-
 export const emailExiste=async(email="")=>{
     const existeEmail=await User.findOne({email});
     if(existeEmail){
