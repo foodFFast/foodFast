@@ -80,3 +80,13 @@ export const deleteCombo = async(req,res)=>{
     const product=await mealCombo.findByIdAndRemove(id)
     return res.json({ok: "remove combo"})
 }
+
+export const offer = async(req,res)=>{
+ try {
+    const offer =  await  mealCombo.find()
+    console.log(offer)
+    return res.json(offer)
+ } catch (error) {
+    console.log(error)
+ }
+}

@@ -1,9 +1,11 @@
 import express from 'express';
-import {getCombos, postMealCombo, getComboId,  upDateCombo, deleteCombo} from '../controllers/mealComboControllers.js'
+import {getCombos, postMealCombo, getComboId,  upDateCombo, deleteCombo, offer} from '../controllers/mealComboControllers.js'
 
 const router = express.Router()
 
 router.get('/',getCombos)
+
+router.get('/offer', offer)
 
 router.post('/',postMealCombo)
 
