@@ -18,6 +18,7 @@ export const SearchIcon = styled.div`
     cursor: pointer;
     height: 2.5rem;
     margin-left: .4rem;
+    transition: 0.4s;
     svg{
         color: white
     }

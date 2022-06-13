@@ -33,7 +33,6 @@ app.get('/',(req,res)=>{
 // http://localhost:3001/api/v1/categories
 app.use('/api/v1/categories', categoriesRoute)
 
-
 // http://localhost:3001/api/v1/products
 app.use("/api/v1/products",productsRoute)
 
