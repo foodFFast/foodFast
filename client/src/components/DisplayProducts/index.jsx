@@ -15,8 +15,8 @@ export default function DisplayProducts() {
 
    
     useEffect(()=> {
-      dispatch(newFilterProduct("price", "1"))
-      return () => {dispatch(clean_products); dispatch(clean_categories)}
+      // dispatch(newFilterProduct("price", "1"))
+      // return () => {dispatch(clean_products); dispatch(clean_categories)}
   }, [])
   return (
   <GlobalContainer>

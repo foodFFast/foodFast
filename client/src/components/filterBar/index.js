@@ -6,7 +6,7 @@ import { FilterContainer, GlobalContainer, SearchContainer, UserContainer, ListC
 import {FaUserAlt, FaShoppingCart} from "react-icons/fa"; 
 import Select from "react-select"; 
 import { useDispatch, useSelector } from "react-redux";
-import { filterbyCategories } from "../../redux/actions/sync";
+import { filterbyCategories, sortbyPrice } from "../../redux/actions/sync";
 import { fetchAllProducts, newFilterProduct } from "../../redux/actions/async";
 const OptionsTest = [{
     value: "test1", label: "test1"
@@ -46,12 +46,13 @@ export default function FilterBar () {
     }
     const handleFilter = (data) => {
         setCategoriesfilter(data.map(el=> el.value))
+        dispatch(fetchAllProducts())
     }
     const handleApplyFilter = () => {
-        
-        dispatch(newFilterProduct("price",price))
-        dispatch(filterbyCategories(categoriesfilter))
+        dispatch(filterbyCategories(categoriesfilter, price))
         setIsOpen(false)
+        setCategoriesfilter([])
+
     }
     const handleOpen = ()=> {
         setIsOpen(true)

@@ -19,9 +19,9 @@ const Landing = () => {
         dispatch(searchCategory(""))
     }, [])
 
-    useEffect(()=> {
-     return ()=> { dispatch(clean_categories()); dispatch(clean_products())}
-    })
+    // useEffect(()=> {
+    //  return ()=> { dispatch(clean_categories()); dispatch(clean_products())}
+    // })
     return (
         <GlobalContainer>
 

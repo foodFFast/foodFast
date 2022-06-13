@@ -15,6 +15,7 @@ const CategoryBar = () => {
 
     const handleSubmit = ()=> {
             dispatch(searchCategory(input))
+        alert("Búsqueda de ubicación en progreso! Devs working B)")
         
     }
     return (

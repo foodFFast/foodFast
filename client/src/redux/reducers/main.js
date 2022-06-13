@@ -16,7 +16,8 @@ import {
     RESET_PRODUCTS,
     RESET_TESTS,
     SEARCH_CATEGORY,
-    SEARCH_PRODUCT
+    SEARCH_PRODUCT,
+    SORTBYPRICE
 } from "../actions/types"
 
 function filterProduct(product, categories){
@@ -41,6 +42,15 @@ function filterProduct(product, categories){
     
     return true
 }
+
+function compareProducts(a, b, form) {
+    if(form === "1") {
+        return a.price - b.price;
+    } else {
+        return b.price - a.price;
+    }       }
+    
+
 
 const initialState = {
     error: null,
@@ -94,8 +104,8 @@ const main = (state = initialState, action) => {
             newState.products.all = action.payload
             newState.products.filtered = action.payload
             break
-        case NEWFILTER_PRODUCTS:
-            newState.products.filtered = action.payload
+        case SORTBYPRICE:
+            newState.products.filtered = newState.products.filtered.filter((a, b)=>compareProducts(a, b, action.form))
             break
 
         case FILTER_PRODUCTS:
@@ -105,6 +115,7 @@ const main = (state = initialState, action) => {
             break
         case FILTER_BY_CATEGORY:
             newState.products.filtered = newState.products.filtered.filter(el=> filterProduct(el, action.categories))
+            newState.products.filtered = newState.products.filtered.sort((a, b)=>compareProducts(a, b, action.price))
             break
         case SEARCH_PRODUCT:
             if(action.payload.error) {newState.products.filtered = []}
