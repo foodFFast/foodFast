@@ -25,7 +25,12 @@ app.use(morgan("dev"))
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const relativeBuildPath = path.join(__dirname, "../client/build/")
 
-app.get("*", (req, res) => res.sendFile(relativeBuildPath))
+app.use("/static", express.static(path.join(relativeBuildPath, "static/")))
+app.get("*", function (req, res) {
+    res.sendFile("index.html", {
+        root: path.join(__dirname, "../../client/build/")
+    })
+})
 // hago accesible la carpeta de imágenes
 app.use(express.static(path.join(relativeBuildPath, "public/")))
 
