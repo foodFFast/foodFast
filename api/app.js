@@ -25,10 +25,7 @@ app.use(morgan("dev"))
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const relativeBuildPath = path.join(__dirname, "../client/build/")
 
-app.use(
-    "/static",
-    express.static(path.join(__dirname, "../client/build//static"))
-)
+app.use(express.static(path.join(__dirname, "../client/build//static")))
 app.get("*", function (req, res) {
     res.sendFile("index.html", {
         root: path.join(__dirname, "../../client/build/")
