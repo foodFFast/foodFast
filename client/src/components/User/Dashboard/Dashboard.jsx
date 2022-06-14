@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 import CategoryCard from "../../Categories/CategoryCard/CategoryCard"
 import ProductCard from "../../Products/ProductCard/ProductCard"
 import { StyledDashboard } from "./Dashboard.styled"
-import axios from "axios"
 import CategoryBar from "../../Landing/UbicationBar/UbicationBar"
 import SearchBar from "../../searchBar"
-import { delete_category, delete_product } from "../../../redux/actions/sync"
 import { useEffect } from "react"
 import { searchCategory, searchProduct } from "../../../redux/actions/async"
+import useDelete from "../../CustomHooks/useDelete"
+
 const Dashboard = () => {
     const dispatch = useDispatch()
     const theme = useSelector((state) => state.theme.selectedTheme)
@@ -17,21 +17,9 @@ const Dashboard = () => {
     )
     const filterProducts = useSelector((state) => state.main.products.filtered)
 
-    const handleDeleteCategory = (id) => {
-        axios
-            .delete(`http://localhost:3001/api/v1/categories/${id}`)
-            .then(() => console.log("borrado"))
-            .catch((err) => console.log(err))
-        dispatch(delete_category(id))
-    }
+    const {handleDelete} = useDelete(dispatch)
 
-    const handleDeleteProduct = (id) => {
-        axios
-            .delete(`http://localhost:3001/api/v1/products/${id}`)
-            .then(() => console.log("borrado"))
-            .catch((err) => console.log(err))
-        dispatch(delete_product(id))
-    }
+
     useEffect(() => {
         dispatch(searchProduct(""))
         dispatch(searchCategory(""))
@@ -62,7 +50,7 @@ const Dashboard = () => {
                                     />
                                     <button
                                         onClick={() =>
-                                            handleDeleteCategory(c._id)
+                                            handleDelete("categories", c._id)
                                         }
                                     >
                                         Delete
@@ -89,7 +77,7 @@ const Dashboard = () => {
                                     <ProductCard product={p} />
                                     <button
                                         onClick={() =>
-                                            handleDeleteProduct(p._id)
+                                            handleDelete("products", p._id)
                                         }
                                     >
                                         Delete

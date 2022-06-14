@@ -6,8 +6,8 @@ import { FilterContainer, GlobalContainer, SearchContainer, UserContainer, ListC
 import {FaUserAlt, FaShoppingCart} from "react-icons/fa"; 
 import Select from "react-select"; 
 import { useDispatch, useSelector } from "react-redux";
-import { filterbyCategories, sortbyPrice } from "../../redux/actions/sync";
-import { fetchAllProducts, newFilterProduct } from "../../redux/actions/async";
+import { filterbyCategories } from "../../redux/actions/sync";
+import { fetchAllProducts } from "../../redux/actions/async";
 const OptionsTest = [{
     value: "test1", label: "test1"
 }, {

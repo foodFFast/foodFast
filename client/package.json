@@ -17,6 +17,7 @@
     "react-select": "^5.3.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
+    "rsuite": "^5.15.0",
     "sass": "^1.52.2",
     "styled-components": "^5.3.5"
   },

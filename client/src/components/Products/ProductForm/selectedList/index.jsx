@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./select.module.scss"
 import {useSelector} from "react-redux"
-const categoryTest = ["Main Dish", "Drinks", "Apperitives"]
 
 export default function SelectedList({setFormCategories, form}) {
     const categories = useSelector(state=> state.main.categories.all)

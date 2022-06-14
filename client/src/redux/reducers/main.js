@@ -1,6 +1,7 @@
 import {
     CLEAN_CATEGORIES,
     CLEAN_PRODUCTS,
+    CLEAN_SELECT_PRODUCT,
     DELETE_CATEGORY,
     DELETE_PRODUCT,
     ERROR,
@@ -111,7 +112,9 @@ const main = (state = initialState, action) => {
                 (a, b) => compareProducts(a, b, action.form)
             )
             break
-
+        case CLEAN_SELECT_PRODUCT:
+            newState.products.selected = {};
+            break
         case FILTER_PRODUCTS:
             newState.products.filtered = []
             !!action.payload.length &&

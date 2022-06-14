@@ -37,6 +37,30 @@ export const MainContainer = styled.section`
     display: flex;
 `
 
+export const MessageContainer = styled.div`
+    left: 25%;
+    position: absolute;
+    color: white;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: ${({color})=> color};
+    text-align: center;
+
+`
+
+export const ImgMessageContainer = styled.div`
+    background-color: green;
+    border-radius: 2rem;
+    display: flex;
+    margin: auto;
+    margin-top: 2rem;
+    width: 70%;
+    color: white;
+    justify-content: center;
+    text-align: center;
+`
+
 export const FirstColumnContainer = styled.div`
     width: 50%;
     height: 100%;
@@ -146,7 +170,7 @@ export const InputTextArea = styled.textarea`
         }
 `
 export const InputFiled = styled.input`
-
+    color: white;
 `
 
 export const ErrorMsg = styled.div`
@@ -161,6 +185,7 @@ export const ErrorMsg = styled.div`
 export const TagsProduct = styled.div`
     background-color: transparent;
     border: 2px solid orange;
+    border-radius: 1rem;
     margin: auto;
     color: white;
     margin-top: 10px;
@@ -172,7 +197,35 @@ export const TagsProduct = styled.div`
     justify-content: center;
     padding: 1.3rem;
     overflow-y: scroll;
+    &::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+&::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+&::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+&::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+&::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+&::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
 `
+
+
+
 export const TagCard = styled.div`
     background-color: #f58220;
     margin: .4rem;

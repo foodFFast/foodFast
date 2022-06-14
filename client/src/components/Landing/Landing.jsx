@@ -5,7 +5,6 @@ import Banner from "./Banner/Banner"
 import CategoryBar from "./UbicationBar/UbicationBar"
 import { CategoriesContainer, GlobalContainer } from "./landingElements"
 import CategoryCard from "../Categories/CategorysLanding"
-import { clean_categories, clean_products } from "../../redux/actions/sync"
 import { useEffect } from "react"
 import { searchCategory, searchProduct } from "../../redux/actions/async"
 
@@ -17,7 +16,7 @@ const Landing = () => {
     useEffect(()=> {
         dispatch(searchProduct(""))
         dispatch(searchCategory(""))
-    }, [])
+    }, [dispatch])
 
     // useEffect(()=> {
     //  return ()=> { dispatch(clean_categories()); dispatch(clean_products())}
