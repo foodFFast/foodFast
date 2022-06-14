@@ -15,8 +15,6 @@ import mealCombo from "./src/routes/mealComboRoute.js"
 import path, { dirname } from "path"
 import { fileURLToPath } from "url"
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-
 //middellwares
 const app = express()
 app.use(cookieParser())
@@ -24,10 +22,16 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan("dev"))
 
-app.use(express.static(path.join(__dirname, "../client/build/")))
-app.get("*", (req, res) =>
-    res.sendFile(path.join(__dirname, "../client/build/"))
-)
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const relativeBuildPath = path.join(__dirname, "../client/build/")
+
+app.use(express.static(relativeBuildPath))
+// hago accesible la carpeta de imágenes
+app.use(express.static(path.join(relativeBuildPath, "public/")))
+
+// app.get("*", (req, res) =>
+//     res.sendFile(path.join(__dirname, "../client/build/"))
+// )
 
 // app.get("*", (req, res) => {
 //     res.sendFile(path.join(__dirname, "../client/build/"))
