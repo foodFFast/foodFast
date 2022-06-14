@@ -27,9 +27,7 @@ const relativeBuildPath = path.join(__dirname, "../client/build/")
 
 app.use("/static", express.static(path.join(relativeBuildPath, "static/")))
 app.get("*", function (req, res) {
-    res.sendFile("index.html", {
-        root: path.join(__dirname, "../../client/build/")
-    })
+    res.sendFile("index.html", { root: relativeBuildPath })
 })
 // hago accesible la carpeta de imágenes
 app.use(express.static(path.join(relativeBuildPath, "public/")))
