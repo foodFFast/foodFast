@@ -26,11 +26,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const relativeBuildPath = path.join(__dirname, "../client/build/")
 
 app.use(express.static(relativeBuildPath))
-app.get("*", function (req, res) {
-    res.sendFile("index.html", {
-        root: path.join(__dirname, "../../client/build/")
-    })
-})
+
 // hago accesible la carpeta de imágenes
 app.use(express.static(path.join(relativeBuildPath, "public/")))
 
@@ -61,6 +57,12 @@ app.use("/api/v1/mealCombo", mealCombo)
 
 // hago accesible la carpeta de imágenes
 // app.use(express.static(path.join(__dirname, "public")))
+
+app.get("*", function (req, res) {
+    res.sendFile("index.html", {
+        root: path.join(__dirname, "../../client/build/")
+    })
+})
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, console.log("server on port: " + PORT))
