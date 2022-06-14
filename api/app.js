@@ -27,9 +27,6 @@ const relativeBuildPath = path.join(__dirname, "../client/build/")
 
 app.use(express.static(relativeBuildPath))
 
-// hago accesible la carpeta de imágenes
-// app.use(express.static(path.join(relativeBuildPath, "public/")))
-
 // app.get("/", (req, res) => {
 //     res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
 // })
@@ -56,13 +53,7 @@ app.use("/api/v1/user", userRoute)
 app.use("/api/v1/mealCombo", mealCombo)
 
 // hago accesible la carpeta de imágenes
-// app.use(express.static(path.join(__dirname, "public")))
-
-app.get("*", function (req, res) {
-    res.sendFile("index.html", {
-        root: path.join(__dirname, "../../client/build/")
-    })
-})
+app.use(express.static(path.join(__dirname, "public")))
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, console.log("server on port: " + PORT))
