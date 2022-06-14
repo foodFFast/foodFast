@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import { fetchProductsByCat } from "../../../redux/actions/async"
 import { StyledCategoryDetail } from "./DetailCategory.styled"
 import ProductCard from "../../Products/ProductCard/ProductCard"

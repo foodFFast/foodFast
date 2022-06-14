@@ -14,14 +14,16 @@ import {
   TagCard,
   AvailableContainer,
   ErrorMsg,
-  ButtonCreate
+  ButtonCreate,
+  MessageContainer,
+  ImgMessageContainer
 } from "./formElements";
-import useForm from "./useForm";
-import { validateForm } from "./validateForm";
+import useForm from "../../CustomHooks/useForm";
 import SelectedList from "./selectedList";
 import {CgUnavailable} from "react-icons/cg"
 import {MdOutlineEventAvailable} from "react-icons/md"
 import { useEffect } from "react";
+import { Message } from 'rsuite';
 
 const initialForm = {
   name: "",
@@ -34,30 +36,22 @@ const initialForm = {
 
 export default function ProductForm() {
   // Usando el hook personalizado
-  const { form, handleChange, errors, setForm,  isAvailable, handleSubmit } = useForm(initialForm, validateForm);
+  const [file, setFile] = useState(null);
+  const [imgCharge, setImgCharge] = useState(false); 
   
-  const [newCategory, setNewCategory] = useState(""); 
-  const [file, setFile] = useState(null); 
+  const { form, handleChange, isSend, errors, setForm,  isAvailable, handleSubmit, isEmpty } = useForm("product", initialForm, setImgCharge);
+
+
 
   useEffect(()=> {
     setForm({...form})
-  }, [])
+  }, [form, setForm])
 
   const handleChangeFile = (e)=> {
     const newFile = e.target.files[0]; 
     setFile(newFile)
-  }
-
-  const handleAddTag = ()=> {
-    if(newCategory !== "") {
-      setForm({...form, tags: [...form.tags, setNewCategory]})
-      setNewCategory("")
-    }
-  }
-
-  const handleChangeTag = (e) => {
-    let value = e.target.value; 
-    setNewCategory(value)
+    if(newFile)  setImgCharge(true)
+    else setImgCharge(false)
   }
 
   const handleDeleteCategory = (value)=> {
@@ -66,12 +60,26 @@ export default function ProductForm() {
   
   return (
   <GlobalContainer>
-    {console.log(form)}
     <OrnamentContainer>
       <img src={require("../../../assets/burger.png")}  id="burguer" alt="burguer"/>
       <img src={require("../../../assets/pizza.png")}   id="pizza" alt="pizza"/>
       <img src={require("../../../assets/chicken.png")} id="chicken"alt="chicken"/>
     </OrnamentContainer>
+
+    {isSend  &&  <MessageContainer color={"green"}>
+      <Message showIcon type="success" header="Success" full>
+        The product is created correctly
+      </Message> 
+    </MessageContainer>}
+      
+      {
+        isEmpty && <MessageContainer color={"red"}>
+    <Message showIcon type="error" header="Error">
+      Product could not be created because of empty fields
+    </Message>
+      </MessageContainer>
+      }
+
 
     <MainContainer>
       <FirstColumnContainer>
@@ -130,6 +138,13 @@ export default function ProductForm() {
           <Label>Img:</Label>
           <InputFiled type={"file"} name="imageProduct" value={form.img} onChange={handleChangeFile} id="fileinput"/>
         </InputContainer>
+
+        {imgCharge  &&  <ImgMessageContainer>
+        <Message showIcon type="success">
+          Image uploaded successfully
+        </Message>
+        </ImgMessageContainer>}
+    
       </SecondColumnContainer>
     </MainContainer>    
             {/* LE paso la condicion de que no debe existir error para que se muestre el boton de crear */}

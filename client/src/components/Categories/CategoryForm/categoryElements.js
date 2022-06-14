@@ -1,18 +1,22 @@
 import styled from "styled-components";
 
-export const GlobalContainer = styled.section`
+export const CreateButton = styled.button`
+    background-color: orange;
+    color: white; 
+    margin-top: 3rem;
+    border-radius: 1rem;
+    height: 2rem;
+    width: 8rem;
+    cursor: pointer;
+    &:hover{
+        background-color: white;
+        color: orange
+    }
 `
 
-export const MainContainer = styled.section`
-`
-
-export const InputContainer = styled.div`
-`
-
-export const Label = styled.label`
-`
-export const InputSimple= styled.input`
-
-`
-export const InputTextArea = styled.textarea`
+export const ImgMessageContainer = styled.div`
+    background-color: green;
+    text-align: center;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 `

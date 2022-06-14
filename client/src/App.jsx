@@ -60,7 +60,9 @@ function App() {
                             path="/category/:idCategory"
                             element={<DetailCategory />}
                         />
-                        <Route path="dashboard">
+                        
+                        
+                        <Route path="/dashboard">
                             <Route index element={<Dashboard />} />
                             <Route
                                 path="createProduct"

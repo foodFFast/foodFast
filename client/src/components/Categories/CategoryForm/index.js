@@ -1,91 +1,79 @@
-import React, {  useState } from "react"
-import { GlobalContainer, InputContainer, InputFiled, InputSimple, Label, MainContainer } from "../../Products/ProductForm/formElements"
+import React, {  useEffect, useState } from "react"
+import { ErrorMsg, GlobalContainer, InputContainer, InputFiled, InputSimple, Label, MainContainer, MessageContainer } from "../../Products/ProductForm/formElements"
 import styles from "./category.module.scss"; 
-import {GrFormNextLink} from "react-icons/gr";
-import axios from "axios";
-import {Link} from "react-router-dom";
+import useForm from "../../CustomHooks/useForm";
+import { Message } from 'rsuite';
+import { CreateButton, ImgMessageContainer } from "./categoryElements";
+
+const initialForm = {
+    name: "", 
+    description: "", 
+    img: null
+}
 
 export default function CategoryForm(){
-    // ruta
-    // http://localhost:3001/api/v1/categories
-    const [input, setInput]= useState({name:"", description: ""})
-    const [isCreated, setIsCreated] = useState(false); 
-    const [file, setFile] = useState(null); 
+    const [file, setFile] = useState(null);
+    const [imgCharge, setImgCharge] = useState(false); 
 
-    const handleChange = (e)=> {
-        const {name, value} = e.target
-        setInput({...input, [name]: value})
-    }
+
+    const { form, handleChange, isSend, errors, setForm,  handleSubmit, isEmpty } = useForm("category", initialForm, setImgCharge);
+
+    useEffect(()=> {
+        setForm({...form})
+      }, [form, setForm])
+
+
     const handleChangeFile = (e)=> {
         const newFile = e.target.files[0]; 
         setFile(newFile)
+        if(newFile)  setImgCharge(true)
+        else setImgCharge(false)
       }
-
-    const handleSubmit = ()=> {
-        if(input.name !== "" && input.description !== "") {
-            if(!file) alert("You must upload a image") 
-            else {
-                const formdata = new FormData();
-                formdata.append('imageCategory', file);
-
-                fetch("http://localhost:3001/api/v1/categories/image", {
-                method: 'POST',
-                body: formdata
-                }).then(res=> res.json())
-                .then(json=> 
-          
-                {
-                return axios.post('http://localhost:3001/api/v1/categories', {
-                    name: input.name,
-                    description: input.description, 
-                    img: json.img
-                    })}
-              ).then(json=> {       
-                setIsCreated(true)
-               
-                alert("Category created")
-            })
-              .catch(err=> console.log(err))
-              .finally(err=> {            
-                document.getElementById("imageCategory").value = null; 
-
-              setInput({name:"", description: ""})})
-                
-            }
-
-            
-        }  
-    }
-
-
+    
     return(
         <GlobalContainer>
+                {isSend  &&  <MessageContainer color={"green"}>
+      <Message showIcon type="success" header="Success" full>
+        The product is created correctly
+      </Message> 
+    </MessageContainer>}
+      
+      {
+        isEmpty && <MessageContainer color={"red"}>
+    <Message showIcon type="error" header="Error">
+      Product could not be created because of empty fields
+    </Message>
+      </MessageContainer>
+      }
             <MainContainer id={styles.MainContainer}>
+                
                 <InputContainer>
                     <Label>Category Name:</Label>
-                    <InputSimple onChange={handleChange} type={"text"} name="name" value={input.name}required/>
+                    <InputSimple onChange={handleChange} type={"text"} name="name" value={form.name}required/>
+                    {<ErrorMsg error={errors.name ? true:false}>{errors.name}</ErrorMsg>}
                 </InputContainer>
 
                 <InputContainer>
                     <Label>Description:</Label>
-                    <InputSimple onChange={handleChange} type={"text"} name="description" value={input.description}required/>
+                    <InputSimple onChange={handleChange} type={"text"} name="description" value={form.description}required/>
+                    {<ErrorMsg error={errors.description ? true:false}>{errors.description}</ErrorMsg>}
                 </InputContainer>
                 
                 <InputContainer>
                     <Label>Image:</Label>
                     <InputFiled type={"file"} onChange={handleChangeFile} id="imageCategory" name="imageCategory"/>
+                    {imgCharge  &&  
+                    <ImgMessageContainer>
+                            <Message showIcon type="success">
+                            Image uploaded successfully
+                            </Message>
+                     </ImgMessageContainer>}
                 </InputContainer>    
 
                 <div>
-                    <button onClick={handleSubmit} id={styles.createStore}>
+                    <CreateButton onClick={()=> handleSubmit(file)} id={styles.createStore}>
                         Create Category
-                    </button> 
-                    
-                    {isCreated && <div id={styles.iconContainer}>
-                        <Link to={`/dashboard/products`}>
-                            <GrFormNextLink />
-                        </Link>   
-                    </div>}          
+                    </CreateButton>         
                 </div>
                 
                    
