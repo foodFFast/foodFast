@@ -24,11 +24,13 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan("dev"))
 
-app.use(express.static(path.join(__dirname, "./client/build/index.html")))
-
-app.get("/", (req, res) => {
-    res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"))
 })
+
+// app.get("/", (req, res) => {
+//     res.send("BIENVENIDOS AL PF.\nEsto es un GET a '/'")
+// })
 
 // http://localhost:3001/api/v1/categories
 app.use("/api/v1/categories", categoriesRoute)
