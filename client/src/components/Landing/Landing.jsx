@@ -5,39 +5,51 @@ import Banner from "./Banner/Banner"
 import CategoryBar from "./UbicationBar/UbicationBar"
 import { CategoriesContainer, GlobalContainer } from "./landingElements"
 import CategoryCard from "../Categories/CategorysLanding"
-import { clean_categories, clean_products } from "../../redux/actions/sync"
+// import { clean_categories, clean_products } from "../../redux/actions/sync"
 import { useEffect } from "react"
 import { searchCategory, searchProduct } from "../../redux/actions/async"
 
 const Landing = () => {
     const categories = useSelector((state) => state.main.categories.all)
-    const filterCategories = useSelector((state)=> state.main.categories.filtered);
+    const filterCategories = useSelector(
+        (state) => state.main.categories.filtered
+    )
     const dispatch = useDispatch()
-    
-    useEffect(()=> {
+
+    useEffect(() => {
         dispatch(searchProduct(""))
         dispatch(searchCategory(""))
-    }, [])
+    }, [dispatch])
 
     // useEffect(()=> {
     //  return ()=> { dispatch(clean_categories()); dispatch(clean_products())}
     // })
+
+    console.log(typeof filterCategories, filterCategories)
     return (
         <GlobalContainer>
-
             <Banner />
-            <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center"
+                }}
+            >
                 <CategoryBar className="LocationBar" />
             </div>
             <CategoriesContainer>
-                          {filterCategories.length ===0 ? categories.map(c=> 
+                {filterCategories.length === 0
+                    ? categories.map((c) => (
                           <Link key={c._id} to={`/categories/${c._id}`}>
-                                <CategoryCard key={c._id} category={c} />
-                          </Link>):filterCategories.map(c=> 
-                            <Link key={c._id} to={`/categories/${c._id}`}>
-                            <CategoryCard key={c._id} category={c} />
-                        </Link>
-                          )}
+                              <CategoryCard key={c._id} category={c} />
+                          </Link>
+                      ))
+                    : filterCategories.map((c) => (
+                          <Link key={c._id} to={`/categories/${c._id}`}>
+                              <CategoryCard key={c._id} category={c} />
+                          </Link>
+                      ))}
             </CategoriesContainer>
         </GlobalContainer>
     )
