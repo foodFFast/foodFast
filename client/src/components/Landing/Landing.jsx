@@ -25,7 +25,6 @@ const Landing = () => {
     //  return ()=> { dispatch(clean_categories()); dispatch(clean_products())}
     // })
 
-    console.log(typeof filterCategories, filterCategories)
     return (
         <GlobalContainer>
             <Banner />
