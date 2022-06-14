@@ -24,7 +24,8 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan("dev"))
 
-app.use(express.static(path.join(__dirname, "../client/build/")))
+app.use(express.static("build"))
+app.get("*", (req, res) => res.sendFile(path.resolve("build", "index.html")))
 
 // app.get("*", (req, res) => {
 //     res.sendFile(path.join(__dirname, "../client/build/"))
