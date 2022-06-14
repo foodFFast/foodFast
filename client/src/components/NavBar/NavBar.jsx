@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import {
     GlobalContainer,
     MainIconContainer,
@@ -28,6 +28,13 @@ const NavBar = () => {
         setShowNavbar(false)
     }
 
+function handleLogin(){
+    alert("intentaste logearte picarón...")
+}
+function handleRegister(){
+    alert("intentaste registrarte rufián...")
+}
+
     return (
         <GlobalContainer>
             <ShowButton
@@ -50,20 +57,26 @@ const NavBar = () => {
                 </MainIconContainer>
 
                 <ButtonsContainer theme={theme}>
+                
                     <LoginRegisterButton theme={theme}>
-                        <FaUserAlt />
-                        Login
+                        <NavLink to='/login' style={{textDecoration: "none"}}>
+                            <FaUserAlt />
+                            Login
+                        </NavLink>
                     </LoginRegisterButton>
+                
 
                     <LoginRegisterButton theme={theme}>
-                        <GiArchiveRegister />
-                        Register
+                        <NavLink to='/register'>
+                            <GiArchiveRegister />
+                            Register
+                        </NavLink>
                     </LoginRegisterButton>
                 </ButtonsContainer>
 
                 <ListRoutes>
                     <hr />
-                    <h3>CONSUMER</h3>
+                    <h3>CUSTOMER</h3>
                     <NavLink to="/" onClick={handleSelectRoute}>
                         <RouteItem>Home</RouteItem>
                     </NavLink>

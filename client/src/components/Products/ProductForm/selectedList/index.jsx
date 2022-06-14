@@ -16,7 +16,7 @@ export default function SelectedList({setFormCategories, form}) {
 
     return(
     <section className={styles.container}>
-        {console.log(categories)}
+        {/* {console.log(categories)} */}
         <select onChange={handleChange} className={styles.selected}>
             <option value={""} className={styles.option}>--Select Categories--</option>
             {categories.map(el=> <option key={el._id} value={el.name} className={styles.option}>{el.name}</option>)}

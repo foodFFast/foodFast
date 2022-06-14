@@ -66,7 +66,7 @@ export default function ProductForm() {
   
   return (
   <GlobalContainer>
-    {console.log(form)}
+    {/* {console.log(form)} */}
     <OrnamentContainer>
       <img src={require("../../../assets/burger.png")}  id="burguer" alt="burguer"/>
       <img src={require("../../../assets/pizza.png")}   id="pizza" alt="pizza"/>

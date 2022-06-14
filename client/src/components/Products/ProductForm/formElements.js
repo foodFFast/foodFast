@@ -1,7 +1,7 @@
 import styled, {keyframes}from "styled-components"; 
 
 export const GlobalContainer = styled.section`
-    z-index: -1;
+    z-index: 1;
     height: 100vh;
     width: 100%;
     background-image: linear-gradient(

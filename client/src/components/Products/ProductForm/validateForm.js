@@ -15,6 +15,6 @@ export const validateForm = (form) => {
 
     if(!price) errors = {...errors, price: "Invalid price"}
     else if (price < 0) errors= {...errors, price: "The price cannot be less than "}
-    console.log(errors)
+    /* console.log(errors) */
     return errors
 }

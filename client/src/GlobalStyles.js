@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
             overflow: auto;
         }
     }
+
+    a {
+        text-decoration: none;
+    }
 `
 
 export default GlobalStyle

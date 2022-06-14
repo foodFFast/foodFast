@@ -22,6 +22,7 @@ import {
     Reviews
 } from "./components"
 import GlobalStyle from "./GlobalStyles"
+import Login from "./components/Login/Login"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -49,7 +50,7 @@ function App() {
                 <ScrollToTop>
                     <NavBar />
 
-                    <Routes>
+                    <Routes> 
                         <Route path="/" element={<Landing />} />
                         <Route path="/products" element={<DisplayProducts />} />
                         <Route
@@ -72,6 +73,7 @@ function App() {
                             />
                         </Route>
 
+                    {/* Hay dos dashbo */}
                         <Route path="/dashboard/products">
                             <Route index element={<Products />} />
                             <Route
@@ -107,6 +109,9 @@ function App() {
                                 />
                             </Route>
                         </Route>
+
+                        {/* LOGIN */}
+                        <Route path="/login" element={<Login/>}/>
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>
