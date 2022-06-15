@@ -60,10 +60,6 @@ export default function ProductForm() {
   
   return (
   <GlobalContainer>
-<<<<<<< HEAD
-    {/* {console.log(form)} */}
-=======
->>>>>>> 9f080102c4fcce4e98721240f0da8e028442640c
     <OrnamentContainer>
       <img src={require("../../../assets/burger.png")}  id="burguer" alt="burguer"/>
       <img src={require("../../../assets/pizza.png")}   id="pizza" alt="pizza"/>

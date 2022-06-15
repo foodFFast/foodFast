@@ -22,7 +22,8 @@ import {
     Reviews
 } from "./components"
 import GlobalStyle from "./GlobalStyles"
-import Login from "./components/Login/Login"
+import Login from "./components/Auth/Login"
+import Logup from "./components/Auth/Logup"
 
 const ScrollToTop = (props) => {
     const location = useLocation()
@@ -114,6 +115,8 @@ function App() {
 
                         {/* LOGIN */}
                         <Route path="/login" element={<Login/>}/>
+                        {/* REGISTER */}
+                        <Route path="/logup" element={<Logup/>}/>
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>

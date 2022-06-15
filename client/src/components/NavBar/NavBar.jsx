@@ -67,7 +67,7 @@ function handleRegister(){
                 
 
                     <LoginRegisterButton theme={theme}>
-                        <NavLink to='/register'>
+                        <NavLink to='/logup'>
                             <GiArchiveRegister />
                             Register
                         </NavLink>

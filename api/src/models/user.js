@@ -2,7 +2,8 @@ import mongoose from 'mongoose'
 
 const userSchema=new mongoose.Schema({
     name:{
-        type:String,
+        type: String,
+        default: "Usuario anónimo",
         required:true,
     },
     email:{
